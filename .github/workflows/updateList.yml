@@ -15,6 +15,11 @@ jobs:
         with:
           fetch-depth: 2
 
+      - name: Set Git config
+        run: |
+          git config --global user.name "moonct"
+          git config --global user.email "tokybob@gmail.com"
+
       - name: Get list of modified files in the last commit
         id: get_files
         run: |
@@ -36,14 +41,6 @@ jobs:
         run: |
           echo "Changed files: ${{ env.changed_files }}"
           python .github/build/list.py "${{ env.changed_files }}"
-
-      - name: Set Git config
-        run: |
-          git config --global user.name "moonct"
-          git config --global user.email "tokybob@gmail.com"
-
-      - name: Checkout target repository
-        uses: actions/checkout@v3
 
       - name: Commit and push changes
         run: |
