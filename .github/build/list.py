@@ -45,5 +45,8 @@ print(f"All files changed in the last commit:{file_list}")
 for directory in get_unique_directories(file_list):
     print(f"directory:{directory}, abspath: {os.path.abspath(directory)}")
     cve_json = list_files_in_directory(directory)
-    save_list_json_file(os.path.join(directory, 'list.json'), cve_json)
+    if len(cve_json['cve_list']) > 0:
+        save_file_path = os.path.join(directory, 'list.json')
+        print(f"save file: {save_file_path}")
+        save_list_json_file(save_file_path, cve_json)
 
