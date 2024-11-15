@@ -48,6 +48,7 @@ jobs:
       - name: Commit and push changes
         run: |
           git add .
+          git status
           git commit -m "Add & modify json list" > /dev/null 2>&1 || true
           git push
         env: 
