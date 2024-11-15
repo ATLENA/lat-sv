@@ -1,11 +1,11 @@
 {
     "cve_list": [
         {
-            "id": "CVE-ID",
+            "id": "CVE-2024-36387",
             "published_date": "2024-07-01"
         },
         {
-            "id": "CVE-ID",
+            "id": "CVE-2024-38477",
             "published_date": "2024-07-01"
         }
     ]
