@@ -1,7 +1,19 @@
 {
     "cve_list": [
         {
+            "id": "CVE-2024-36387",
+            "published_date": "2024-07-01"
+        },
+        {
             "id": "CVE-2024-39573",
+            "published_date": "2024-07-01"
+        },
+        {
+            "id": "CVE-2024-40898",
+            "published_date": "2024-07-18"
+        },
+        {
+            "id": "CVE-2024-38473",
             "published_date": "2024-07-01"
         },
         {
@@ -9,19 +21,7 @@
             "published_date": "2024-07-01"
         },
         {
-            "id": "CVE-2024-36387",
-            "published_date": "2024-07-01"
-        },
-        {
-            "id": "CVE-2024-38473",
-            "published_date": "2024-07-01"
-        },
-        {
             "id": "CVE-2024-38477",
-            "published_date": "2024-07-01"
-        },
-        {
-            "id": "CVE-2024-38472",
             "published_date": "2024-07-01"
         },
         {
@@ -29,8 +29,8 @@
             "published_date": "2024-07-18"
         },
         {
-            "id": "CVE-2024-40898",
-            "published_date": "2024-07-18"
+            "id": "CVE-2024-38472",
+            "published_date": "2024-07-01"
         }
     ]
 }
