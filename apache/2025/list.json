@@ -1,6 +1,10 @@
 {
     "cve_list": [
         {
+            "id": "CVE-2025-53020",
+            "published_date": "2025-07-10"
+        },
+        {
             "id": "CVE-2025-31492",
             "published_date": "2025-04-06"
         },
