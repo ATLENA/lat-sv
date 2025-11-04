@@ -1,8 +1,16 @@
 {
     "cve_list": [
         {
-            "id": "CVE-2025-52434",
-            "published_date": "2025-07-04"
+            "id": "CVE-2025-48976",
+            "published_date": "2025-06-16"
+        },
+        {
+            "id": "CVE-2025-31650",
+            "published_date": "2025-05-06"
+        },
+        {
+            "id": "CVE-2025-49124",
+            "published_date": "2025-06-16"
         },
         {
             "id": "CVE-2025-48988",
@@ -13,20 +21,16 @@
             "published_date": "2025-06-16"
         },
         {
-            "id": "CVE-2025-49124",
-            "published_date": "2025-06-16"
-        },
-        {
             "id": "CVE-2025-24813",
             "published_date": "2025-03-10"
         },
         {
-            "id": "CVE-2025-48976",
-            "published_date": "2025-06-16"
+            "id": "CVE-2025-52434",
+            "published_date": "2025-07-04"
         },
         {
-            "id": "CVE-2025-31650",
-            "published_date": "2025-05-06"
+            "id": "CVE-2025-52520",
+            "published_date": "2025-07-10"
         }
     ]
 }
