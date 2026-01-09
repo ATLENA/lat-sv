@@ -5,6 +5,10 @@
             "published_date": "2025-02-05"
         },
         {
+            "id": "CVE-2025-53859",
+            "published_date": "2025-08-13"
+        },
+        {
             "id": "CVE-2025-1695",
             "published_date": "2025-03-04"
         }
