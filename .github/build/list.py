@@ -60,7 +60,7 @@ def get_unique_directories(file_paths):
 def get_all_software_years(root_path):
     """전체 소프트웨어/연도 구조 스캔"""
     software_years = {}
-    exclude_dirs = ['.git', '.github', '.idea']
+    exclude_dirs = ['.git', '.github', '.idea', 'redis']
 
     for item in os.listdir(root_path):
         item_path = os.path.join(root_path, item)
@@ -129,21 +129,7 @@ Manager 애플리케이션에서 자동으로 다운로드하여 보안 점검�
             readme_content += f"| {year} | [cves.json](./{software}/{year}/cves.json) | {cve_count} | {updated} |\n"
         readme_content += "\n"
 
-    readme_content += """## File Structure
-
-```
-├── apache/
-│   ├── 2024/
-│   │   ├── CVE-2024-xxxxx.json   # 개별 CVE 파일
-│   │   ├── list.json             # CVE 목록 (ID, 날짜만)
-│   │   └── cves.json             # 전체 CVE 데이터 통합
-│   └── 2025/
-├── nginx/
-├── redis/
-└── tomcat/
-```
-
-## License
+    readme_content += """## License
 
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
 
