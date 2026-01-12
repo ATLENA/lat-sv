@@ -1,0 +1,162 @@
+{
+    "CVE-LIST": [
+        {
+            "CVE-ID": "CVE-2024-7347",
+            "affected_versions": [
+                "1.5.13 to 1.26.1"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 5.7 MEDIUM",
+                    "Vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "NIST: NVD",
+                    "Score": "(NVD)Base Score: 4.7 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:N/I:N/A:H"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "(F5)Base Score: 4.7 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-125",
+                    "CWE Name": "Out-of-bounds Read",
+                    "Source": "NIST"
+                },
+                {
+                    "CWE-ID": "CWE-126",
+                    "CWE Name": "Buffer Over-read",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.26.2 ngx_http_mp4_module module"
+                    ]
+                }
+            ],
+            "summary": "ngx_http_mp4_module 에서 발견된 Buffer Over-read 취약점.",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX 오픈 소스 및 NGINX Plus에는 ngx_http_mp4_module에 취약점이 있어 공격자가 특수하게 제작된 mp4 파일을 사용하여 NGINX 작업자 메모리를 과도하게 읽어 종료할 수 있습니다. 이 문제는 ngx_http_mp4_module로 빌드되고 mp4 지시문이 구성 파일에 사용되는 경우에만 NGINX에 영향을 미칩니다. 또한 공격자가 ngx_http_mp4_module를 사용하여 특수하게 조작된 mp4 파일의 처리를 트리거할 수 있는 경우에만 공격이 가능합니다.\nNGINX 작업자 프로세스가 다시 시작되는 동안 트래픽이 중단됩니다. 이 취약성을 통해 인증된 로컬 공격자가 NGINX의 DoS(서비스 거부)를 일으킬 수 있습니다.",
+            "published_date": "2024-08-14",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2024/CVE-2024-7347.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2024-24989",
+            "affected_versions": [
+                "1.25.0 to 1.25.3"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CNA: F5",
+                    "Score": "Base Score: 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-476",
+                    "CWE Name": "NULL Pointer Dereference",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.25.4"
+                    ]
+                }
+            ],
+            "summary": "HTTP/3 QUIC 모듈을 사용할 때 발생하는 NULL 포인터 역참조 취약점.",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX의 HTTP/3 QUIC 모듈이 특수하게 조작된 요청을 처리하는 과정에서 NULL 포인터를 역참조하여 워커 프로세스가 종료되는 문제입니다.\nHTTP/3 QUIC 모듈이 기본적으로 비활성화되어 있으므로, 필요하지 않은 경우 해당 모듈을 활성화하지 않는 것이 좋습니다.",
+            "published_date": "2024-02-14",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2024/CVE-2024-24989.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2024-24990",
+            "affected_versions": [
+                "1.25.0 to 1.25.3"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CNA: F5",
+                    "Score": "Base Score: 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-416",
+                    "CWE Name": "NULL Pointer Dereference",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.25.4"
+                    ]
+                }
+            ],
+            "summary": "HTTP/3 QUIC 모듈을 사용할 때 발생하는 Use After Free 취약점.",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX의 HTTP/3 QUIC 모듈이 특수하게 조작된 요청을 처리하는 과정에서 발생하는 Use After Free로 인해 워커 프로세스가 종료되는 문제입니다.\nHTTP/3 QUIC 모듈이 기본적으로 비활성화되어 있으므로, 필요하지 않은 경우 해당 모듈을 활성화하지 않는 것이 좋습니다.",
+            "published_date": "2024-02-14",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2024/CVE-2024-24990.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2024-7646",
+            "affected_versions": [
+                "(ingress-nginx controller) to 1.11.2",
+                "(ingress-nginx controller) to 1.10.4"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CNA: Kubernetes",
+                    "Score": "Base Score: 8.8 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-20",
+                    "CWE Name": "Improper Input Validation",
+                    "Source": "Kubernetes"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.26.2 ngx_http_mp4_module module"
+                    ]
+                }
+            ],
+            "summary": "ingress-nginx 컨트롤러에서 발견된 annotation 검증 우회 취약점.",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX 오픈 소스 및 NGINX Plus에는 ngx_http_mp4_module에 취약점이 있어 공격자가 특수하게 제작된 mp4 파일을 사용하여 NGINX 작업자 메모리를 과도하게 읽어 종료할 수 있습니다. 이 문제는 ngx_http_mp4_module로 빌드되고 mp4 지시문이 구성 파일에 사용되는 경우에만 NGINX에 영향을 미칩니다. 또한 공격자가 ngx_http_mp4_module를 사용하여 특수하게 조작된 mp4 파일의 처리를 트리거할 수 있는 경우에만 공격이 가능합니다.\nNGINX 작업자 프로세스가 다시 시작되는 동안 트래픽이 중단됩니다. 이 취약성을 통해 인증된 로컬 공격자가 NGINX의 DoS(서비스 거부)를 일으킬 수 있습니다.",
+            "published_date": "2024-08-16",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2024/CVE-2024-7646.md",
+            "instance_type": "NGINX"
+        }
+    ]
+}

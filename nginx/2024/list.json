@@ -1,20 +1,20 @@
 {
     "cve_list": [
         {
-            "id": "CVE-2024-24990",
-            "published_date": "2024-02-14"
-        },
-        {
             "id": "CVE-2024-7347",
             "published_date": "2024-08-14"
         },
         {
-            "id": "CVE-2024-7646",
-            "published_date": "2024-08-16"
-        },
-        {
             "id": "CVE-2024-24989",
             "published_date": "2024-02-14"
+        },
+        {
+            "id": "CVE-2024-24990",
+            "published_date": "2024-02-14"
+        },
+        {
+            "id": "CVE-2024-7646",
+            "published_date": "2024-08-16"
         }
     ]
 }
