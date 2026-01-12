@@ -1,6 +1,7 @@
 import os
 import json
 import sys
+import re
 from datetime import datetime
 
 def list_files_in_directory(directory_path):
@@ -22,6 +23,16 @@ def list_files_in_directory(directory_path):
     cve_json['cve_list'] = file_list
     return cve_json
 
+def normalize_whitespace(obj):
+    """JSON 객체 내 연속 공백을 단일 공백으로 변환"""
+    if isinstance(obj, dict):
+        return {k: normalize_whitespace(v) for k, v in obj.items()}
+    elif isinstance(obj, list):
+        return [normalize_whitespace(item) for item in obj]
+    elif isinstance(obj, str):
+        return re.sub(r' {2,}', ' ', obj)
+    return obj
+
 def get_full_cve_list(directory_path):
     """cves.json용 - 전체 CVE 데이터 통합"""
     cve_list = []
@@ -31,6 +42,7 @@ def get_full_cve_list(directory_path):
     for item in filtered_files:
         with open(os.path.join(directory_path, item), 'r', encoding='utf-8') as jsonfile:
             data = json.load(jsonfile)
+            data = normalize_whitespace(data)
             cve_list.append(data)
 
     return {"CVE-LIST": cve_list}
@@ -72,22 +84,77 @@ def get_all_software_years(root_path):
 
     return software_years
 
+def count_cves(root_path, software, year):
+    """해당 연도의 CVE 개수 반환"""
+    year_path = os.path.join(root_path, software, year)
+    files = os.listdir(year_path)
+    return len([f for f in files if f.startswith('CVE') and f.endswith('.json')])
+
 def generate_readme(root_path):
     """README.md 자동 생성"""
     software_years = get_all_software_years(root_path)
 
-    readme_content = """# lat-sv
-Security vulnerability files to download from the Manager
+    readme_content = """<div align="center">
+
+# OpenLENA Security Vulnerability Database
+
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![GitHub](https://img.shields.io/badge/GitHub-ATLENA-black?logo=github)](https://github.com/ATLENA)
+
+**OpenLENA Manager에서 사용하는 보안 취약점(CVE) 데이터 저장소입니다.**
+
+각 소프트웨어별 보안 취약점 정보를 JSON 형식으로 제공합니다.
+
+---
+
+</div>
+
+## About
+
+이 저장소는 OpenLENA에서 관리하는 주요 오픈소스 소프트웨어의 보안 취약점(CVE) 정보를 담고 있습니다.
+Manager 애플리케이션에서 자동으로 다운로드하여 보안 점검에 활용할 수 있습니다.
+
+## Download Links
 
 """
 
     for software in sorted(software_years.keys()):
-        readme_content += f"## {software.capitalize()}\n"
+        readme_content += f"### {software.upper()}\n\n"
+        readme_content += "| Year | Download | CVEs | Last Updated |\n"
+        readme_content += "|:----:|:--------:|:----:|:------------:|\n"
         for item in software_years[software]:
             year = item["year"]
             updated = item["updated"]
-            readme_content += f"- [{year}](./{software}/{year}/cves.json) (Updated: {updated})\n"
+            cve_count = count_cves(root_path, software, year)
+            readme_content += f"| {year} | [cves.json](./{software}/{year}/cves.json) | {cve_count} | {updated} |\n"
         readme_content += "\n"
+
+    readme_content += """## File Structure
+
+```
+├── apache/
+│   ├── 2024/
+│   │   ├── CVE-2024-xxxxx.json   # 개별 CVE 파일
+│   │   ├── list.json             # CVE 목록 (ID, 날짜만)
+│   │   └── cves.json             # 전체 CVE 데이터 통합
+│   └── 2025/
+├── nginx/
+├── redis/
+└── tomcat/
+```
+
+## License
+
+This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
+
+---
+
+<div align="center">
+
+**[OpenLENA](https://github.com/ATLENA)** - Open Source Enterprise Solution
+
+</div>
+"""
 
     readme_path = os.path.join(root_path, 'README.md')
     with open(readme_path, 'w', encoding='utf-8') as f:
