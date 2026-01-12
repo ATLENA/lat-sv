@@ -1,15 +1,74 @@
-# lat-sv
-Security vulnerability files to download from the Manager
+<div align="center">
 
-## Apache
-- [2024](./apache/2024/cves.json) (Updated: 2026-01-12)
-- [2025](./apache/2025/cves.json) (Updated: 2026-01-12)
+# OpenLENA Security Vulnerability Database
 
-## Nginx
-- [2024](./nginx/2024/cves.json) (Updated: 2026-01-12)
-- [2025](./nginx/2025/cves.json) (Updated: 2026-01-12)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![GitHub](https://img.shields.io/badge/GitHub-ATLENA-black?logo=github)](https://github.com/ATLENA)
 
-## Tomcat
-- [2024](./tomcat/2024/cves.json) (Updated: 2026-01-12)
-- [2025](./tomcat/2025/cves.json) (Updated: 2026-01-12)
+**OpenLENA Manager에서 사용하는 보안 취약점(CVE) 데이터 저장소입니다.**
 
+각 소프트웨어별 보안 취약점 정보를 JSON 형식으로 제공합니다.
+
+---
+
+</div>
+
+## About
+
+이 저장소는 OpenLENA에서 관리하는 주요 오픈소스 소프트웨어의 보안 취약점(CVE) 정보를 담고 있습니다.
+Manager 애플리케이션에서 자동으로 다운로드하여 보안 점검에 활용할 수 있습니다.
+
+## Download Links
+
+### APACHE
+
+| Year | Download | CVEs | Last Updated |
+|:----:|:--------:|:----:|:------------:|
+| 2024 | [cves.json](./apache/2024/cves.json) | 8 | 2026-01-12 |
+| 2025 | [cves.json](./apache/2025/cves.json) | 10 | 2026-01-12 |
+
+### NGINX
+
+| Year | Download | CVEs | Last Updated |
+|:----:|:--------:|:----:|:------------:|
+| 2024 | [cves.json](./nginx/2024/cves.json) | 4 | 2026-01-12 |
+| 2025 | [cves.json](./nginx/2025/cves.json) | 4 | 2026-01-12 |
+
+### REDIS
+
+| Year | Download | CVEs | Last Updated |
+|:----:|:--------:|:----:|:------------:|
+| 2024 | [cves.json](./redis/2024/cves.json) | 1 | 2026-01-12 |
+
+### TOMCAT
+
+| Year | Download | CVEs | Last Updated |
+|:----:|:--------:|:----:|:------------:|
+| 2024 | [cves.json](./tomcat/2024/cves.json) | 2 | 2026-01-12 |
+| 2025 | [cves.json](./tomcat/2025/cves.json) | 13 | 2026-01-12 |
+
+## File Structure
+
+```
+├── apache/
+│   ├── 2024/
+│   │   ├── CVE-2024-xxxxx.json   # 개별 CVE 파일
+│   │   ├── list.json             # CVE 목록 (ID, 날짜만)
+│   │   └── cves.json             # 전체 CVE 데이터 통합
+│   └── 2025/
+├── nginx/
+├── redis/
+└── tomcat/
+```
+
+## License
+
+This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
+
+---
+
+<div align="center">
+
+**[OpenLENA](https://github.com/ATLENA)** - Open Source Enterprise Solution
+
+</div>

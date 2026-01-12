@@ -43,7 +43,7 @@
             "severity": [
                 {
                     "Metrics": "CVSS Version 3.x",
-                    "Source": "ADP:  CISA-ADP",
+                    "Source": "ADP: CISA-ADP",
                     "Score": "Base Score: 8.1 HIGH",
                     "Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
                 }
@@ -224,7 +224,7 @@
             "severity": [
                 {
                     "Metrics": "CVSS Version 3.x",
-                    "Source": "ADP:  CISA-ADP",
+                    "Source": "ADP: CISA-ADP",
                     "Score": "Base Score: 7.5 HIGH",
                     "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
                 }
