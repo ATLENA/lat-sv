@@ -1,11 +1,12 @@
 import os
 import json
 import sys
+from datetime import datetime
 
 def list_files_in_directory(directory_path):
+    """list.json용 - CVE-ID와 published_date만 추출"""
     cve_json = {}
     file_list = []
-    # 디렉토리 내의 파일 목록을 가져옵니다.
     files = os.listdir(directory_path)
     filtered_files = [file for file in files if file.startswith('CVE') and file.endswith('.json')]
 
@@ -19,34 +20,104 @@ def list_files_in_directory(directory_path):
         file_list.append(json_data)
 
     cve_json['cve_list'] = file_list
-
     return cve_json
 
-def save_list_json_file(filepath, jsondata):
-     with open(filepath, 'w') as f:
-        json.dump(jsondata, f, indent=4)
+def get_full_cve_list(directory_path):
+    """cves.json용 - 전체 CVE 데이터 통합"""
+    cve_list = []
+    files = os.listdir(directory_path)
+    filtered_files = [file for file in files if file.startswith('CVE') and file.endswith('.json')]
+
+    for item in filtered_files:
+        with open(os.path.join(directory_path, item), 'r', encoding='utf-8') as jsonfile:
+            data = json.load(jsonfile)
+            cve_list.append(data)
+
+    return {"CVE-LIST": cve_list}
+
+def save_json_file(filepath, jsondata):
+    with open(filepath, 'w', encoding='utf-8') as f:
+        json.dump(jsondata, f, indent=4, ensure_ascii=False)
 
 def get_unique_directories(file_paths):
-    # 각 파일 경로에서 디렉토리 경로를 추출합니다.
+    """파일 경로 목록에서 중복 없는 디렉토리 목록 추출"""
     directories = [os.path.dirname(path) for path in file_paths]
-
-    # 중복을 제거하기 위해 set을 사용합니다.
     unique_directories = set(directories)
-
-    # set을 리스트로 변환하여 반환합니다.
     return list(unique_directories)
 
+def get_all_software_years(root_path):
+    """전체 소프트웨어/연도 구조 스캔"""
+    software_years = {}
+    exclude_dirs = ['.git', '.github', '.idea']
 
+    for item in os.listdir(root_path):
+        item_path = os.path.join(root_path, item)
+        if os.path.isdir(item_path) and item not in exclude_dirs:
+            years = []
+            for year in os.listdir(item_path):
+                year_path = os.path.join(item_path, year)
+                if os.path.isdir(year_path) and year.isdigit():
+                    # cves.json 파일의 수정 시간 확인
+                    cves_file = os.path.join(year_path, 'cves.json')
+                    if os.path.exists(cves_file):
+                        mtime = os.path.getmtime(cves_file)
+                        updated = datetime.fromtimestamp(mtime).strftime('%Y-%m-%d')
+                    else:
+                        updated = datetime.now().strftime('%Y-%m-%d')
+                    years.append({"year": year, "updated": updated})
+
+            if years:
+                years.sort(key=lambda x: x["year"])
+                software_years[item] = years
+
+    return software_years
+
+def generate_readme(root_path):
+    """README.md 자동 생성"""
+    software_years = get_all_software_years(root_path)
+
+    readme_content = """# lat-sv
+Security vulnerability files to download from the Manager
+
+"""
+
+    for software in sorted(software_years.keys()):
+        readme_content += f"## {software.capitalize()}\n"
+        for item in software_years[software]:
+            year = item["year"]
+            updated = item["updated"]
+            readme_content += f"- [{year}](./{software}/{year}/cves.json) (Updated: {updated})\n"
+        readme_content += "\n"
+
+    readme_path = os.path.join(root_path, 'README.md')
+    with open(readme_path, 'w', encoding='utf-8') as f:
+        f.write(readme_content)
+    print(f"README.md updated: {readme_path}")
+
+
+# 메인 실행
 changed_files = sys.argv[1]
 file_list = [f.strip() for f in changed_files.split(',') if f.strip()]
-print(f"All files changed in the last commit:{file_list}")
+print(f"All files changed in the last commit: {file_list}")
 
-
+# 변경된 디렉토리별로 list.json, cves.json 생성
 for directory in get_unique_directories(file_list):
-    print(f"directory:{directory}, abspath: {os.path.abspath(directory)}")
+    print(f"directory: {directory}, abspath: {os.path.abspath(directory)}")
+
+    # list.json 생성 (간략 목록)
     cve_json = list_files_in_directory(directory)
     if len(cve_json['cve_list']) > 0:
-        save_file_path = os.path.join(directory, 'list.json')
-        print(f"save file: {save_file_path}")
-        save_list_json_file(save_file_path, cve_json)
+        list_file_path = os.path.join(directory, 'list.json')
+        print(f"save file: {list_file_path}")
+        save_json_file(list_file_path, cve_json)
+
+        # cves.json 생성 (전체 데이터)
+        full_cve_json = get_full_cve_list(directory)
+        cves_file_path = os.path.join(directory, 'cves.json')
+        print(f"save file: {cves_file_path}")
+        save_json_file(cves_file_path, full_cve_json)
+
+# README.md 업데이트
+root_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+generate_readme(root_path)
 
