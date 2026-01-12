@@ -5,6 +5,15 @@ on:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      regenerate_all:
+        description: 'Regenerate all JSON files'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
 
 jobs:
   get_changed_files:
@@ -22,6 +31,7 @@ jobs:
 
       - name: Get list of modified files in the last commit
         id: get_files
+        if: ${{ github.event.inputs.regenerate_all != 'true' }}
         run: |
           CHANGED_FILES=$(git diff --name-only HEAD^ HEAD | tr '\n' ',')
           echo "changed_files=\"$CHANGED_FILES\""
@@ -37,7 +47,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r .github/build/requirements.txt
 
-      - name: Run Python script with changed files
+      - name: Run Python script (all files)
+        if: ${{ github.event.inputs.regenerate_all == 'true' }}
+        run: |
+          echo "Regenerating all JSON files..."
+          python .github/build/list.py --all
+
+      - name: Run Python script (changed files only)
+        if: ${{ github.event.inputs.regenerate_all != 'true' }}
         run: |
           echo "Changed files: ${{ env.changed_files }}"
           python .github/build/list.py "${{ env.changed_files }}"
@@ -46,9 +63,9 @@ jobs:
         run: |
           git add .
           git status
-          git commit -m "Add & modify json list"
+          git diff --staged --quiet || git commit -m "Add & modify json list"
           git push
-        env: 
+        env:
           GITHUB_TOKEN: ${{ secrets.LAT_ADMIN }}
 
 
