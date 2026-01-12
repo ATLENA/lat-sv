@@ -95,14 +95,24 @@ Security vulnerability files to download from the Manager
     print(f"README.md updated: {readme_path}")
 
 
-# 메인 실행
-changed_files = sys.argv[1]
-file_list = [f.strip() for f in changed_files.split(',') if f.strip()]
-print(f"All files changed in the last commit: {file_list}")
+def get_all_cve_directories(root_path):
+    """전체 CVE 디렉토리 목록 반환"""
+    cve_directories = []
+    exclude_dirs = ['.git', '.github', '.idea']
 
-# 변경된 디렉토리별로 list.json, cves.json 생성
-for directory in get_unique_directories(file_list):
-    print(f"directory: {directory}, abspath: {os.path.abspath(directory)}")
+    for software in os.listdir(root_path):
+        software_path = os.path.join(root_path, software)
+        if os.path.isdir(software_path) and software not in exclude_dirs:
+            for year in os.listdir(software_path):
+                year_path = os.path.join(software_path, year)
+                if os.path.isdir(year_path) and year.isdigit():
+                    cve_directories.append(year_path)
+
+    return cve_directories
+
+def generate_json_files(directory):
+    """디렉토리에 list.json, cves.json 생성"""
+    print(f"directory: {directory}")
 
     # list.json 생성 (간략 목록)
     cve_json = list_files_in_directory(directory)
@@ -117,7 +127,24 @@ for directory in get_unique_directories(file_list):
         print(f"save file: {cves_file_path}")
         save_json_file(cves_file_path, full_cve_json)
 
-# README.md 업데이트
+
+# 메인 실행
 root_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+if len(sys.argv) > 1 and sys.argv[1] == '--all':
+    # --all: 전체 디렉토리에 생성
+    print("Generating all JSON files...")
+    for directory in get_all_cve_directories(root_path):
+        generate_json_files(directory)
+else:
+    # 기본: 변경된 파일 기반으로 생성
+    changed_files = sys.argv[1] if len(sys.argv) > 1 else ""
+    file_list = [f.strip() for f in changed_files.split(',') if f.strip()]
+    print(f"All files changed in the last commit: {file_list}")
+
+    for directory in get_unique_directories(file_list):
+        generate_json_files(directory)
+
+# README.md 업데이트
 generate_readme(root_path)
 
