@@ -69,8 +69,8 @@ def get_all_software_years(root_path):
             for year in os.listdir(item_path):
                 year_path = os.path.join(item_path, year)
                 if os.path.isdir(year_path) and year.isdigit():
-                    # cves.json 파일의 수정 시간 확인
-                    cves_file = os.path.join(year_path, 'cves.json')
+                    # {software}_{year}_cves.json 파일의 수정 시간 확인
+                    cves_file = os.path.join(year_path, f'{item}_{year}_cves.json')
                     if os.path.exists(cves_file):
                         mtime = os.path.getmtime(cves_file)
                         updated = datetime.fromtimestamp(mtime).strftime('%Y-%m-%d')
@@ -116,7 +116,29 @@ Manager 애플리케이션에서 자동으로 다운로드하여 보안 점검�
 
 ## Download Links
 
+### Yearly (All Engines)
+
+| Year | Download | CVEs | Last Updated |
+|:----:|:--------:|:----:|:------------:|
 """
+
+    # Yearly 섹션
+    yearly_path = os.path.join(root_path, 'yearly')
+    if os.path.exists(yearly_path):
+        yearly_files = sorted([f for f in os.listdir(yearly_path) if f.endswith('_cves.json')])
+        for yearly_file in yearly_files:
+            year = yearly_file.replace('_cves.json', '')
+            file_path = os.path.join(yearly_path, yearly_file)
+            if os.path.exists(file_path):
+                mtime = os.path.getmtime(file_path)
+                updated = datetime.fromtimestamp(mtime).strftime('%Y-%m-%d')
+                # CVE 개수 계산
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                    cve_count = len(data.get('CVE-LIST', []))
+                readme_content += f"| {year} | [{yearly_file}](./yearly/{yearly_file}) | {cve_count} | {updated} |\n"
+
+    readme_content += "\n"
 
     for software in sorted(software_years.keys()):
         readme_content += f"### {software.upper()}\n\n"
@@ -126,7 +148,8 @@ Manager 애플리케이션에서 자동으로 다운로드하여 보안 점검�
             year = item["year"]
             updated = item["updated"]
             cve_count = count_cves(root_path, software, year)
-            readme_content += f"| {year} | [cves.json](./{software}/{year}/cves.json) | {cve_count} | {updated} |\n"
+            file_name = f"{software}_{year}_cves.json"
+            readme_content += f"| {year} | [{file_name}](./{software}/{year}/{file_name}) | {cve_count} | {updated} |\n"
         readme_content += "\n"
 
     readme_content += """## License
@@ -151,7 +174,7 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 def get_all_cve_directories(root_path):
     """전체 CVE 디렉토리 목록 반환"""
     cve_directories = []
-    exclude_dirs = ['.git', '.github', '.idea']
+    exclude_dirs = ['.git', '.github', '.idea', 'yearly', 'redis']
 
     for software in os.listdir(root_path):
         software_path = os.path.join(root_path, software)
@@ -163,9 +186,53 @@ def get_all_cve_directories(root_path):
 
     return cve_directories
 
+def generate_yearly_cves(root_path):
+    """연도별 전체 CVE 통합 파일 생성 (yearly 폴더)"""
+    exclude_dirs = ['.git', '.github', '.idea', 'yearly', 'redis']
+    yearly_data = {}  # {year: [cve_data, ...]}
+
+    # 모든 소프트웨어/연도의 CVE 수집
+    for software in os.listdir(root_path):
+        software_path = os.path.join(root_path, software)
+        if os.path.isdir(software_path) and software not in exclude_dirs:
+            for year in os.listdir(software_path):
+                year_path = os.path.join(software_path, year)
+                if os.path.isdir(year_path) and year.isdigit():
+                    # 해당 연도의 CVE 파일들 읽기
+                    files = os.listdir(year_path)
+                    cve_files = [f for f in files if f.startswith('CVE') and f.endswith('.json')]
+
+                    for cve_file in cve_files:
+                        with open(os.path.join(year_path, cve_file), 'r', encoding='utf-8') as f:
+                            data = json.load(f)
+                            data = normalize_whitespace(data)
+
+                            if year not in yearly_data:
+                                yearly_data[year] = []
+                            yearly_data[year].append(data)
+
+    # yearly 폴더 생성
+    yearly_path = os.path.join(root_path, 'yearly')
+    if not os.path.exists(yearly_path):
+        os.makedirs(yearly_path)
+        print(f"Created directory: {yearly_path}")
+
+    # 연도별 파일 저장
+    for year, cve_list in yearly_data.items():
+        yearly_file = os.path.join(yearly_path, f'{year}_cves.json')
+        save_json_file(yearly_file, {"CVE-LIST": cve_list})
+        print(f"save file: {yearly_file} ({len(cve_list)} CVEs)")
+
+    return yearly_data
+
 def generate_json_files(directory):
-    """디렉토리에 list.json, cves.json 생성"""
+    """디렉토리에 list.json, {software}_{year}_cves.json 생성"""
     print(f"directory: {directory}")
+
+    # 디렉토리에서 software, year 추출
+    parts = directory.replace('\\', '/').split('/')
+    year = parts[-1]
+    software = parts[-2]
 
     # list.json 생성 (간략 목록)
     cve_json = list_files_in_directory(directory)
@@ -174,9 +241,10 @@ def generate_json_files(directory):
         print(f"save file: {list_file_path}")
         save_json_file(list_file_path, cve_json)
 
-        # cves.json 생성 (전체 데이터)
+        # {software}_{year}_cves.json 생성 (전체 데이터)
         full_cve_json = get_full_cve_list(directory)
-        cves_file_path = os.path.join(directory, 'cves.json')
+        cves_file_name = f"{software}_{year}_cves.json"
+        cves_file_path = os.path.join(directory, cves_file_name)
         print(f"save file: {cves_file_path}")
         save_json_file(cves_file_path, full_cve_json)
 
@@ -197,6 +265,9 @@ else:
 
     for directory in get_unique_directories(file_list):
         generate_json_files(directory)
+
+# yearly 폴더에 연도별 전체 CVE 생성
+generate_yearly_cves(root_path)
 
 # README.md 업데이트
 generate_readme(root_path)
