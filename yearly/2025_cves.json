@@ -1,0 +1,1054 @@
+{
+    "CVE-LIST": [
+        {
+            "CVE-ID": "CVE-2025-23419",
+            "affected_versions": [
+                "1.11.4 to 1.27.3"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 5.3 MEDIUM",
+                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 4.7 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-287",
+                    "CWE Name": "Improper Authentication",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.26.3",
+                        "1.27.4"
+                    ]
+                }
+            ],
+            "summary": "단일 IP/포트를 공유하는 이름 기반 가상 호스트에서 TLS 1.3 환경에서 ssl_session_tickets 또는 ssl_session_cache를 활성화한 경우, 세션 재개(Session Resumption)를 악용해 클라이언트 인증을 우회할 수 있는 취약점입니다.",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX Open Source 및 Plus 모두에 영향을 미치며, 기본 서버(default server)가 TLS 1.3과 함께 SSL 세션 티켓 또는 세션 캐시를 활성화하고, 클라이언트 인증을 요구하도록 설정된 경우에 발생합니다.",
+            "published_date": "2025-02-05",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2025/CVE-2025-23419.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2025-53859",
+            "affected_versions": [
+                "0.7.22 to 1.29.0 (any build with ngx_mail_smtp_module module)"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 6.3 MEDIUM",
+                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "NVD",
+                    "Score": "Base Score: 3.7 LOW",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-125",
+                    "CWE Name": "Out-of-bounds Read",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": "\\<ul>\\<li>1.29.1\\</li>\\</ul>"
+                },
+                {
+                    "Method": "configuration change",
+                    "Detail": "nginx.conf 파일의 mail 블록 내 smtp_auth 지시어에서 none 옵션을 제거하거나 비활성화합니다."
+                }
+            ],
+            "summary": "NGINX의 ngx_mail_smtp_module 모듈 사용 시, smtp_auth 설정에 \"none\"이 포함되어 있고 업스트림 인증 서버가 \"Auth-Wait\" 헤더를 반환하는 경우, 메모리 덮어쓰기가 발생하여 의도하지 않은 메모리 데이터가 클라이언트로 유출될 수 있는 취약점입니다.",
+            "discoverer_information": "N/A",
+            "detailed_description": "ngx_mail_smtp_module에서 발생하는 버퍼 처리 오류(Out-of-bounds Read)로 인한 정보 유출 취약점입니다. \n원격 공격자는 특정 설정(smtp_auth=\"none\")과 서버 응답(Auth-Wait) 조건을 만족시킬 경우, 프로세스 메모리 내의 민감한 데이터를 획득할 수 있다. 이는 데이터 플레인(Data Plane)에 영향을 미치는 이슈입니다.",
+            "published_date": "2025-08-13",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2025/CVE-2025-53859.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2025-14727",
+            "affected_versions": [
+                "3.0.0 to 5.3.0"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 8.7 HIGH",
+                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:L/SC:N/SI:N/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 8.3 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-22",
+                    "CWE Name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "5.3.1"
+                    ]
+                }
+            ],
+            "summary": "NGINX Ingress Controller에서 nginx.org/rewrite-target 어노테이션 검증이 미흡하여, 경로 제한을 우회할 수 있는 취약점이 발생됩니다.",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX Ingress Controller에서 nginx.org/rewrite-target 어노테이션의 입력 값 검증이 충분히 이루어지지 않아 취약점이 발생됩니다. \n이로 인해 외부에서 전달된 요청 값이 의도된 디렉터리 범위를 벗어나 처리될 수 있으며, 경로 탐색(Path Traversal) 공격이 가능해집니다. \n해당 취약점은 NGINX Ingress Controller 3.0.0부터 5.3.0 버전까지 영향을 미치며, 5.3.1 버전에서 수정됩니다. \n기술 지원이 종료된(EoTS) 버전의 소프트웨어는 본 취약점 평가 대상에서 제외됩니다.",
+            "published_date": "2025-12-17",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2025/CVE-2025-14727.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2025-1695",
+            "affected_versions": [
+                "1.11.0 to 1.34.1"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 6.9 MEDIUM",
+                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 5.3 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-835",
+                    "CWE Name": "Loop with Unreachable Exit Condition ('Infinite Loop')",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.34.2"
+                    ]
+                }
+            ],
+            "summary": "NGINX Unit의 Java 모듈에서 특정 요청으로 무한루프가 발생해 CPU 과다사용·제한적 DoS를 유발합니다.",
+            "discoverer_information": "N/A",
+            "detailed_description": "Java 언어 모듈을 사용하는 NGINX Unit 1.34.2 이전 버전에서는 공개되지 않은 요청으로 인해 무한 루프가 발생하고 CPU 리소스 사용량이 증가할 수 있습니다. \n이 취약점은 원격 공격자가 제한된 서비스 거부(DoS) 공격으로 이어질 수 있는 성능 저하를 유발할 수 있도록 합니다.",
+            "published_date": "2025-03-04",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2025/CVE-2025-1695.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2025-48976",
+            "affected_versions": [
+                "(Apache Commons FileUpload) 1.0 to 1.5",
+                "(Apache Commons FileUpload) 2.0.0-M1 to 2.0.0-M3"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: CISA-ADP",
+                    "Score": "Base Score 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-770",
+                    "CWE Name": "Allocation of Resources Without Limits or Throttling",
+                    "Source": "CISA-ADP"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade Apache Commons FileUpload",
+                    "Detail": [
+                        "1.6",
+                        "2.0.0-M4"
+                    ]
+                }
+            ],
+            "summary": "multipart 요청 헤더의 리소스 할당 한도를 검증하지 않아 과도한 메모리 할당으로 DoS를 유발하는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "multipart 요청의 헤더 수와 헤더 크기에 대한 상한(limit)을 전혀 검증하지 않고, 각 헤더를 처리할 때 메모리를 계속 할당만 하기 때문에 발생하는 메모리 과다 소비(Memory Exhaustion) 취약점입니다.\n대용량 헤더를 포함한 요청을 짧은 시간 내에 연속 전송하여, JVM 힙 메모리를 순식간에 고갈시켜 OutOfMemoryError를 발생시키고 프로세스를 중단시킬 수 있습니다.",
+            "published_date": "2025-06-16",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2025/CVE-2025-48976.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2025-31650",
+            "affected_versions": [
+                "11.0.0-M2 to 11.0.5",
+                "10.1.10 to 10.1.39",
+                "9.0.76 to 9.0.102"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "NIST: NVD",
+                    "Score": "Base Score 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: CISA-ADP",
+                    "Score": "Base Score 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-459",
+                    "CWE Name": "Incomplete Cleanup",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.6",
+                        "10.1.40",
+                        "9.0.104"
+                    ]
+                }
+            ],
+            "summary": "HTTP/2 모듈이 잘못된 Priority 헤더를 처리할 때 메모리 누수가 발생해 OutOfMemoryError를 일으키고 서비스 거부(DoS)를 유발하는 취약점.",
+            "discoverer_information": "N/A",
+            "detailed_description": "HTTP/2 구현부에서 입력 유효성 검사를 제대로 수행하지 않아 발생합니다. \n클라이언트가 형식에 맞지 않는 혹은 범위를 벗어난 Priority 헤더를 전송하면, Tomcat은 해당 요청을 거부하면서도 내부 버퍼와 연관 객체를 해제하지 않아 메모리 누수가 발생합니다.\n누적된 메모리 누수는 결국 OutOfMemoryError를 일으켜 프로세스를 중단시키고 서비스 거부 상태를 초래합니다.",
+            "published_date": "2025-05-06",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2025/CVE-2025-31650.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2025-49124",
+            "affected_versions": [
+                "(windows) 11.0.0-M1 to 11.0.7",
+                "(windows) 10.1.0 to 10.1.41",
+                "(windows) 9.0.23 to 9.0.105"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: CISA-ADP",
+                    "Score": "Base Score 8.4 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-426",
+                    "CWE Name": "Untrusted Search Path",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.8",
+                        "10.1.42",
+                        "9.0.106"
+                    ]
+                }
+            ],
+            "summary": "Tomcat Windows 설치 프로그램이 경로 없이 icacls.exe를 호출해 악의적 icacls.exe를 로드할 수 있는 Untrusted Search Path 취약점.",
+            "discoverer_information": "N/A",
+            "detailed_description": "Windows용 Apache Tomcat 설치 프로그램이 권한 상승 방지를 위해 외부 명령 호출 시 절대 경로를 지정하지 않고 icacls.exe를 실행함으로써, 설치 디렉터리나 현재 작업 디렉터리에 악의적 icacls.exe를 배치하면 해당 악성 바이너리가 로드·실행될 수 있는 Untrusted Search Path 취약점입니다.",
+            "published_date": "2025-06-16",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2025/CVE-2025-49124.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2025-55668",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.7",
+                "10.1.0-M1 to 10.1.41",
+                "9.0.0-M1 to 9.0.105"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CNA",
+                    "Score": "Base Score 7.0 HIGH",
+                    "Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-416",
+                    "CWE Name": "Use After Free",
+                    "Source": "Microsoft Corporation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.8",
+                        "10.1.42",
+                        "9.0.106"
+                    ]
+                }
+            ],
+            "summary": "Rewrite Valve 설정이 활성화된 경우 공격자가 유도한 URL을 통해 세션 고정(session fixation)이 가능하여, 피해자(사용자)가 공격자의 세션으로 인증된 상태가 될 수 있는 취약점입니다.",
+            "discoverer_information": "N/A",
+            "detailed_description": "Rewrite Valve는 URL 재작성·리다이렉션 등으로 요청을 변형하는 기능입니다. \n취약한 동작을 이용해 공격자가 미리 자신의 세션 식별자(session id)를 포함한 URL을 생성하고, 피해자가 그 URL을 클릭하도록 유도하면 피해자의 후속 상호작용이 공격자의 세션 컨텍스트로 연결될 수 있습니다. \n즉 피해자가 로그인해도 그 세션이 공격자에게 귀속되어 공격자는 피해자의 권한으로 동작할 수 있습니다.",
+            "published_date": "2025-08-13",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2025/CVE-2025-55668.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2025-55752",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.10",
+                "10.1.0-M1 to 10.1.44",
+                "9.0.0-M11 to 9.0.108"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: CISA-ADP",
+                    "Score": "Base Score 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-23",
+                    "CWE Name": "Relative Path Traversal",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.11",
+                        "10.1.45",
+                        "9.0.109"
+                    ]
+                }
+            ],
+            "summary": "PUT이 활성화된 경우 RCE가 가능한 재작성을 통한 디렉토리 탐색 취약점 입니다.",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat의 상대 경로 탐색 취약점. 버그 60013에 대한 수정으로 인해 재작성된 URL이 디코딩되기 전에 정규화되는 회귀 문제가 발생했습니다. \n이로 인해 URL에 쿼리 매개변수를 재작성하는 재작성 규칙의 경우, 공격자가 요청 URI를 조작하여 /WEB-INF/ 및 /META-INF/에 대한 보호 기능을 포함한 보안 제약 조건을 우회할 가능성이 발생했습니다. \nPUT 요청도 활성화된 경우, 악성 파일이 업로드되어 원격 코드 실행이 발생할 수 있습니다. \nPUT 요청은 일반적으로 신뢰할 수 있는 사용자에게만 제한되며, URI를 조작하는 재작성 작업과 함께 PUT 요청이 활성화될 가능성은 낮다고 간주됩니다.",
+            "published_date": "2025-10-27",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2025/CVE-2025-55752.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2025-53506",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.8",
+                "10.1.0-M1 to 10.1.42",
+                "9.0.0-M1 to 9.0.106"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-400",
+                    "CWE Name": "Uncontrolled Resource Consumption",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.9",
+                        "10.1.43",
+                        "9.0.107"
+                    ]
+                }
+            ],
+            "summary": "HTTP/2 초기 SETTINGS ACK 처리 결함으로 동시 스트림 제한이 적용되지 않아 다수 스트림 생성으로 서버 자원 소모→DoS를 유발할 수 있는 취약점입니다.",
+            "discoverer_information": "N/A",
+            "detailed_description": "HTTP/2 연결 초기 교환에서 서버는 클라이언트로부터 오는 초기 SETTINGS 프레임을 바탕으로 허용 가능한 동시 스트림 수(max concurrent streams) 등을 설정합니다. \n만약 클라이언트가 서버가 보낸 설정 변경을 ACK(확인응답) 하지 않거나, 설정이 의도대로 반영되지 않는 경우 서버 쪽의 동시 스트림 제한이 기대값보다 높게 남아 클라이언트가 연결 직후 과도한 수의 스트림을 열 수 있게 됩니다. \n그 결과 서버는 다수의 스트림을 관리하느라 메모리·스레드·파일 디스크립터 등 자원을 소진하여 정상 서비스가 불가능해질 수 있습니다.",
+            "published_date": "2025-07-10",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2025/CVE-2025-53506.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2025-48988",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.7",
+                "10.1.0-M1 to 10.1.41",
+                "9.0.0-M1 to 9.0.105"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: CISA-ADP",
+                    "Score": "Base Score 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-770",
+                    "CWE Name": "Allocation of Resources Without Limits or Throttling",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.8",
+                        "10.1.42",
+                        "9.0.106"
+                    ]
+                }
+            ],
+            "summary": "multipart/form-data 요청 처리 시 파트 수와 헤더 크기에 제한을 두지 않아 JVM 힙이 고갈되고 OutOfMemoryError로 서비스 거부(DoS)가 발생하는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "multipart 요청 처리 로직이 파트 개수 및 헤더 크기에 대한 상한을 두지 않아, 대량의 파트와 헤더를 포함한 요청을 전송하면 JVM 힙이 고갈되어 서비스 거부(DoS)가 발생할 수 있는 Allocation of Resources Without Limits or Throttling 취약점입니다.",
+            "published_date": "2025-06-16",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2025/CVE-2025-48988.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2025-55754",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.10",
+                "10.1.0-M1 to 10.1.44",
+                "9.0.0.M11 to 9.0.108"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.1",
+                    "Source": "ADP: CISA-ADP",
+                    "Score": "Base Score 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-23",
+                    "CWE Name": "Relative Path Traversal",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.11",
+                        "10.1.45",
+                        "9.0.109"
+                    ]
+                }
+            ],
+            "summary": "PUT이 활성화된 경우 RCE가 가능한 재작성을 통한 디렉토리 탐색.",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat의 상대 경로 탐색 취약점. 버그 60013에 대한 수정으로 인해 재작성된 URL이 디코딩되기 전에 정규화되는 회귀 문제가 발생했습니다. \n이로 인해 URL에 쿼리 매개변수를 재작성하는 재작성 규칙의 경우, 공격자가 요청 URI를 조작하여 /WEB-INF/ 및 /META-INF/에 대한 보호 기능을 포함한 보안 제약 조건을 우회할 가능성이 발생했습니다. \nPUT 요청도 활성화된 경우, 악성 파일이 업로드되어 원격 코드 실행이 발생할 수 있습니다. \nPUT 요청은 일반적으로 신뢰할 수 있는 사용자에게만 제한되며, URI를 조작하는 재작성 작업과 함께 PUT 요청이 활성화될 가능성은 낮다고 간주됩니다.",
+            "published_date": "2025-10-27",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2025/CVE-2025-55754.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2025-49125",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.7",
+                "10.1.0-M1 to 10.1.41",
+                "9.0.0-M1 to 9.0.105"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: CISA-ADP",
+                    "Score": "Base Score 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-288",
+                    "CWE Name": "Authentication Bypass Using an Alternate Path or Channel",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.8",
+                        "10.1.42",
+                        "9.0.106"
+                    ]
+                }
+            ],
+            "summary": "PreResources 또는 PostResources를 웹 애플리케이션의 루트가 아닌 경로에 마운트 시, 의도치 않은 대체 경로를 통해 보호된 리소스에 접근할 수 있게 하는 인증 우회(Authentication Bypass) 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat의 PreResources/PostResources 기능을 잘못 구성했을 때 발생하는 인증 우회(Authentication Bypass) 취약점입니다.\nPreResources나 PostResources를 웹 애플리케이션 루트가 아닌 하위 경로에 마운트하면, Tomcat이 내부적으로 생성하는 “대체 경로(alternate path)”에는 본래 걸려 있어야 할 보안 제약(security constraints)이 적용되지 않아 인증이 우회될 수 있습니다",
+            "published_date": "2025-06-16",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2025/CVE-2025-49125.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2025-24813",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.2",
+                "10.1.0-M1 to 10.1.34",
+                "9.0.0-M1 to 9.0.98"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "NIST: NVD",
+                    "Score": "Base Score 9.8 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: CISA-ADP",
+                    "Score": "Base Score 9.8 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-706",
+                    "CWE Name": "Use of Incorrectly-Resolved Name or Reference",
+                    "Source": ""
+                },
+                {
+                    "CWE-ID": "CWE-502",
+                    "CWE Name": "Deserialization of Untrusted Data",
+                    "Source": "Apache Software Foundation"
+                },
+                {
+                    "CWE-ID": "CWE-44",
+                    "CWE Name": "Path Equivalence: 'file.name' (Internal Dot)",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.3",
+                        "10.1.35",
+                        "9.0.99"
+                    ]
+                }
+            ],
+            "summary": "Default Servlet에서 Partial PUT 요청 처리 시 경로 구분자를 내부 점(.)으로 치환하는 Path Equivalence 로직을 악용해 인증 없이 원격 코드 실행이 가능한 취약점.",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat이 Default Servlet에 대해 쓰기 권한(readonly=\"false\")이 활성화된 상태에서 Partial PUT 요청을 처리할 때 발생합니다.\nTomcat은 업로드된 파일 경로의 구분자(/ 또는 )를 모두 점(.)으로 치환해 임시 파일을 생성하는데, 이 과정에서 애플리케이션이 파일 기반 세션 지속성(file-based session persistence)을 사용 중이라면 악성 역직렬화 페이로드가 포함된 세션 파일로 덮어씌워질 수 있습니다. 이후 세션 로딩 과정에서 역직렬화가 실행되어 원격 코드가 수행됩니다.",
+            "published_date": "2025-03-10",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2025/CVE-2025-24813.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2025-52434",
+            "affected_versions": [
+                "9.0.0-M1 to 9.0.106"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.x",
+                    "Source": "NIST: NVD",
+                    "Score": "Base Score 6.6 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-706",
+                    "CWE Name": "Use of Incorrectly-Resolved Name or Reference",
+                    "Source": ""
+                },
+                {
+                    "CWE-ID": "CWE-502",
+                    "CWE Name": "Deserialization of Untrusted Data",
+                    "Source": "Apache Software Foundation"
+                },
+                {
+                    "CWE-ID": "CWE-44",
+                    "CWE Name": "Path Equivalence: 'file.name' (Internal Dot)",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "9.0.107"
+                    ]
+                }
+            ],
+            "summary": "HTTP/2 및 APR/native 커넥터에 존재하는 입력 유효성 검사 부족으로 인한 서비스 거부(DoS) 취약점.",
+            "discoverer_information": "N/A",
+            "detailed_description": "HTTP/2 및 APR/native 커넥터에 존재하는 입력 유효성 검사 부족으로 인한 서비스 거부(DoS) 취약점입니다.\n악의적으로 조작된 HTTP/2 프레임이나 APR/native 요청을 반복 전송하면 내부 리소스 해제가 제대로 이루어지지 않아 프로세스가 중단될 수 있습니다",
+            "published_date": "2025-07-04",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2025/CVE-2025-52434.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2025-52520",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.8",
+                "10.1.0-M1 to 10.1.42",
+                "9.0.0-M1 to 9.0.106"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-190",
+                    "CWE Name": "Integer Overflow or Wraparound",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.9",
+                        "10.1.43",
+                        "9.0.107"
+                    ]
+                }
+            ],
+            "summary": "멀티파트 파일 업로드에서 정수 오버플로를 통한 DoS",
+            "discoverer_information": "N/A",
+            "detailed_description": "멀티파트 업로드의 예상치 못한 구성 중 하나인 Apache Tomcat의 정수 오버플로 취약점으로 인해 크기 제한을 우회하여 DoS가 발생할 수 있습니다.",
+            "published_date": "2025-07-10",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2025/CVE-2025-52520.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2025-61795",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.11",
+                "10.1.0-M1 to 10.1.46",
+                "9.0.0.M1 to 9.0.109"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: CISA-ADP",
+                    "Score": "Base Score 5.3 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-404",
+                    "CWE Name": "Improper Resource Shutdown or Release",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.12",
+                        "10.1.47",
+                        "9.0.110"
+                    ]
+                }
+            ],
+            "summary": "다중 파트 업로드 임시 파일의 지연된 정리로 인해 DoS가 발생할 수 있습니다.",
+            "discoverer_information": "N/A",
+            "detailed_description": "멀티파트 업로드 처리 중 오류(한도 초과 포함)가 발생하면, 업로드된 파일의 임시 사본이 디스크에 기록되어 즉시 정리되지 않고 가비지 컬렉션 프로세스에 의해 삭제되었습니다. \nJVM 설정, 애플리케이션 메모리 사용량 및 애플리케이션 부하에 따라, 업로드된 파일의 임시 사본을 위한 공간이 가비지 컬렉션이 삭제하는 것보다 더 빨리 채워져 서비스 거부(DoS)가 발생할 수 있었습니다.",
+            "published_date": "2025-10-27",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2025/CVE-2025-61795.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2025-53020",
+            "affected_versions": [
+                "2.4.17 to 2.4.63"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: CISA-ADP",
+                    "Score": "Base Score: 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-401",
+                    "CWE Name": "Missing Release of Memory after Effective Lifetime",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "2.4.64"
+                    ]
+                }
+            ],
+            "summary": "Apache HTTP Server의 HTTP/2 구현에서 메모리 자원이 제때 해제되지 않아 메모리 증가(서비스 거부, DoS)를 일으킬 수 있는 취약점입니다.",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache HTTP Server(2.4 계열)의 HTTP/2 처리 과정에서 일부 메모리 자원이 유효 수명(effective lifetime) 이후에도 적시에 해제되지 않는 결함이 발견되었습니다. \n이로 인해 악의적인 클라이언트가 지속적으로 연결/요청을 보내면 서버의 메모리가 점진적으로 증가하여 서비스 거부(Out-of-memory 형태의 DoS)를 유발할 수 있습니다.",
+            "published_date": "2025-07-10",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2025/CVE-2025-53020.md",
+            "instance_type": "APACHE"
+        },
+        {
+            "CVE-ID": "CVE-2025-58098",
+            "affected_versions": [
+                "2.4.0 to 2.4.65"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: CISA-ADP",
+                    "Score": "Base Score: 8.3 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-201",
+                    "CWE Name": "Insertion of Sensitive Information Into Sent Data",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "2.4.66"
+                    ]
+                }
+            ],
+            "summary": "Apache HTTP Server의 Server Side Includes(SSI) 기능에서 #exec cmd=\"...\" 지시자를 사용할 경우, 쿼리 스트링(Query String)이 의도하지 않게 명령 실행에 포함되는 취약점입니다.",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache HTTP Server 2.4.65 이하 버전에서 Server Side Includes(SSI)가 활성화되어 있고 mod_cgid 모듈이 사용되는 환경에서는 요청에 포함된 쿼리 스트링이 shell-escaped 형태로 #exec cmd=\"...\" 지시자에 전달됩니다. \n이로 인해 원래 명령 실행과 무관해야 할 쿼리 스트링 값이 실행 명령의 인자로 포함될 수 있으며, 의도하지 않은 정보 노출 또는 명령 실행 동작의 변조가 발생할 수 있습니다. \n해당 취약점은 SSI를 통해 외부 명령을 실행하는 구성에서만 영향을 미치며, mod_cgi 모듈을 사용하는 경우에는 영향을 받지 않습니다.",
+            "published_date": "2025-12-05",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2025/CVE-2025-58098.md",
+            "instance_type": "APACHE"
+        },
+        {
+            "CVE-ID": "CVE-2025-54090",
+            "affected_versions": [
+                "2.4.64"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: CISA-ADP",
+                    "Score": "Base Score: 6.3 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-253",
+                    "CWE Name": "Incorrect Check of Function Return Value",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "2.4.65"
+                    ]
+                }
+            ],
+            "summary": "2.4.64 버전에서는 'RewriteCond expr'이 항상 true로 평가됩니다.",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache HTTP Server 2.4.64에 도입된 변경으로 인해 RewriteCond expr ... (특수한 형태의 RewriteCond — 첫 인자가 리터럴 expr인 경우)에 대해 조건 평가가 항상 참으로 처리되는 버그가 발견되었습니다. \n이로 인해 보안 규칙·리다이렉트·접근 제어 등 mod_rewrite에 의존하는 설정이 의도와 다르게 동작할 가능성이 있습니다.\n해당 결함은 2.4.65에서 수정되었으므로 2.4.64를 운영 중인 환경은 2.4.65로 패치하시기 바랍니다.",
+            "published_date": "2025-07-23",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2025/CVE-2025-54090.md",
+            "instance_type": "APACHE"
+        },
+        {
+            "CVE-ID": "CVE-2025-31492",
+            "affected_versions": [
+                "(mod_auth_openidc) to 2.4.16.11"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: GitHub, Inc.",
+                    "Score": "CVSS-B: 9.8 HIGH",
+                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-200",
+                    "CWE Name": "Exposure of Sensitive Information to an Unauthorized Actor",
+                    "Source": "GitHub, Inc."
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade mod_auth_openidc",
+                    "Detail": [
+                        "2.4.16.11"
+                    ]
+                }
+            ],
+            "summary": "mod_auth_openidc 2.4.16.10 이하에서 POST 요청 시 인증 없이 보호된 리소스 콘텐츠가 유출되는 취약점.",
+            "discoverer_information": "N/A",
+            "detailed_description": "OIDCProviderAuthRequestMethod이 POST로 설정된 환경에서, 인증이 필요한 리소스에 대한 POST 요청이 모듈의 내부 핸들러(oidc_content_handler)에 의해 올바르게 차단되지 못하고 DECLINED 상태로 반환됨으로써 발생합니다. \n결과적으로 HTTP 상태 코드 및 헤더, self-submitting 폼, 그리고 보호된 리소스 자체가 응답 본문에 그대로 포함되어 인증 절차를 우회할 수 있습니다.",
+            "published_date": "2025-04-06",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2025/CVE-2025-31492.md",
+            "instance_type": "APACHE"
+        },
+        {
+            "CVE-ID": "CVE-2025-55753",
+            "affected_versions": [
+                "2.4.30 to 2.4.65"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: CISA-ADP",
+                    "Score": "Base Score: 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-190",
+                    "CWE Name": "Integer Overflow or Wraparound",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "2.4.66"
+                    ]
+                }
+            ],
+            "summary": "Apache HTTP Server의 mod_md(ACME) 모듈에서 인증서 갱신 재시도 간격이 의도하지 않게 동작하는 취약점입니다.",
+            "discoverer_information": "N/A",
+            "detailed_description": "ACME 인증서 갱신이 반복적으로 실패하는 경우, 재시도 간격(backoff timer)을 계산하는 과정에서 정수 오버플로우(Integer Overflow)가 발생할 수 있습니다.\n이로 인해 기본 설정 기준 약 30일 정도 실패가 누적되면 backoff timer 값이 0이 됩니다. \nbackoff timer가 0이 되면 인증서 갱신 시도가 지연 없이 즉시 반복되며, 성공할 때까지 연속적으로 재시도가 수행됩니다. \n이로 인해 의도하지 않은 과도한 인증서 갱신 요청이 발생할 수 있으며, 네트워크 및 시스템 자원에 불필요한 부하를 유발할 가능성이 있습니다.",
+            "published_date": "2025-12-05",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2025/CVE-2025-55753.md",
+            "instance_type": "APACHE"
+        },
+        {
+            "CVE-ID": "CVE-2025-66200",
+            "affected_versions": [
+                "2.4.7 to 2.4.65"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: CISA-ADP",
+                    "Score": "Base Score: 5.4 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-288",
+                    "CWE Name": "Authentication Bypass Using an Alternate Path or Channel",
+                    "Source": "CISA-ADP"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "2.4.66"
+                    ]
+                }
+            ],
+            "summary": "Apache HTTP Server에서 mod_userdir와 suexec를 사용하는 환경에서, AllowOverride FileInfo 설정을 통해 사용자 권한 우회가 발생할 수 있는 취약점입니다.",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache HTTP Server 2.4.65 이하 버전에서 mod_userdir와 suexec가 함께 사용되는 환경에서 취약점이 발생됩니다.\n해당 취약점은 AllowOverride FileInfo 설정이 허용된 경우, .htaccess 파일에서 RequestHeader 지시자를 사용할 수 있는 사용자가 존재할 때 발생됩니다.\n이와 같은 환경에서 일부 CGI 스크립트가 의도되지 않은 사용자 ID(userid) 권한으로 실행될 수 있으며, 이로 인해 권한 우회 및 보안 정책 위반이 발생할 수 있습니다.",
+            "published_date": "2025-12-05",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2025/CVE-2025-66200.md",
+            "instance_type": "APACHE"
+        },
+        {
+            "CVE-ID": "CVE-2025-65082",
+            "affected_versions": [
+                "2.4.0 to 2.4.65"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: CISA-ADP",
+                    "Score": "Base Score: 6.5 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-150",
+                    "CWE Name": "Improper Neutralization of Escape, Meta, or Control Sequences",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "2.4.66"
+                    ]
+                }
+            ],
+            "summary": "Apache HTTP Server에서 CGI 프로그램 실행 시, Apache 설정을 통해 지정된 환경 변수 값이 서버에서 계산된 환경 변수 값을 덮어쓸 수 있는 취약점입니다.",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache HTTP Server 2.4.65 이하 버전에서 CGI 프로그램을 사용하는 환경에서 취약점이 발생됩니다.\n해당 취약점은 Apache 설정을 통해 지정된 환경 변수 값이 서버 내부에서 계산되어야 할 CGI 환경 변수 값을 예기치 않게 덮어쓰는 경우에 발생됩니다.\n이로 인해 CGI 프로그램이 신뢰해서는 안 되는 환경 변수 값을 기반으로 동작할 수 있으며, 결과적으로 기밀성 또는 무결성에 영향을 줄 수 있습니다.",
+            "published_date": "2025-12-05",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2025/CVE-2025-65082.md",
+            "instance_type": "APACHE"
+        },
+        {
+            "CVE-ID": "CVE-2025-59775",
+            "affected_versions": [
+                "2.4.0 to 2.4.65"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: CISA-ADP",
+                    "Score": "Base Score: 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-918",
+                    "CWE Name": "Server-Side Request Forgery (SSRF)",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "2.4.66"
+                    ]
+                }
+            ],
+            "summary": "Apache HTTP Server의 Windows 환경에서 Server-Side Request Forgery(SSRF) 취약점으로 인해, UNC 경로를 통한 요청 처리 과정에서 NTLM 인증 정보가 외부의 악성 서버로 유출될 수 있습니다.",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache HTTP Server 2.4.65 이하 버전의 Windows 환경에서 Server-Side Request Forgery(SSRF) 취약점이 발생됩니다. \n해당 취약점은 AllowEncodedSlashes On 및 MergeSlashes Off 설정이 적용된 경우에 영향을 받습니다. \n이와 같은 환경에서 악성 요청 또는 악성 콘텐츠가 처리될 경우, UNC 경로를 통해 외부 서버로 요청이 전달되면서 NTLM 인증 해시 정보가 공격자 서버로 유출될 수 있습니다.",
+            "published_date": "2025-12-05",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2025/CVE-2025-59775.md",
+            "instance_type": "APACHE"
+        },
+        {
+            "CVE-ID": "CVE-2025-3891",
+            "affected_versions": [
+                "(mod_auth_openidc) 2.0.0 to 2.4.13.1"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CNA: Red Hat, Inc.",
+                    "Score": "Base Score: 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-248",
+                    "CWE Name": "Uncaught Exception",
+                    "Source": "Red Hat, Inc."
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade mod_auth_openidc",
+                    "Detail": [
+                        "2.4.17"
+                    ]
+                }
+            ],
+            "summary": "mod_auth_openidc에서 OIDCPreservePost가 활성화된 상태에서 빈 POST 요청을 전송하면 Apache 프로세스가 충돌해 서비스 거부를 일으킵니다.",
+            "discoverer_information": "N/A",
+            "detailed_description": "OpenID Connect 인증 모듈인 mod_auth_openidc에서 발생합니다.\nOIDCPreservePost 지시자가 활성화된 환경에서, POST 본문이 없는(empty) 요청을 처리할 때 예외 처리 코드가 누락되어 Apache 프로세스가 일관되게 충돌(crash)하며 서비스 거부(DoS)를 초래합니다. \n공격자는 인증 절차 없이 빈 POST만으로 웹 서버 가용성을 무력화할 수 있습니다.",
+            "published_date": "2025-04-29",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2025/CVE-2025-3891.md",
+            "instance_type": "APACHE"
+        },
+        {
+            "CVE-ID": "CVE-2025-23048",
+            "affected_versions": [
+                "2.4.35 to 2.4.63"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: CISA-ADP",
+                    "Score": "Base Score: 9.1 CRITICAL",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-284",
+                    "CWE Name": "Improper Access Control",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "2.4.65"
+                    ]
+                }
+            ],
+            "summary": "세션 재개를 통한 mod_ssl 액세스 제어 우회.",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache HTTP Server 2.4.35부터 2.4.63까지의 일부 mod_ssl 구성에서는 TLS 1.3 세션 재개를 사용하여 신뢰할 수 있는 클라이언트가 액세스 제어를 우회할 수 있습니다. \nmod_ssl이 여러 가상 호스트에 대해 구성되고 각 가상 호스트가 서로 다른 신뢰할 수 있는 클라이언트 인증서 세트(예: 서로 다른 SSLCACertificateFile/Path 설정)로 제한되는 경우, 구성에 영향을 미칩니다. \n이 경우, 두 가상 호스트 모두에서 SSLStrictSNIVHostCheck가 활성화되어 있지 않으면 한 가상 호스트에 액세스할 수 있는 신뢰할 수 있는 클라이언트가 다른 가상 호스트에도 액세스할 수 있습니다.",
+            "published_date": "2025-07-10",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2025/CVE-2025-23048.md",
+            "instance_type": "APACHE"
+        }
+    ]
+}

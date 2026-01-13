@@ -20,26 +20,33 @@ Manager 애플리케이션에서 자동으로 다운로드하여 보안 점검�
 
 ## Download Links
 
+### Yearly (All Engines)
+
+| Year | Download | CVEs | Last Updated |
+|:----:|:--------:|:----:|:------------:|
+| 2024 | [2024_cves.json](./yearly/2024_cves.json) | 14 | 2026-01-13 |
+| 2025 | [2025_cves.json](./yearly/2025_cves.json) | 27 | 2026-01-13 |
+
 ### APACHE
 
 | Year | Download | CVEs | Last Updated |
 |:----:|:--------:|:----:|:------------:|
-| 2024 | [cves.json](./apache/2024/cves.json) | 8 | 2026-01-12 |
-| 2025 | [cves.json](./apache/2025/cves.json) | 10 | 2026-01-12 |
+| 2024 | [apache_2024_cves.json](./apache/2024/apache_2024_cves.json) | 8 | 2026-01-13 |
+| 2025 | [apache_2025_cves.json](./apache/2025/apache_2025_cves.json) | 10 | 2026-01-13 |
 
 ### NGINX
 
 | Year | Download | CVEs | Last Updated |
 |:----:|:--------:|:----:|:------------:|
-| 2024 | [cves.json](./nginx/2024/cves.json) | 4 | 2026-01-12 |
-| 2025 | [cves.json](./nginx/2025/cves.json) | 4 | 2026-01-12 |
+| 2024 | [nginx_2024_cves.json](./nginx/2024/nginx_2024_cves.json) | 4 | 2026-01-13 |
+| 2025 | [nginx_2025_cves.json](./nginx/2025/nginx_2025_cves.json) | 4 | 2026-01-13 |
 
 ### TOMCAT
 
 | Year | Download | CVEs | Last Updated |
 |:----:|:--------:|:----:|:------------:|
-| 2024 | [cves.json](./tomcat/2024/cves.json) | 2 | 2026-01-12 |
-| 2025 | [cves.json](./tomcat/2025/cves.json) | 13 | 2026-01-12 |
+| 2024 | [tomcat_2024_cves.json](./tomcat/2024/tomcat_2024_cves.json) | 2 | 2026-01-13 |
+| 2025 | [tomcat_2025_cves.json](./tomcat/2025/tomcat_2025_cves.json) | 13 | 2026-01-13 |
 
 ## License
 

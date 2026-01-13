@@ -1,0 +1,171 @@
+{
+    "CVE-LIST": [
+        {
+            "CVE-ID": "CVE-2025-23419",
+            "affected_versions": [
+                "1.11.4 to 1.27.3"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 5.3 MEDIUM",
+                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 4.7 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-287",
+                    "CWE Name": "Improper Authentication",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.26.3",
+                        "1.27.4"
+                    ]
+                }
+            ],
+            "summary": "단일 IP/포트를 공유하는 이름 기반 가상 호스트에서 TLS 1.3 환경에서 ssl_session_tickets 또는 ssl_session_cache를 활성화한 경우, 세션 재개(Session Resumption)를 악용해 클라이언트 인증을 우회할 수 있는 취약점입니다.",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX Open Source 및 Plus 모두에 영향을 미치며, 기본 서버(default server)가 TLS 1.3과 함께 SSL 세션 티켓 또는 세션 캐시를 활성화하고, 클라이언트 인증을 요구하도록 설정된 경우에 발생합니다.",
+            "published_date": "2025-02-05",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2025/CVE-2025-23419.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2025-53859",
+            "affected_versions": [
+                "0.7.22 to 1.29.0 (any build with ngx_mail_smtp_module module)"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 6.3 MEDIUM",
+                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "NVD",
+                    "Score": "Base Score: 3.7 LOW",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-125",
+                    "CWE Name": "Out-of-bounds Read",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": "\\<ul>\\<li>1.29.1\\</li>\\</ul>"
+                },
+                {
+                    "Method": "configuration change",
+                    "Detail": "nginx.conf 파일의 mail 블록 내 smtp_auth 지시어에서 none 옵션을 제거하거나 비활성화합니다."
+                }
+            ],
+            "summary": "NGINX의 ngx_mail_smtp_module 모듈 사용 시, smtp_auth 설정에 \"none\"이 포함되어 있고 업스트림 인증 서버가 \"Auth-Wait\" 헤더를 반환하는 경우, 메모리 덮어쓰기가 발생하여 의도하지 않은 메모리 데이터가 클라이언트로 유출될 수 있는 취약점입니다.",
+            "discoverer_information": "N/A",
+            "detailed_description": "ngx_mail_smtp_module에서 발생하는 버퍼 처리 오류(Out-of-bounds Read)로 인한 정보 유출 취약점입니다. \n원격 공격자는 특정 설정(smtp_auth=\"none\")과 서버 응답(Auth-Wait) 조건을 만족시킬 경우, 프로세스 메모리 내의 민감한 데이터를 획득할 수 있다. 이는 데이터 플레인(Data Plane)에 영향을 미치는 이슈입니다.",
+            "published_date": "2025-08-13",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2025/CVE-2025-53859.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2025-14727",
+            "affected_versions": [
+                "3.0.0 to 5.3.0"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 8.7 HIGH",
+                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:L/SC:N/SI:N/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 8.3 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-22",
+                    "CWE Name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "5.3.1"
+                    ]
+                }
+            ],
+            "summary": "NGINX Ingress Controller에서 nginx.org/rewrite-target 어노테이션 검증이 미흡하여, 경로 제한을 우회할 수 있는 취약점이 발생됩니다.",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX Ingress Controller에서 nginx.org/rewrite-target 어노테이션의 입력 값 검증이 충분히 이루어지지 않아 취약점이 발생됩니다. \n이로 인해 외부에서 전달된 요청 값이 의도된 디렉터리 범위를 벗어나 처리될 수 있으며, 경로 탐색(Path Traversal) 공격이 가능해집니다. \n해당 취약점은 NGINX Ingress Controller 3.0.0부터 5.3.0 버전까지 영향을 미치며, 5.3.1 버전에서 수정됩니다. \n기술 지원이 종료된(EoTS) 버전의 소프트웨어는 본 취약점 평가 대상에서 제외됩니다.",
+            "published_date": "2025-12-17",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2025/CVE-2025-14727.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2025-1695",
+            "affected_versions": [
+                "1.11.0 to 1.34.1"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 6.9 MEDIUM",
+                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 5.3 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-835",
+                    "CWE Name": "Loop with Unreachable Exit Condition ('Infinite Loop')",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.34.2"
+                    ]
+                }
+            ],
+            "summary": "NGINX Unit의 Java 모듈에서 특정 요청으로 무한루프가 발생해 CPU 과다사용·제한적 DoS를 유발합니다.",
+            "discoverer_information": "N/A",
+            "detailed_description": "Java 언어 모듈을 사용하는 NGINX Unit 1.34.2 이전 버전에서는 공개되지 않은 요청으로 인해 무한 루프가 발생하고 CPU 리소스 사용량이 증가할 수 있습니다. \n이 취약점은 원격 공격자가 제한된 서비스 거부(DoS) 공격으로 이어질 수 있는 성능 저하를 유발할 수 있도록 합니다.",
+            "published_date": "2025-03-04",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2025/CVE-2025-1695.md",
+            "instance_type": "NGINX"
+        }
+    ]
+}

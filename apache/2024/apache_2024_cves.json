@@ -1,0 +1,290 @@
+{
+    "CVE-LIST": [
+        {
+            "CVE-ID": "CVE-2024-38474",
+            "affected_versions": [
+                "2.4.0 to 2.4.59"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "NIST: NVD",
+                    "Score": "Base Score: 9.8 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-116",
+                    "CWE Name": "Improper Encoding or Escaping of Output",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "2.4.60"
+                    ]
+                }
+            ],
+            "summary": "Apache HTTP Server의 mod_rewrite 모듈에서 발견된 대체 인코딩(Substitution Encoding) 취약점.",
+            "discoverer_information": "N/A",
+            "detailed_description": "mod_rewrite 모듈이 URL 대체 과정에서 인코딩을 부적절하게 처리하는 데서 비롯됩니다. \n공격자는 이를 악용하여 특수하게 조작된 URL을 서버에 보내어, 설정에 의해 허용되지만 직접적인 URL로는 접근할 수 없는 디렉터리 내의 스크립트를 실행하거나, CGI로만 실행되어야 하는 스크립트의 소스 코드를 노출시킬 수 있습니다.",
+            "published_date": "2024-07-01",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2024/CVE-2024-38474.md",
+            "instance_type": "APACHE"
+        },
+        {
+            "CVE-ID": "CVE-2024-38473",
+            "affected_versions": [
+                "2.4.0 to 2.4.59"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: CISA-ADP",
+                    "Score": "Base Score: 8.1 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-116",
+                    "CWE Name": "Improper Encoding or Escaping of Output",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "2.4.60"
+                    ]
+                }
+            ],
+            "summary": "Apache HTTP Server의 mod_proxy 모듈에서 발견된 인코딩 문제.",
+            "discoverer_information": "N/A",
+            "detailed_description": "mod_proxy 모듈에서 인코딩 처리의 결함으로 인해, 공격자가 특수하게 조작된 요청을 통해 인증을 우회하고 백엔드 서비스에 접근할 수 있습니다.\n이를 해결하려면 서버를 2.4.60 이상으로 업그레이드하고, 입력 유효성 검사를 강화하며, 프록시 규칙을 통해 신뢰할 수 없는 요청을 제한해야 합니다. \n공격자는 특수하게 조작된 요청을 이용해 백엔드 리소스에 비인가된 접근을 시도할 수 있어, 즉각적인 업데이트와 보안 설정 강화가 필요합니다.",
+            "published_date": "2024-07-01",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2024/CVE-2024-38473.md",
+            "instance_type": "APACHE"
+        },
+        {
+            "CVE-ID": "CVE-2024-39573",
+            "affected_versions": [
+                "2.4.0 to 2.4.59"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: CISA-ADP",
+                    "Score": "Base Score: 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-20",
+                    "CWE Name": "Improper Input Validation",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "2.4.60"
+                    ]
+                }
+            ],
+            "summary": "mod_rewrite 모듈에서 발견된 SSRF(Server Side Request Forgery) 취약점.",
+            "discoverer_information": "N/A",
+            "detailed_description": "공격자가 악의적인 요청을 통해 mod_proxy 모듈을 예기치 않게 활성화하여 내부 네트워크로의 비인가된 접근을 시도할 수 있는 문제입니다.\n특정 RewriteRule 설정이 예상치 못하게 URL을 mod_proxy로 처리하도록 설정될 수 있습니다. 이로 인해 공격자는 SSRF 공격을 통해 내부 네트워크 자원에 접근할 수 있습니다.",
+            "published_date": "2024-07-01",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2024/CVE-2024-39573.md",
+            "instance_type": "APACHE"
+        },
+        {
+            "CVE-ID": "CVE-2024-36387",
+            "affected_versions": [
+                "2.4.55 to 2.4.59"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "SUSE",
+                    "Score": "Base Score: 5.9 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-476",
+                    "CWE Name": "NULL Pointer Dereference",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "2.4.60"
+                    ]
+                }
+            ],
+            "summary": "WebSocket 프로토콜을 HTTP/2 연결을 통해 처리할 때 발생하는 Null Pointer Dereference 취약점.",
+            "discoverer_information": "N/A",
+            "detailed_description": "HTTP/2 연결을 통한 WebSocket 프로토콜 업그레이드 요청을 처리하는 과정에서 발생합니다. 특정 조건에서 NULL 포인터를 역참조하게 되어 서버 프로세스가 충돌하고, 이는 서비스 거부 상태를 초래할 수 있습니다.",
+            "published_date": "2024-07-01",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2024/CVE-2024-36387.md",
+            "instance_type": "APACHE"
+        },
+        {
+            "CVE-ID": "CVE-2024-40898",
+            "affected_versions": [
+                "2.4.60 to 2.4.61"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "NIST: NVD",
+                    "Score": "(NVD)Base Score: 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: CISA-ADP",
+                    "Score": "(CISA-ADP)Base Score: 9.1 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-918",
+                    "CWE Name": "Server-Side Request Forgery (SSRF)",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "2.4.62"
+                    ]
+                }
+            ],
+            "summary": "SSRF 및 악성 요청을 통하여 악성 서버로 NTML 해시를 유출할 가능성이 있는 취약점.",
+            "discoverer_information": "N/A",
+            "detailed_description": "Windows 환경에서 mod_rewrite 모듈이 서버 또는 가상 호스트 컨텍스트로 설정된 Apache HTTP Server에서 발생합니다.\n공격자는 SSRF 공격을 통해 악의적인 요청을 서버에 보내어 NTLM 해시를 유출시킬 수 있습니다.",
+            "published_date": "2024-07-18",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2024/CVE-2024-40898.md",
+            "instance_type": "APACHE"
+        },
+        {
+            "CVE-ID": "CVE-2024-40725",
+            "affected_versions": [
+                "2.4.60 to 2.4.61"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "NIST: NVD",
+                    "Score": "Base Score: 5.3 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-668",
+                    "CWE Name": "Exposure of Resource to Wrong Sphere",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "2.4.62"
+                    ]
+                }
+            ],
+            "summary": "특정 핸들러 구성(AddType)을 사용할 때 발생하는 소스 코드 노출 취약점.",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache HTTP Server에서 특정 핸들러 구성(AddType)을 사용할 때 발생하는 소스 코드 노출 취약점입니다. \n이 문제는 간접적으로 요청된 파일이 예상치 못한 방식으로 처리되면서, 공격자가 PHP와 같은 스크립트의 소스 코드를 열람할 수 있는 상황을 초래합니다.",
+            "published_date": "2024-07-18",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2024/CVE-2024-40725.md",
+            "instance_type": "APACHE"
+        },
+        {
+            "CVE-ID": "CVE-2024-38472",
+            "affected_versions": [
+                "2.4.0 to 2.4.59"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: CISA-ADP",
+                    "Score": "Base Score: 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-918",
+                    "CWE Name": "Server-Side Request Forgery (SSRF)",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "2.4.60"
+                    ]
+                }
+            ],
+            "summary": "Windows 환경에서 실행되는 Apache HTTP Server에서 발견된 SSRF(Server Side Request Forgery) 취약점.",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache HTTP Server가 클라이언트 요청을 처리할 때 UNC 경로를 포함한 요청을 제대로 검증하지 않는 문제가 있습니다.\n공격자는 이를 악용하여 악의적인 서버로 요청을 보낼 수 있으며, 이를 통해 인증에 필요한 NTLM 해시를 유출하거나 내부 네트워크로의 비인가 접근을 시도할 수 있습니다.",
+            "published_date": "2024-07-01",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2024/CVE-2024-38472.md",
+            "instance_type": "APACHE"
+        },
+        {
+            "CVE-ID": "CVE-2024-38477",
+            "affected_versions": [
+                "2.4.0 to 2.4.59"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "NIST: NVD",
+                    "Score": "Base Score: 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-476",
+                    "CWE Name": "NULL Pointer Dereference",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "2.4.60"
+                    ]
+                }
+            ],
+            "summary": "mod_proxy 모듈에서 발생하는 NULL 포인터 역참조 취약점.",
+            "discoverer_information": "N/A",
+            "detailed_description": "mod_proxy 모듈에서 NULL 포인터 역참조로 인해, 공격자가 조작된 요청을 통해 서버를 다운시킬 수 있습니다.",
+            "published_date": "2024-07-01",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2024/CVE-2024-38477.md",
+            "instance_type": "APACHE"
+        }
+    ]
+}
