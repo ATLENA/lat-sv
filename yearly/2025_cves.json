@@ -71,7 +71,9 @@
             "mitigation_methods": [
                 {
                     "Method": "upgrade engine",
-                    "Detail": "\\<ul>\\<li>1.29.1\\</li>\\</ul>"
+                    "Detail": [
+                        "1.29.1"
+                    ]
                 },
                 {
                     "Method": "configuration change",
