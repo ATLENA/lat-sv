@@ -34,32 +34,12 @@ Manager 애플리케이션에서 자동으로 다운로드하여 보안 점검�
 | 2024 | [cves.json](./nginx/2024/cves.json) | 4 | 2026-01-12 |
 | 2025 | [cves.json](./nginx/2025/cves.json) | 4 | 2026-01-12 |
 
-### REDIS
-
-| Year | Download | CVEs | Last Updated |
-|:----:|:--------:|:----:|:------------:|
-| 2024 | [cves.json](./redis/2024/cves.json) | 1 | 2026-01-12 |
-
 ### TOMCAT
 
 | Year | Download | CVEs | Last Updated |
 |:----:|:--------:|:----:|:------------:|
 | 2024 | [cves.json](./tomcat/2024/cves.json) | 2 | 2026-01-12 |
 | 2025 | [cves.json](./tomcat/2025/cves.json) | 13 | 2026-01-12 |
-
-## File Structure
-
-```
-├── apache/
-│   ├── 2024/
-│   │   ├── CVE-2024-xxxxx.json   # 개별 CVE 파일
-│   │   ├── list.json             # CVE 목록 (ID, 날짜만)
-│   │   └── cves.json             # 전체 CVE 데이터 통합
-│   └── 2025/
-├── nginx/
-├── redis/
-└── tomcat/
-```
 
 ## License
 
