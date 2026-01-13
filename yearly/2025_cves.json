@@ -77,7 +77,9 @@
                 },
                 {
                     "Method": "configuration change",
-                    "Detail": "nginx.conf 파일의 mail 블록 내 smtp_auth 지시어에서 none 옵션을 제거하거나 비활성화합니다."
+                    "Detail": [
+                        "nginx.conf 파일의 mail 블록 내 smtp_auth 지시어에서 none 옵션을 제거하거나 비활성화합니다."
+                    ]
                 }
             ],
             "summary": "NGINX의 ngx_mail_smtp_module 모듈 사용 시, smtp_auth 설정에 \"none\"이 포함되어 있고 업스트림 인증 서버가 \"Auth-Wait\" 헤더를 반환하는 경우, 메모리 덮어쓰기가 발생하여 의도하지 않은 메모리 데이터가 클라이언트로 유출될 수 있는 취약점입니다.",
