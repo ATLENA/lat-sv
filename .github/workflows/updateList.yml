@@ -26,8 +26,8 @@ jobs:
 
       - name: Set Git config
         run: |
-          git config --global user.name "moonct"
-          git config --global user.email "tokybob@gmail.com"
+          git config --global user.name "lenace"
+          git config --global user.email "lena@lgcns.com"
 
       - name: Get list of modified files in the last commit
         id: get_files
