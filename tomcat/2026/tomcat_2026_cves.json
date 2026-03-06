@@ -46,6 +46,51 @@
             "instance_type": "TOMCAT"
         },
         {
+            "CVE-ID": "CVE-2026-24734",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.17",
+                "10.1.0-M1 to 10.1.51",
+                "9.0.0-M1 to 9.0.114"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "NVD",
+                    "Score": "Base Score N/A",
+                    "Vector": "NVD assessment not yet provided."
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "NVD",
+                    "Score": "Base Score N/A",
+                    "Vector": "NVD assessment not yet provided."
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-20",
+                    "CWE Name": "Improper Input Validation",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.18",
+                        "10.1.52",
+                        "9.0.115"
+                    ]
+                }
+            ],
+            "summary": "OCSP 응답 검증 과정의 문제로 인해 인증서 폐기(revocation) 검증이 우회될 수 있는 Apache Tomcat 취약점이 존재합니다.",
+            "discoverer_information": "N/A",
+            "detailed_description": "OCSP 응답자를 사용하는 경우, Tomcat Native(및 Tomcat Native 코드를 기반으로 한 Tomcat의 FFM 포트 구현)에서 OCSP 응답에 대한 검증 및 최신성(freshness) 검사를 완전히 수행하지 않았습니다.이로 인해 인증서가 폐기되었음에도 불구하고 해당 인증서가 유효한 것으로 처리되어 인증서 폐기 검증이 우회될 수 있습니다.",
+            "published_date": "2026-02-17",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-24734.md",
+            "instance_type": "TOMCAT"
+        },
+        {
             "CVE-ID": "CVE-2026-24733",
             "affected_versions": [
                 "11.0.0-M1 to 11.0.14",
