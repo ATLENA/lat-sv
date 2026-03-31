@@ -2,6 +2,7 @@ import os
 import json
 import sys
 import re
+import subprocess
 from datetime import datetime
 
 def list_files_in_directory(directory_path):
@@ -51,6 +52,19 @@ def save_json_file(filepath, jsondata):
     with open(filepath, 'w', encoding='utf-8') as f:
         json.dump(jsondata, f, indent=4, ensure_ascii=False)
 
+def get_git_last_updated(file_path):
+    """파일의 마지막 git commit 날짜를 반환"""
+    try:
+        result = subprocess.run(
+            ['git', 'log', '-1', '--format=%ci', '--', file_path],
+            capture_output=True, text=True, cwd=os.path.dirname(file_path)
+        )
+        if result.stdout.strip():
+            return result.stdout.strip()[:10]
+    except Exception:
+        pass
+    return datetime.now().strftime('%Y-%m-%d')
+
 def get_unique_directories(file_paths):
     """파일 경로 목록에서 중복 없는 디렉토리 목록 추출"""
     directories = [os.path.dirname(path) for path in file_paths]
@@ -69,11 +83,10 @@ def get_all_software_years(root_path):
             for year in os.listdir(item_path):
                 year_path = os.path.join(item_path, year)
                 if os.path.isdir(year_path) and year.isdigit():
-                    # {software}_{year}_cves.json 파일의 수정 시간 확인
+                    # {software}_{year}_cves.json 파일의 git commit 시간 확인
                     cves_file = os.path.join(year_path, f'{item}_{year}_cves.json')
                     if os.path.exists(cves_file):
-                        mtime = os.path.getmtime(cves_file)
-                        updated = datetime.fromtimestamp(mtime).strftime('%Y-%m-%d')
+                        updated = get_git_last_updated(cves_file)
                     else:
                         updated = datetime.now().strftime('%Y-%m-%d')
                     years.append({"year": year, "updated": updated})
@@ -130,8 +143,7 @@ Manager 애플리케이션에서 자동으로 다운로드하여 보안 점검�
             year = yearly_file.replace('_cves.json', '')
             file_path = os.path.join(yearly_path, yearly_file)
             if os.path.exists(file_path):
-                mtime = os.path.getmtime(file_path)
-                updated = datetime.fromtimestamp(mtime).strftime('%Y-%m-%d')
+                updated = get_git_last_updated(file_path)
                 # CVE 개수 계산
                 with open(file_path, 'r', encoding='utf-8') as f:
                     data = json.load(f)
