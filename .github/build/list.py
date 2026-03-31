@@ -186,8 +186,10 @@ def get_all_cve_directories(root_path):
 
     return cve_directories
 
-def generate_yearly_cves(root_path):
-    """연도별 전체 CVE 통합 파일 생성 (yearly 폴더)"""
+def generate_yearly_cves(root_path, target_years=None):
+    """연도별 전체 CVE 통합 파일 생성 (yearly 폴더)
+    target_years: 재생성할 연도 목록. None이면 전체 재생성.
+    """
     exclude_dirs = ['.git', '.github', '.idea', 'yearly', 'redis']
     yearly_data = {}  # {year: [cve_data, ...]}
 
@@ -198,6 +200,8 @@ def generate_yearly_cves(root_path):
             for year in os.listdir(software_path):
                 year_path = os.path.join(software_path, year)
                 if os.path.isdir(year_path) and year.isdigit():
+                    if target_years is not None and year not in target_years:
+                        continue
                     # 해당 연도의 CVE 파일들 읽기
                     files = os.listdir(year_path)
                     cve_files = [f for f in files if f.startswith('CVE') and f.endswith('.json')]
@@ -257,17 +261,30 @@ if len(sys.argv) > 1 and sys.argv[1] == '--all':
     print("Generating all JSON files...")
     for directory in get_all_cve_directories(root_path):
         generate_json_files(directory)
+
+    # 전체 yearly 재생성
+    generate_yearly_cves(root_path)
 else:
     # 기본: 변경된 파일 기반으로 생성
     changed_files = sys.argv[1] if len(sys.argv) > 1 else ""
     file_list = [f.strip() for f in changed_files.split(',') if f.strip()]
     print(f"All files changed in the last commit: {file_list}")
 
-    for directory in get_unique_directories(file_list):
+    changed_directories = get_unique_directories(file_list)
+    for directory in changed_directories:
         generate_json_files(directory)
 
-# yearly 폴더에 연도별 전체 CVE 생성
-generate_yearly_cves(root_path)
+    # 변경된 연도만 yearly 재생성
+    changed_years = set()
+    for directory in changed_directories:
+        parts = directory.replace('\\', '/').split('/')
+        year = parts[-1]
+        if year.isdigit():
+            changed_years.add(year)
+
+    if changed_years:
+        print(f"Updating yearly files for years: {sorted(changed_years)}")
+        generate_yearly_cves(root_path, target_years=changed_years)
 
 # README.md 업데이트
 generate_readme(root_path)
