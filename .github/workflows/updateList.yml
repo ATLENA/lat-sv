@@ -66,6 +66,6 @@ jobs:
           git diff --staged --quiet || git commit -m "Add & modify json list"
           git push
         env:
-          GITHUB_TOKEN: ${{ secrets.LAT_ADMIN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
