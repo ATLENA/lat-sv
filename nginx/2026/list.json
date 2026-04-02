@@ -1,6 +1,26 @@
 {
     "cve_list": [
         {
+            "id": "CVE-2026-27654",
+            "published_date": "2026-03-24"
+        },
+        {
+            "id": "CVE-2026-32647",
+            "published_date": "2026-03-24"
+        },
+        {
+            "id": "CVE-2026-27651",
+            "published_date": "2026-03-24"
+        },
+        {
+            "id": "CVE-2026-27784",
+            "published_date": "2026-03-24"
+        },
+        {
+            "id": "CVE-2026-28755",
+            "published_date": "2026-03-24"
+        },
+        {
             "id": "CVE-2026-1642",
             "published_date": "2026-02-04"
         }

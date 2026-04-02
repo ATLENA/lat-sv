@@ -1,6 +1,252 @@
 {
     "CVE-LIST": [
         {
+            "CVE-ID": "CVE-2026-27654",
+            "affected_versions": [
+                "1.29.0 to 1.29.6",
+                "0.5.13 to 1.28.2"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 8.8 HIGH",
+                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 8.2 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-122",
+                    "CWE Name": "Heap-based Buffer Overflow",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.29.7"
+                    ]
+                },
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.28.3"
+                    ]
+                }
+            ],
+            "summary": "NGINX ngx_http_dav_module 모듈의 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX Open Source의 ngx_http_dav_module 모듈에는 공격자가 NGINX 워커 프로세스에서 버퍼 오버플로우를 유발할 수 있는 취약점이 존재합니다. 이 취약점으로 인해 NGINX 워커 프로세스가 종료되거나, 문서 루트(document root) 외부의 소스 또는 대상 파일 이름이 변경될 수 있습니다. 이 문제는 설정 파일에서 DAV 모듈의 MOVE 또는 COPY 메서드를 사용하고, prefix location(정규식이 아닌 location 설정)과 alias 지시어를 사용하는 경우 영향을 미칩니다. NGINX 워커 프로세스는 낮은 권한으로 실행되며 시스템 전체에 대한 접근 권한이 없기 때문에 무결성 영향은 제한적입니다.",
+            "published_date": "2026-03-24",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-27654.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2026-32647",
+            "affected_versions": [
+                "1.29.0 to 1.29.6",
+                "1.1.19 to 1.28.2"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 8.5 HIGH",
+                    "Vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 7.8 HIGH",
+                    "Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-125",
+                    "CWE Name": "Out-of-bounds Read",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.29.7"
+                    ]
+                },
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.28.3"
+                    ]
+                }
+            ],
+            "summary": "NGINX ngx_http_mp4_module 모듈의 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX Open Source의 ngx_http_mp4_module 모듈에는, 특수하게 조작된 MP4 파일을 통해 공격자가 NGINX 워커 메모리에 대해 버퍼 과다 읽기(buffer over-read) 또는 과다 쓰기(over-write)를 유발하여 워커 프로세스를 종료시키거나, 경우에 따라 코드 실행까지 가능하게 할 수 있는 취약점이 존재합니다. 이 문제는 ngx_http_mp4_module 모듈이 포함되어 빌드되고, 설정 파일에서 mp4 지시어가 사용되는 경우 NGINX Open Source에 영향을 미칩니다. 또한, 이 공격은 공격자가 ngx_http_mp4_module 모듈을 통해 특수하게 조작된 MP4 파일의 처리를 유도할 수 있는 경우에만 가능합니다.",
+            "published_date": "2026-03-24",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-32647.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2026-27651",
+            "affected_versions": [
+                "1.29.0 to 1.29.6",
+                "0.5.15 to 1.28.2"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 8.7 HIGH",
+                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-476",
+                    "CWE Name": "NULL Pointer Dereference",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.29.7"
+                    ]
+                },
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.28.3"
+                    ]
+                }
+            ],
+            "summary": "NGINX ngx_mail_auth_http_module 모듈의 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX Open Source에서 ngx_mail_auth_http_module 모듈이 활성화된 경우, 공개되지 않은 요청으로 인해 워커 프로세스가 종료될 수 있습니다. 이 문제는 CRAM-MD5 또는 APOP 인증이 활성화되어 있고, 인증 서버가 Auth-Wait 응답 헤더를 반환하여 재시도를 허용하는 경우 발생할 수 있습니다.",
+            "published_date": "2026-03-24",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-27651.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2026-27784",
+            "affected_versions": [
+                "1.29.0 to 1.29.6",
+                "1.1.19 to 1.28.2"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 8.5 HIGH",
+                    "Vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "NIST: NVD",
+                    "Score": "Base Score: 5.5 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 8.2 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-190",
+                    "CWE Name": "Integer Overflow or Wraparound",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.29.7"
+                    ]
+                },
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.28.3"
+                    ]
+                }
+            ],
+            "summary": "NGINX ngx_http_mp4_module 모듈의 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "32비트 NGINX Open Source의 ngx_http_mp4_module 모듈에는, 특수하게 조작된 MP4 파일을 통해 공격자가 NGINX 워커 메모리를 과도하게 읽거나(over-read) 쓰도록(over-write) 유도하여 워커 프로세스를 종료시킬 수 있는 취약점이 존재합니다. 이 문제는 ngx_http_mp4_module 모듈이 포함되어 빌드되고, 설정 파일에서 mp4 지시어가 사용되는 경우에만 32비트 NGINX Open Source에 영향을 미칩니다. 또한, 이 공격은 공격자가 ngx_http_mp4_module 모듈을 통해 특수하게 조작된 MP4 파일의 처리를 유도할 수 있는 경우에만 가능합니다.",
+            "published_date": "2026-03-24",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-27784.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2026-28755",
+            "affected_versions": [
+                "1.29.0 to 1.29.6",
+                "1.27.2 to 1.28.2"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 5.3 MEDIUM",
+                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 5.4 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-963",
+                    "CWE Name": "Incorrect Authorization",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.29.7"
+                    ]
+                },
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.28.3"
+                    ]
+                }
+            ],
+            "summary": "NGINX ngx_stream_ssl_module 모듈의 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX Open Source의 ngx_stream_ssl_module 모듈에는 ssl_verify_client on 및 ssl_ocsp on 지시어가 설정된 경우, 폐기된 인증서를 부적절하게 처리하는 취약점이 존재하며, 이로 인해 OCSP 검사에서 인증서가 폐기된 것으로 확인되더라도 TLS 핸드셰이크가 성공할 수 있습니다.",
+            "published_date": "2026-03-24",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-28755.md",
+            "instance_type": "NGINX"
+        },
+        {
             "CVE-ID": "CVE-2026-1642",
             "affected_versions": [
                 "1.3.0 to 1.29.4"
