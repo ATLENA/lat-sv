@@ -1,16 +1,56 @@
 {
     "cve_list": [
         {
+            "id": "CVE-2026-29129",
+            "published_date": "2026-04-09"
+        },
+        {
+            "id": "CVE-2026-24734",
+            "published_date": "2026-02-17"
+        },
+        {
             "id": "CVE-2025-66614",
             "published_date": "2026-02-17"
+        },
+        {
+            "id": "CVE-2026-34483",
+            "published_date": "2026-04-09"
         },
         {
             "id": "CVE-2026-24733",
             "published_date": "2026-02-17"
         },
         {
-            "id": "CVE-2026-24734",
-            "published_date": "2026-02-17"
+            "id": "CVE-2026-32990",
+            "published_date": "2026-04-09"
+        },
+        {
+            "id": "CVE-2026-25854",
+            "published_date": "2026-04-09"
+        },
+        {
+            "id": "CVE-2026-29146",
+            "published_date": "2026-04-09"
+        },
+        {
+            "id": "CVE-2026-24880",
+            "published_date": "2026-04-09"
+        },
+        {
+            "id": "CVE-2026-34487",
+            "published_date": "2026-04-09"
+        },
+        {
+            "id": "CVE-2026-34500",
+            "published_date": "2026-04-09"
+        },
+        {
+            "id": "CVE-2026-34486",
+            "published_date": "2026-04-09"
+        },
+        {
+            "id": "CVE-2026-29145",
+            "published_date": "2026-04-09"
         }
     ]
 }
