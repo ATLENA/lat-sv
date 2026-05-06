@@ -24,32 +24,32 @@ Manager 애플리케이션에서 자동으로 다운로드하여 보안 점검�
 
 | Year | Download | CVEs | Last Updated |
 |:----:|:--------:|:----:|:------------:|
-| 2024 | [2024_cves.json](./yearly/2024_cves.json) | 14 | 2026-04-02 |
-| 2025 | [2025_cves.json](./yearly/2025_cves.json) | 27 | 2026-04-02 |
-| 2026 | [2026_cves.json](./yearly/2026_cves.json) | 19 | 2026-04-02 |
+| 2024 | [2024_cves.json](./yearly/2024_cves.json) | 14 | 2026-04-29 |
+| 2025 | [2025_cves.json](./yearly/2025_cves.json) | 27 | 2026-04-29 |
+| 2026 | [2026_cves.json](./yearly/2026_cves.json) | 19 | 2026-04-29 |
 
 ### APACHE
 
 | Year | Download | CVEs | Last Updated |
 |:----:|:--------:|:----:|:------------:|
-| 2024 | [apache_2024_cves.json](./apache/2024/apache_2024_cves.json) | 8 | 2026-04-02 |
-| 2025 | [apache_2025_cves.json](./apache/2025/apache_2025_cves.json) | 10 | 2026-04-02 |
+| 2024 | [apache_2024_cves.json](./apache/2024/apache_2024_cves.json) | 8 | 2026-04-29 |
+| 2025 | [apache_2025_cves.json](./apache/2025/apache_2025_cves.json) | 10 | 2026-04-29 |
 
 ### NGINX
 
 | Year | Download | CVEs | Last Updated |
 |:----:|:--------:|:----:|:------------:|
-| 2024 | [nginx_2024_cves.json](./nginx/2024/nginx_2024_cves.json) | 4 | 2026-04-02 |
-| 2025 | [nginx_2025_cves.json](./nginx/2025/nginx_2025_cves.json) | 4 | 2026-04-02 |
-| 2026 | [nginx_2026_cves.json](./nginx/2026/nginx_2026_cves.json) | 6 | 2026-04-02 |
+| 2024 | [nginx_2024_cves.json](./nginx/2024/nginx_2024_cves.json) | 4 | 2026-04-29 |
+| 2025 | [nginx_2025_cves.json](./nginx/2025/nginx_2025_cves.json) | 4 | 2026-04-29 |
+| 2026 | [nginx_2026_cves.json](./nginx/2026/nginx_2026_cves.json) | 6 | 2026-04-29 |
 
 ### TOMCAT
 
 | Year | Download | CVEs | Last Updated |
 |:----:|:--------:|:----:|:------------:|
-| 2024 | [tomcat_2024_cves.json](./tomcat/2024/tomcat_2024_cves.json) | 2 | 2026-04-02 |
-| 2025 | [tomcat_2025_cves.json](./tomcat/2025/tomcat_2025_cves.json) | 13 | 2026-04-02 |
-| 2026 | [tomcat_2026_cves.json](./tomcat/2026/tomcat_2026_cves.json) | 13 | 2026-04-02 |
+| 2024 | [tomcat_2024_cves.json](./tomcat/2024/tomcat_2024_cves.json) | 2 | 2026-04-29 |
+| 2025 | [tomcat_2025_cves.json](./tomcat/2025/tomcat_2025_cves.json) | 13 | 2026-04-29 |
+| 2026 | [tomcat_2026_cves.json](./tomcat/2026/tomcat_2026_cves.json) | 13 | 2026-04-29 |
 
 ## License
 

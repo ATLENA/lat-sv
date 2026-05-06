@@ -1,0 +1,414 @@
+{
+    "CVE-LIST": [
+        {
+            "CVE-ID": "CVE-2025-32023",
+            "affected_versions": [
+                "7.0.0 to 7.2.9",
+                "7.4-rc1 to 7.4.4",
+                "8.0.0 to 8.0.2"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "NIST: NVD",
+                    "Score": "Base Score: 7.8 HIGH",
+                    "Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "GitHub, Inc.",
+                    "Score": "Base Score: 7.0 HIGH",
+                    "Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-680",
+                    "CWE Name": "Integer Overflow to Buffer Overflow",
+                    "Source": "GitHub, Inc."
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "7.2.10",
+                        "7.4.5",
+                        "8.0.3"
+                    ]
+                }
+            ],
+            "summary": "hyperloglog 명령어에서 범위를 벗어난 쓰기로 인해 원격 코드 실행이 발생할 수 있는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "인증된 사용자가 특수하게 조작된 문자열을 사용하여 hyperloglog 연산에서 스택 또는 힙 영역의 범위를 벗어난 쓰기를 유발할 수 있으며, 이로 인해 원격 코드 실행으로 이어질 수 있는 취약점입니다. 이 버그는 hyperloglog 연산이 구현된 모든 Redis 버전에 영향을 줄 가능성이 있습니다.",
+            "published_date": "2025-07-07",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/redis/2025/CVE-2025-32023.md",
+            "instance_type": "REDIS"
+        },
+        {
+            "CVE-ID": "CVE-2025-46818",
+            "affected_versions": [
+                "7.0.0 to 8.2.1"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "NIST: NVD",
+                    "Score": "Base Score: 7.3 HIGH",
+                    "Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "GitHub, Inc.",
+                    "Score": "Base Score: 6.0 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-94",
+                    "CWE Name": "Improper Control of Generation of Code ('Code Injection')",
+                    "Source": "GitHub, Inc."
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "8.2.2"
+                    ]
+                }
+            ],
+            "summary": "인증된 사용자가 다른 사용자 권한으로 Lua 스크립트를 실행할 수 있는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "인증된 사용자가 특수하게 조작된 Lua 스크립트를 사용하여 여러 Lua 객체를 조작하고, 다른 사용자 컨텍스트에서 자신의 코드를 실행할 수 있는 취약점입니다. 이 문제는 Lua 스크립팅 기능이 포함된 모든 Redis 버전에 존재합니다.",
+            "published_date": "2025-10-03",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/redis/2025/CVE-2025-46818.md",
+            "instance_type": "REDIS"
+        },
+        {
+            "CVE-ID": "CVE-2025-46817",
+            "affected_versions": [
+                "7.0.0 to 8.2.1"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "NIST: NVD",
+                    "Score": "Base Score: 8.8 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "GitHub, Inc.",
+                    "Score": "Base Score: 7.0 HIGH",
+                    "Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-190",
+                    "CWE Name": "Integer Overflow or Wraparound",
+                    "Source": "GitHub, Inc."
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "8.2.2"
+                    ]
+                }
+            ],
+            "summary": "Lua 라이브러리 명령어에서 정수 오버플로우 및 원격 코드 실행이 발생할 수 있는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "인증된 사용자가 특수하게 조작된 Lua 스크립트를 사용하여 정수 오버플로우를 유발할 수 있으며, 이로 인해 원격 코드 실행으로 이어질 수 있는 취약점입니다.",
+            "published_date": "2025-10-03",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/redis/2025/CVE-2025-46817.md",
+            "instance_type": "REDIS"
+        },
+        {
+            "CVE-ID": "CVE-2025-21605",
+            "affected_versions": [
+                "7.0.0 to 7.4.2"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "GitHub, Inc.",
+                    "Score": "Base Score: 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-770",
+                    "CWE Name": "Allocation of Resources Without Limits or Throttling",
+                    "Source": "GitHub, Inc."
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "7.4.3"
+                    ]
+                }
+            ],
+            "summary": "인증되지 않은 클라이언트에 의해 출력 버퍼가 무제한으로 증가하여 서비스 거부(DoS)가 발생할 수 있는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "인증되지 않은 클라이언트가 출력 버퍼를 무제한으로 증가시켜 서버의 메모리가 고갈되거나 프로세스가 종료될 수 있는 취약점입니다. 기본적으로 Redis 설정에서는 일반 클라이언트의 출력 버퍼 크기를 제한하지 않습니다(client-output-buffer-limit 참고). 따라서 시간이 지남에 따라 출력 버퍼가 무제한으로 증가할 수 있으며, 그 결과 서비스 자원이 고갈되고 메모리를 사용할 수 없게 됩니다. Redis 서버에서 비밀번호 인증이 활성화되어 있더라도 비밀번호가 제공되지 않은 경우, 클라이언트는 \"NOAUTH\" 응답을 통해 출력 버퍼를 계속 증가시켜 시스템 메모리를 고갈시킬 수 있습니다.",
+            "published_date": "2025-04-23",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/redis/2025/CVE-2025-21605.md",
+            "instance_type": "REDIS"
+        },
+        {
+            "CVE-ID": "CVE-2025-48367",
+            "affected_versions": [
+                "7.0.0 to 7.2.9",
+                "7.4-rc1 to 7.4.4",
+                "8.0.0 to 8.0.2"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "GitHub, Inc.",
+                    "Score": "Base Score: 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-770",
+                    "CWE Name": "Allocation of Resources Without Limits or Throttling",
+                    "Source": "GitHub, Inc."
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "7.2.10",
+                        "7.4.5",
+                        "8.0.3"
+                    ]
+                }
+            ],
+            "summary": "잘못된 연결 오류 처리로 인해 서비스 거부(DoS)가 발생할 수 있는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "인증되지 않은 연결이 반복적인 IP 프로토콜 오류를 유발하여 클라이언트 처리 지연(client starvation)을 발생시키고, 결국 서비스 거부(DoS)로 이어질 수 있는 취약점입니다.",
+            "published_date": "2025-07-07",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/redis/2025/CVE-2025-48367.md",
+            "instance_type": "REDIS"
+        },
+        {
+            "CVE-ID": "CVE-2025-27151",
+            "affected_versions": [
+                "7.0.0 to 8.0.1"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "NIST: NVD",
+                    "Score": "Base Score: 9.8 CRITICAL",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "GitHub, Inc.",
+                    "Score": "Base Score: 4.7 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-20",
+                    "CWE Name": "Improper Input Validation",
+                    "Source": "GitHub, Inc."
+                },
+                {
+                    "CWE-ID": "CWE-121",
+                    "CWE Name": "Stack-based Buffer Overflow",
+                    "Source": "GitHub, Inc."
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "8.0.2"
+                    ]
+                }
+            ],
+            "summary": "redis-check-aof에서 스택 오버플로우 및 원격 코드 실행이 발생할 수 있는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "사용자가 제공한 파일 경로를 고정 크기의 스택 버퍼에 복사하는 과정에서 strlen(filepath)와 함께 memcpy를 사용하여 redis-check-aof에 스택 기반 버퍼 오버플로우가 발생하는 취약점입니다. 이로 인해 공격자가 스택 오버플로우를 유발하고 잠재적으로 코드 실행을 수행할 수 있습니다.",
+            "published_date": "2025-05-29",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/redis/2025/CVE-2025-27151.md",
+            "instance_type": "REDIS"
+        },
+        {
+            "CVE-ID": "CVE-2025-62507",
+            "affected_versions": [
+                "8.2.0 to 8.2.2"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "GitHub, Inc.",
+                    "Score": "Base Score: 8.8 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-787",
+                    "CWE Name": "Out-of-bounds Write",
+                    "Source": "NIST"
+                },
+                {
+                    "CWE-ID": "CWE-20",
+                    "CWE Name": "Improper Input Validation",
+                    "Source": "GitHub, Inc."
+                },
+                {
+                    "CWE-ID": "CWE-121",
+                    "CWE Name": "Stack-based Buffer Overflow",
+                    "Source": "GitHub, Inc."
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "8.2.3"
+                    ]
+                }
+            ],
+            "summary": "XACKDEL 명령어의 버그로 인해 스택 오버플로우 및 원격 코드 실행이 발생할 수 있는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "사용자가 여러 개의 ID를 포함하여 XACKDEL 명령어를 실행할 경우 스택 버퍼 오버플로우가 발생할 수 있으며, 이로 인해 원격 코드 실행으로 이어질 수 있는 취약점입니다.",
+            "published_date": "2025-11-04",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/redis/2025/CVE-2025-62507.md",
+            "instance_type": "REDIS"
+        },
+        {
+            "CVE-ID": "CVE-2025-46819",
+            "affected_versions": [
+                "7.0.0 to 8.2.1"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "NIST: NVD",
+                    "Score": "Base Score: 7.1 HIGH",
+                    "Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "GitHub, Inc.",
+                    "Score": "Base Score: 6.3 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-125",
+                    "CWE Name": "Out-of-bounds Read",
+                    "Source": "NIST"
+                },
+                {
+                    "CWE-ID": "CWE-190",
+                    "CWE Name": "Integer Overflow or Wraparound",
+                    "Source": "GitHub, Inc."
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "8.2.2"
+                    ]
+                }
+            ],
+            "summary": "특수하게 조작된 Lua 스크립트를 통해 서비스 거부(DoS)가 발생할 수 있는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "인증된 사용자가 특수하게 조작된 Lua 스크립트를 사용하여 범위를 벗어난 데이터를 읽거나 서버를 크래시시킬 수 있으며, 이로 인해 서비스 거부(DoS)가 발생할 수 있는 취약점입니다. 이 문제는 Lua 스크립팅 기능이 포함된 모든 Redis 버전에 존재합니다.",
+            "published_date": "2025-10-03",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/redis/2025/CVE-2025-46819.md",
+            "instance_type": "REDIS"
+        },
+        {
+            "CVE-ID": "CVE-2025-49844",
+            "affected_versions": [
+                "7.0.0 to 8.2.1"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "GitHub, Inc.",
+                    "Score": "Base Score: 9.9 CRITICAL",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-416",
+                    "CWE Name": "Use After Free",
+                    "Source": "GitHub, Inc."
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "8.2.2"
+                    ]
+                }
+            ],
+            "summary": "Lua Use-After-Free로 인해 원격 코드 실행이 발생할 수 있는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "인증된 사용자가 특수하게 조작된 Lua 스크립트를 사용하여 가비지 컬렉터를 조작하고 use-after-free를 유발할 수 있으며, 이로 인해 원격 코드 실행으로 이어질 수 있는 취약점입니다. 이 문제는 Lua 스크립팅 기능이 포함된 모든 Redis 버전에 존재합니다.",
+            "published_date": "2025-10-03",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/redis/2025/CVE-2025-49844.md",
+            "instance_type": "REDIS"
+        },
+        {
+            "CVE-ID": "CVE-2024-51741",
+            "affected_versions": [
+                "7.0.0 to 7.2.6",
+                "7.4.0 to 7.4.1"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "GitHub, Inc.",
+                    "Score": "Base Score: 4.4 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-20",
+                    "CWE Name": "Improper Input Validation",
+                    "Source": "GitHub, Inc."
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "7.2.7",
+                        "7.4.2"
+                    ]
+                }
+            ],
+            "summary": "잘못된 ACL selector로 인해 서비스 거부(DoS)가 발생할 수 있는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "충분한 권한을 가진 인증된 사용자가 잘못된 형식의 ACL selector를 생성할 수 있으며, 해당 selector가 접근될 때 서버 패닉을 유발하여 서비스 거부(DoS)가 발생할 수 있는 취약점입니다.",
+            "published_date": "2025-01-06",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/redis/2025/CVE-2024-51741.md",
+            "instance_type": "REDIS"
+        }
+    ]
+}

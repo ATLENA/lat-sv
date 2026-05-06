@@ -1,0 +1,209 @@
+{
+    "CVE-LIST": [
+        {
+            "CVE-ID": "CVE-2024-31449",
+            "affected_versions": [
+                "7.2.0 to 7.2.5"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CNA: GitHub, Inc.",
+                    "Score": "Base Score 7.0 HIGH",
+                    "Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-20",
+                    "CWE Name": "Improper Input Validation",
+                    "Source": "GitHub, Inc."
+                },
+                {
+                    "CWE-ID": "CWE-121",
+                    "CWE Name": "Stack-based Buffer Overflow",
+                    "Source": "GitHub, Inc."
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "7.2.6"
+                    ]
+                }
+            ],
+            "summary": "Lua 스크립팅 엔진 사용하는 모든 버전에 영향을 미치는 취약점.",
+            "discoverer_information": "N/A",
+            "detailed_description": "Redis는 Lua 스크립팅 기능을 제공하며, 이를 통해 사용자 정의 스크립트를 실행할 수 있습니다. 그러나 \"bit.tohex\" 함수에 특정 인자를 전달하면 스택 버퍼 오버플로우가 발생할 수 있습니다.\n이러한 취약점을 악용하면 인증된 사용자가 악의적인 Lua 스크립트를 실행하여 서버에서 임의의 코드를 실행할 수 있습니다.",
+            "published_date": "2024-10-07",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/redis/2024/CVE-2024-31449.md",
+            "instance_type": "REDIS"
+        },
+        {
+            "CVE-ID": "CVE-2023-41056",
+            "affected_versions": [
+                "7.0.9 to 7.0.14",
+                "7.2.0 to 7.2.3"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "GitHub, Inc.",
+                    "Score": "Base Score: 8.1 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-190",
+                    "CWE Name": "Integer Overflow or Wraparound",
+                    "Source": "GitHub, Inc."
+                },
+                {
+                    "CWE-ID": "CWE-762",
+                    "CWE Name": "Mismatched Memory Management Routines",
+                    "Source": "GitHub, Inc."
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "7.0.15",
+                        "7.2.4"
+                    ]
+                }
+            ],
+            "summary": "특정 페이로드에서 정수 오버플로우가 발생하는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Redis에서 메모리 버퍼 크기 조정(resizing)을 잘못 처리하여 정수 오버플로우가 발생할 수 있으며, 이로 인해 힙 오버플로우로 이어지고 원격 코드 실행(Remote Code Execution)까지 발생할 수 있는 취약점입니다.",
+            "published_date": "2024-01-10",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/redis/2024/CVE-2023-41056.md",
+            "instance_type": "REDIS"
+        },
+        {
+            "CVE-ID": "CVE-2024-31227",
+            "affected_versions": [
+                "7.0.0 to 7.2.5",
+                "7.3.0 to 7.4.0"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "GitHub, Inc.",
+                    "Score": "Base Score: 4.4 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-20",
+                    "CWE Name": "Improper Input Validation",
+                    "Source": "GitHub, Inc."
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "7.2.6",
+                        "7.4.1"
+                    ]
+                }
+            ],
+            "summary": "잘못된 ACL selector로 인해 서비스 거부(DoS)가 발생할 수 있는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Redis에서 충분한 권한을 가진 인증된 사용자가 잘못된 형식의 ACL selector를 생성할 수 있으며, 해당 selector가 접근될 때 서버 패닉(server panic)을 유발하여 서비스 거부(DoS)가 발생할 수 있는 취약점입니다.",
+            "published_date": "2024-07-10",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/redis/2024/CVE-2024-31227.md",
+            "instance_type": "REDIS"
+        },
+        {
+            "CVE-ID": "CVE-2024-31228",
+            "affected_versions": [
+                "7.0.0 to 7.2.5",
+                "7.3.0 to 7.4.0"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "NVD",
+                    "Score": "Base Score: 6.5 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "GitHub, Inc.",
+                    "Score": "Base Score: 5.5 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-674",
+                    "CWE Name": "Uncontrolled Recursion",
+                    "Source": "GitHub, Inc."
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "7.2.6",
+                        "7.4.1"
+                    ]
+                }
+            ],
+            "summary": "제한되지 않은 패턴 매칭으로 인해 서비스 거부(DoS)가 발생할 수 있는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Redis에서 인증된 사용자가 KEYS, SCAN, PSUBSCRIBE, FUNCTION LIST, COMMAND LIST 및 ACL 정의와 같은 명령어에 대해 특수하게 조작된 긴 문자열 패턴을 사용함으로써 서비스 거부(DoS)를 유발할 수 있는 취약점입니다.매우 긴 패턴을 매칭하는 과정에서 재귀 호출이 제한 없이 발생할 수 있으며, 이로 인해 스택 오버플로우가 발생하고 프로세스가 비정상 종료될 수 있습니다.",
+            "published_date": "2024-07-10",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/redis/2024/CVE-2024-31228.md",
+            "instance_type": "REDIS"
+        },
+        {
+            "CVE-ID": "CVE-2024-46981",
+            "affected_versions": [
+                "7.2.0 to 7.2.6",
+                "7.4.0 to 7.4.1"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "NVD",
+                    "Score": "Base Score: 9.8 CRITICAL",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "GitHub, Inc.",
+                    "Score": "Base Score: 7.0 HIGH",
+                    "Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-416",
+                    "CWE Name": "Use After Free",
+                    "Source": "GitHub, Inc."
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "7.2.7",
+                        "7.4.2"
+                    ]
+                }
+            ],
+            "summary": "Lua 라이브러리 명령어를 통해 원격 코드 실행이 발생할 수 있는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Redis에서 인증된 사용자가 특수하게 조작된 Lua 스크립트를 이용해 가비지 컬렉터를 조작할 수 있으며, 이로 인해 원격 코드 실행(Remote Code Execution)이 발생할 수 있는 취약점입니다.",
+            "published_date": "2024-07-10",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/redis/2024/CVE-2024-46981.md",
+            "instance_type": "REDIS"
+        }
+    ]
+}
