@@ -1,0 +1,201 @@
+{
+    "CVE-LIST": [
+        {
+            "CVE-ID": "CVE-2026-24072",
+            "affected_versions": [
+                "0.0.0 to 2.4.66"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: CISA-ADP",
+                    "Score": "Base Score: 8.8 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-269",
+                    "CWE Name": "Improper Privilege Management",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "2.4.67"
+                    ]
+                }
+            ],
+            "summary": "Apache HTTP Server: mod_rewrite의 ap_expr을 통해 권한 상승이 가능한 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache HTTP Server 2.4.66 이하의 여러 모듈에서 발생하는 권한 상승 취약점입니다. 이 취약점으로 인해 로컬의 .htaccess 작성 권한을 가진 사용자가 httpd 프로세스의 권한으로 파일을 읽을 수 있습니다.",
+            "published_date": "2026-05-04",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2026/CVE-2026-24072.md",
+            "instance_type": "APACHE"
+        },
+        {
+            "CVE-ID": "CVE-2026-28780",
+            "affected_versions": [
+                "0.0.0 to 2.4.66"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: CISA-ADP",
+                    "Score": "Base Score: 9.8 CRITICAL",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: redhat-SADP",
+                    "Score": "Base Score: 8.1 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-122",
+                    "CWE Name": "Heap-based Buffer Overflow",
+                    "Source": "Apache Software Foundation"
+                },
+                {
+                    "CWE-ID": "CWE-787",
+                    "CWE Name": "Out-of-bounds Write",
+                    "Source": "redhat-SADP"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "2.4.67"
+                    ]
+                }
+            ],
+            "summary": "Apache HTTP Server: ajp_msg_check_header()를 통한 mod_proxy_ajp의 버퍼 오버플로우 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache HTTP Server의 mod_proxy_ajp 모듈에서 발생하는 힙 기반 버퍼 오버플로우(Heap-based Buffer Overflow) 취약점입니다. mod_proxy_ajp가 악의적인 AJP 서버에 연결될 경우, 해당 서버는 조작된 AJP 메시지를 mod_proxy_ajp로 전송할 수 있습니다. 공격자는 조작된 AJP 메시지를 통해 버퍼 범위를 벗어난 메모리 영역에 자신이 지정한 4바이트 데이터를 기록할 수 있습니다. 이로 인해 힙 기반 버퍼 오버플로우가 발생할 수 있습니다.",
+            "published_date": "2026-05-05",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2026/CVE-2026-28780.md",
+            "instance_type": "APACHE"
+        },
+        {
+            "CVE-ID": "CVE-2026-29170",
+            "affected_versions": [
+                "0.0.0 to 2.4.67"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: CISA-ADP",
+                    "Score": "Base Score: 6.1 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-79",
+                    "CWE Name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "2.4.68"
+                    ]
+                }
+            ],
+            "summary": "Apache HTTP Server: mod_proxy_ftp의 크로스 사이트 스크립팅(XSS) 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache HTTP Server 2.4.67 이하 버전의 mod_proxy_ftp 모듈에서 FTP 디렉터리 목록을 HTML로 생성하는 과정 중 발생하는 크로스 사이트 스크립팅(Cross-site Scripting, XSS) 취약점입니다.이 취약점은 정방향 프록시 또는 역방향 프록시 구성으로 FTP 디렉터리의 내용을 조회할 때 발생할 수 있습니다.",
+            "published_date": "2026-06-08",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2026/CVE-2026-29170.md",
+            "instance_type": "APACHE"
+        },
+        {
+            "CVE-ID": "CVE-2026-29167",
+            "affected_versions": [
+                "2.4.0 to 2.4.67"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: CISA-ADP",
+                    "Score": "Base Score: 9.8 CRITICAL",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-416",
+                    "CWE Name": "Use After Free",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "2.4.68"
+                    ]
+                }
+            ],
+            "summary": "Apache HTTP Server: 디렉터리별(per-directory) 설정에서 mod_ldap의 Use-After-Free 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache HTTP Server에서 mod_ldap 모듈을 디렉터리별(per-directory) 설정으로 사용할 경우 발생하는 Use-After-Free 취약점입니다.이 취약점으로 인해 이미 해제된 메모리에 접근하는 문제가 발생할 수 있으며, 메모리 손상이나 Apache HTTP Server의 비정상 종료, 또는 원격 코드 실행(Remote Code Execution, RCE)으로 이어질 가능성이 있습니다.",
+            "published_date": "2026-06-08",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2026/CVE-2026-29167.md",
+            "instance_type": "APACHE"
+        },
+        {
+            "CVE-ID": "CVE-2026-23918",
+            "affected_versions": [
+                "2.4.66"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: CISA-ADP",
+                    "Score": "Base Score: 8.8 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: redhat-SADP",
+                    "Score": "Base Score: 8.8 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-415",
+                    "CWE Name": "Double Free",
+                    "Source": "Apache Software Foundation"
+                },
+                {
+                    "CWE-ID": "CWE-1341",
+                    "CWE Name": "Multiple Releases of Same Resource or Handle",
+                    "Source": "redhat-SADP"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "2.4.67"
+                    ]
+                }
+            ],
+            "summary": "Apache HTTP Server: HTTP/2 프로토콜에서 조기 연결 종료(Early Reset) 시 이중 해제(Double Free)로 인해 원격 코드 실행(RCE)이 발생할 수 있는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache HTTP Server의 HTTP/2 프로토콜에서 조기 연결 종료(Early Reset) 처리 과정 중 이중 해제(Double Free)가 발생할 수 있는 취약점입니다.이 취약점으로 인해 원격 코드 실행(Remote Code Execution, RCE)이 발생할 가능성이 있습니다.",
+            "published_date": "2026-05-04",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2026/CVE-2026-23918.md",
+            "instance_type": "APACHE"
+        }
+    ]
+}

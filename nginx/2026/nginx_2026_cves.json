@@ -1,23 +1,29 @@
 {
     "CVE-LIST": [
         {
-            "CVE-ID": "CVE-2026-27654",
+            "CVE-ID": "CVE-2026-9256",
             "affected_versions": [
-                "1.29.0 to 1.29.6",
-                "0.5.13 to 1.28.2"
+                "1.31.0",
+                "1.30.0 to 1.30.1"
             ],
             "severity": [
                 {
                     "Metrics": "CVSS Version 4.0",
                     "Source": "CNA: F5 Networks",
-                    "Score": "CVSS-B: 8.8 HIGH",
-                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N"
+                    "Score": "CVSS-B: 9.2 CRITICAL",
+                    "Vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
                 },
                 {
-                    "Metrics": "CVSS Version 3.x",
+                    "Metrics": "CVSS Version 3.0",
                     "Source": "CNA: F5 Networks",
-                    "Score": "Base Score: 8.2 HIGH",
-                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H"
+                    "Score": "Base Score: 8.1 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                },
+                {
+                    "Metrics": "CVSS Version 3.0",
+                    "Source": "ADP: redhat-SADP",
+                    "Score": "Base Score: 8.1 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
                 }
             ],
             "identification_information": [
@@ -31,21 +37,21 @@
                 {
                     "Method": "upgrade engine",
                     "Detail": [
-                        "1.29.7"
+                        "1.31.1"
                     ]
                 },
                 {
                     "Method": "upgrade engine",
                     "Detail": [
-                        "1.28.3"
+                        "1.30.2"
                     ]
                 }
             ],
-            "summary": "NGINX ngx_http_dav_module 모듈의 취약점",
+            "summary": "NGINX ngx_http_rewrite_module에서 발생하는 힙 기반 버퍼 오버플로우 취약점",
             "discoverer_information": "N/A",
-            "detailed_description": "NGINX Open Source의 ngx_http_dav_module 모듈에는 공격자가 NGINX 워커 프로세스에서 버퍼 오버플로우를 유발할 수 있는 취약점이 존재합니다. 이 취약점으로 인해 NGINX 워커 프로세스가 종료되거나, 문서 루트(document root) 외부의 소스 또는 대상 파일 이름이 변경될 수 있습니다. 이 문제는 설정 파일에서 DAV 모듈의 MOVE 또는 COPY 메서드를 사용하고, prefix location(정규식이 아닌 location 설정)과 alias 지시어를 사용하는 경우 영향을 미칩니다. NGINX 워커 프로세스는 낮은 권한으로 실행되며 시스템 전체에 대한 접근 권한이 없기 때문에 무결성 영향은 제한적입니다.",
-            "published_date": "2026-03-24",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-27654.md",
+            "detailed_description": "NGINX Open Source의 ngx_http_rewrite_module에서 발생하는 취약점입니다.이 취약점은 rewrite 지시어에서 서로 겹치는 이름 없는 Perl 호환 정규식(PCRE) 캡처(예: ^/((.*))$)를 사용하고, 리디렉션 또는 쿼리 문자열(arguments) 처리 시 이러한 캡처를 여러 개 참조하는 치환 문자열(예: $1$2)을 사용하는 경우 발생할 수 있습니다.이러한 구성에서 인증되지 않은 공격자가 조작된 HTTP 요청을 전송하고, 공격자가 제어할 수 없는 특정 조건이 함께 충족되면 취약점을 악용할 수 있습니다.그 결과 NGINX worker 프로세스에서 힙 기반 버퍼 오버플로우가 발생하여 프로세스가 재시작될 수 있습니다.또한 주소 공간 배치 난수화(Address Space Layout Randomization, ASLR)가 비활성화된 시스템이나 공격자가 ASLR을 우회할 수 있는 환경에서는 임의 코드 실행으로 이어질 수 있습니다.참고: 기술 지원이 종료된(End of Technical Support, EoTS) 소프트웨어 버전은 평가 대상에 포함되지 않습니다.",
+            "published_date": "2026-05-22",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-9256.md",
             "instance_type": "NGINX"
         },
         {
@@ -97,6 +103,182 @@
             "instance_type": "NGINX"
         },
         {
+            "CVE-ID": "CVE-2026-27654",
+            "affected_versions": [
+                "1.29.0 to 1.29.6",
+                "0.5.13 to 1.28.2"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 8.8 HIGH",
+                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 8.2 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-122",
+                    "CWE Name": "Heap-based Buffer Overflow",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.29.7"
+                    ]
+                },
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.28.3"
+                    ]
+                }
+            ],
+            "summary": "NGINX ngx_http_dav_module 모듈의 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX Open Source의 ngx_http_dav_module 모듈에는 공격자가 NGINX 워커 프로세스에서 버퍼 오버플로우를 유발할 수 있는 취약점이 존재합니다. 이 취약점으로 인해 NGINX 워커 프로세스가 종료되거나, 문서 루트(document root) 외부의 소스 또는 대상 파일 이름이 변경될 수 있습니다. 이 문제는 설정 파일에서 DAV 모듈의 MOVE 또는 COPY 메서드를 사용하고, prefix location(정규식이 아닌 location 설정)과 alias 지시어를 사용하는 경우 영향을 미칩니다. NGINX 워커 프로세스는 낮은 권한으로 실행되며 시스템 전체에 대한 접근 권한이 없기 때문에 무결성 영향은 제한적입니다.",
+            "published_date": "2026-03-24",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-27654.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2026-40460",
+            "affected_versions": [
+                "1.26.0 to 1.30.1"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 6.9 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-290",
+                    "CWE Name": "Authentication Bypass by Spoofing",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.31.0"
+                    ]
+                }
+            ],
+            "summary": "NGINX ngx_quic_module에서 발생하는 IP 주소 스푸핑 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX Open Source에서 HTTP/3 QUIC 모듈을 사용하도록 구성한 경우, 공격자가 자신의 출발지 IP 주소를 위조할 수 있는 취약점입니다.공격자는 위조한 IP 주소를 이용하여 인가 절차를 우회하거나 요청 속도 제한을 우회할 수 있습니다.참고: 기술 지원이 종료된(End of Technical Support, EoTS) 소프트웨어 버전은 평가 대상에 포함되지 않습니다.",
+            "published_date": "2026-05-13",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-40460.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2026-42934",
+            "affected_versions": [
+                "0.3.50 to 1.30.0"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 6.3 MEDIUM",
+                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 4.8 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:L"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-125",
+                    "CWE Name": "Out-of-bounds Read",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.30.1"
+                    ]
+                },
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.31.0"
+                    ]
+                }
+            ],
+            "summary": "NGINX ngx_http_charset_module에서 발생하는 범위를 벗어난 메모리 읽기 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX Open Source의 ngx_http_charset_module에서 발생하는 취약점입니다.charset, source_charset, charset_map 지시어가 설정되어 있고, proxy_pass와 함께 버퍼링이 비활성화된(\"off\") 구성을 사용하는 경우 영향을 받을 수 있습니다.이러한 구성에서 인증되지 않은 공격자가 요청을 전송하고, 공격자가 제어할 수 없는 특정 조건이 함께 충족되면 NGINX worker 프로세스에서 힙 버퍼의 범위를 벗어난 읽기(Heap Buffer Over-read)가 발생할 수 있습니다.이로 인해 메모리의 일부 정보가 노출되거나 NGINX worker 프로세스가 재시작될 수 있습니다.참고: 기술 지원이 종료된(End of Technical Support, EoTS) 소프트웨어 버전은 평가 대상에 포함되지 않습니다.",
+            "published_date": "2026-05-13",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-42934.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2026-1642",
+            "affected_versions": [
+                "1.3.0 to 1.29.4"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 8.2 HIGH",
+                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 5.9 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-345",
+                    "CWE Name": "Insufficient Verification of Data Authenticity",
+                    "Source": "NIST"
+                },
+                {
+                    "CWE-ID": "CWE-349",
+                    "CWE Name": "Acceptance of Extraneous Untrusted Data With Trusted Data",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.28.2"
+                    ]
+                }
+            ],
+            "summary": "NGINX가 upstream TLS 서버로 프록시하도록 구성된 경우, 특정 man-in-the-middle(MITM) 조건에서 응답에 평문 데이터를 주입할 수 있는 취약점이 존재합니다.",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX OSS 및 NGINX Plus가 upstream Transport Layer Security(TLS) 서버로 프록시하도록 구성된 경우 취약점이 존재합니다.\n공격자가 upstream 서버 연결 구간에서 man-in-the-middle (MITM) 위치에 있으며, 공격자가 통제할 수 없는 특정 조건이 함께 충족될 경우 upstream 프록시 서버로부터 반환되는 응답에 평문 데이터를 주입할 수 있습니다.",
+            "published_date": "2026-02-04",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-1642.md",
+            "instance_type": "NGINX"
+        },
+        {
             "CVE-ID": "CVE-2026-27651",
             "affected_versions": [
                 "1.29.0 to 1.29.6",
@@ -142,6 +324,259 @@
             "detailed_description": "NGINX Open Source에서 ngx_mail_auth_http_module 모듈이 활성화된 경우, 공개되지 않은 요청으로 인해 워커 프로세스가 종료될 수 있습니다. 이 문제는 CRAM-MD5 또는 APOP 인증이 활성화되어 있고, 인증 서버가 Auth-Wait 응답 헤더를 반환하여 재시도를 허용하는 경우 발생할 수 있습니다.",
             "published_date": "2026-03-24",
             "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-27651.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2026-40701",
+            "affected_versions": [
+                "1.19.0 to 1.30.0"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 6.3 MEDIUM",
+                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:L/SC:N/SI:N/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 4.8 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:L"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-416",
+                    "CWE Name": "Use After Free",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.30.1"
+                    ]
+                },
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.31.0"
+                    ]
+                }
+            ],
+            "summary": "NGINX ngx_http_ssl_module에서 발생하는 Use-After-Free 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX Open Source의 ngx_http_ssl_module에서 발생하는 Use-After-Free 취약점입니다. 이 취약점은 ssl_verify_client 지시어가 \"on\" 또는 \"optional\"로 설정되어 있고, ssl_ocsp 지시어가 \"on\"으로 설정되어 있거나 leaf 매개변수에 resolver가 구성된 경우 영향을 받을 수 있습니다.이러한 구성에서 인증되지 않은 공격자가 요청을 전송하고, 공격자가 제어할 수 없는 특정 조건이 함께 충족되면 NGINX worker 프로세스에서 힙 메모리의 Use-After-Free 오류가 발생할 수 있습니다.이로 인해 일부 데이터가 변조되거나 NGINX worker 프로세스가 재시작될 수 있습니다.참고: 기술 지원이 종료된(End of Technical Support, EoTS) 소프트웨어 버전은 평가 대상에 포함되지 않습니다.",
+            "published_date": "2026-05-13",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-40701.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2026-48142",
+            "affected_versions": [
+                "1.13.10 to 1.31.1",
+                "1.30.0 to 1.30.2"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 6.3 MEDIUM",
+                    "Vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:L/SC:N/SI:N/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 4.8 MEIDUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:L"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-125",
+                    "CWE Name": "Out-of-bounds Read",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.31.2"
+                    ]
+                },
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.30.3"
+                    ]
+                }
+            ],
+            "summary": "NGINX ngx_http_charset_module에서 발생하는 범위를 벗어난 메모리 읽기 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX Plus 및 NGINX Open Source의 ngx_http_charset_module에서 발생하는 취약점입니다.콘텐츠를 제공하거나 프록시하는 location 블록에 source_charset utf-8;과 문자셋을 지정하는 지시어(예: charset koi8-r;)가 함께 설정된 경우 영향을 받을 수 있습니다.이러한 구성에서 원격의 인증되지 않은 공격자가 요청을 전송하고, 공격자가 제어할 수 없는 특정 조건이 함께 충족되면 NGINX worker 프로세스에서 힙 버퍼의 범위를 벗어난 읽기(Heap Buffer Over-read)가 발생할 수 있습니다.이로 인해 메모리의 일부 정보가 노출되거나 NGINX worker 프로세스가 재시작될 수 있습니다.참고: 기술 지원이 종료된(End of Technical Support, EoTS) 소프트웨어 버전은 평가 대상에 포함되지 않습니다.",
+            "published_date": "2026-06-17",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-48142.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2026-42926",
+            "affected_versions": [
+                "1.29.4 to 1.30.0"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 6.3 MEDIUM",
+                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 5.8 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:L/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-172",
+                    "CWE Name": "Encoding Error",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.30.1"
+                    ]
+                },
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.31.0"
+                    ]
+                }
+            ],
+            "summary": "NGINX ngx_http_proxy_v2_module에서 HTTP/2 프록시 요청 조작이 가능한 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX Open Source에서 proxy_http_version을 2로 설정하여 HTTP/2 요청을 업스트림 서버로 전달하도록 구성하고, 동시에 proxy_set_body를 사용하는 경우 발생하는 취약점입니다.이러한 구성에서 공격자는 업스트림 서버로 전달되는 HTTP/2 프레임 헤더와 페이로드에 임의의 데이터를 주입할 수 있습니다. 이로 인해 업스트림 서버가 의도하지 않은 요청을 처리하거나 데이터 무결성이 훼손될 수 있습니다.참고: 기술 지원이 종료된(End of Technical Support, EoTS) 소프트웨어 버전은 평가 대상에 포함되지 않습니다.",
+            "published_date": "2026-05-13",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-42926.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2026-42055",
+            "affected_versions": [
+                "1.13.10 to 1.31.1",
+                "1.30.2"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 9.2 CRITICAL",
+                    "Vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 8.1 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                },
+                {
+                    "Metrics": "CVSS Version 3.0",
+                    "Source": "ADP: redhat-SADP",
+                    "Score": "Base Score: 8.1 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-787",
+                    "CWE Name": "Out-of-bounds Write",
+                    "Source": "NIST"
+                },
+                {
+                    "CWE-ID": "CWE-122",
+                    "CWE Name": "Heap-based Buffer Overflow",
+                    "Source": "F5 Networks"
+                },
+                {
+                    "CWE-ID": "CWE-131",
+                    "CWE Name": "Incorrect Calculation of Buffer Size",
+                    "Source": "redhat-SADP"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.31.2"
+                    ]
+                },
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.30.3"
+                    ]
+                }
+            ],
+            "summary": "NGINX ngx_http_proxy_v2_module 및 ngx_http_grpc_module에서 발생하는 힙 기반 버퍼 오버플로우 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX Open Source의 ngx_http_proxy_v2_module 및 ngx_http_grpc_module에서 발생하는 취약점입니다.이 취약점은 proxy_http_version을 2로 설정하거나 grpc_pass 지시어를 사용하여 HTTP/2 요청을 업스트림 서버로 전달하는 환경에서 발생할 수 있습니다. 또한 ignore_invalid_headers 지시어가 off로 설정되어 있고, large_client_header_buffers 지시어의 버퍼 크기가 2MB보다 크게 설정된 경우 영향을 받을 수 있습니다.이러한 구성에서 원격의 인증되지 않은 공격자가 업스트림 요청이 생성되는 과정에서 큰 크기의 헤더를 전송하고, 공격자가 제어할 수 없는 특정 조건이 함께 충족되면 취약점을 악용할 수 있습니다.그 결과 NGINX worker 프로세스에서 힙 기반 버퍼 오버플로우가 발생하여 프로세스가 재시작될 수 있습니다.또한 주소 공간 배치 난수화(Address Space Layout Randomization, ASLR)가 비활성화된 시스템이나 공격자가 ASLR을 우회할 수 있는 환경에서는 임의 코드 실행으로 이어질 수 있습니다.참고: 기술 지원이 종료된(End of Technical Support, EoTS) 소프트웨어 버전은 평가 대상에 포함되지 않습니다.",
+            "published_date": "2026-06-17",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-42055.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2026-42530",
+            "affected_versions": [
+                "1.31.0 to 1.31.1"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 9.2 CRITICAL",
+                    "Vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 8.1 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                },
+                {
+                    "Metrics": "CVSS Version 3.0",
+                    "Source": "ADP: redhat-SADP",
+                    "Score": "Base Score: 8.1 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-416",
+                    "CWE Name": "Use After Free",
+                    "Source": "F5 Networks redhat-SADP"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.31.2"
+                    ]
+                }
+            ],
+            "summary": "NGINX Open Source의 ngx_http_v3_module에서 발생하는 Use-After-Free 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX Open Source의 ngx_http_v3_module에서 발생하는 취약점입니다.NGINX Open Source에서 HTTP/3 QUIC 모듈을 사용하도록 구성한 경우 영향을 받을 수 있습니다. 이러한 환경에서 원격의 인증되지 않은 공격자가 특수하게 조작된 HTTP/3 세션을 전송하고, 공격자가 제어할 수 없는 특정 조건이 함께 충족되면 QPACK encoder stream을 다시 열 수 있습니다.이로 인해 NGINX worker 프로세스에서 Use-After-Free 오류가 발생하여 프로세스가 재시작될 수 있습니다.또한 주소 공간 배치 난수화(Address Space Layout Randomization, ASLR)가 비활성화된 시스템이나 공격자가 ASLR을 우회할 수 있는 환경에서는 임의 코드 실행으로 이어질 수 있습니다.참고: 기술 지원이 종료된(End of Technical Support, EoTS) 소프트웨어 버전은 평가 대상에 포함되지 않습니다.",
+            "published_date": "2026-06-17",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-42530.md",
             "instance_type": "NGINX"
         },
         {
@@ -247,49 +682,61 @@
             "instance_type": "NGINX"
         },
         {
-            "CVE-ID": "CVE-2026-1642",
+            "CVE-ID": "CVE-2026-42945",
             "affected_versions": [
-                "1.3.0 to 1.29.4"
+                "0.6.27 to 1.30.0"
             ],
             "severity": [
                 {
                     "Metrics": "CVSS Version 4.0",
                     "Source": "CNA: F5 Networks",
-                    "Score": "CVSS-B: 8.2 HIGH",
-                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N"
+                    "Score": "CVSS-B: 9.2 CRITICAL",
+                    "Vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
                 },
                 {
-                    "Metrics": "CVSS Version 3.x",
+                    "Metrics": "CVSS Version 3.0",
                     "Source": "CNA: F5 Networks",
-                    "Score": "Base Score: 5.9 MEDIUM",
-                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N"
+                    "Score": "Base Score: 8.1 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                },
+                {
+                    "Metrics": "CVSS Version 3.0",
+                    "Source": "ADP: redhat-SADP",
+                    "Score": "Base Score: 8.1 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
                 }
             ],
             "identification_information": [
                 {
-                    "CWE-ID": "CWE-345",
-                    "CWE Name": "Insufficient Verification of Data Authenticity",
-                    "Source": "NIST"
+                    "CWE-ID": "CWE-122",
+                    "CWE Name": "Heap-based Buffer Overflow",
+                    "Source": "F5 Networks"
                 },
                 {
-                    "CWE-ID": "CWE-349",
-                    "CWE Name": "Acceptance of Extraneous Untrusted Data With Trusted Data",
-                    "Source": "F5 Networks"
+                    "CWE-ID": "CWE-131",
+                    "CWE Name": "Incorrect Calculation of Buffer Size",
+                    "Source": "redhat-SADP"
                 }
             ],
             "mitigation_methods": [
                 {
                     "Method": "upgrade engine",
                     "Detail": [
-                        "1.28.2"
+                        "1.30.1"
+                    ]
+                },
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.31.0"
                     ]
                 }
             ],
-            "summary": "NGINX가 upstream TLS 서버로 프록시하도록 구성된 경우, 특정 man-in-the-middle(MITM) 조건에서 응답에 평문 데이터를 주입할 수 있는 취약점이 존재합니다.",
+            "summary": "NGINX ngx_http_rewrite_module에서 발생하는 힙 기반 버퍼 오버플로우 취약점",
             "discoverer_information": "N/A",
-            "detailed_description": "NGINX OSS 및 NGINX Plus가 upstream Transport Layer Security(TLS) 서버로 프록시하도록 구성된 경우 취약점이 존재합니다.\n공격자가 upstream 서버 연결 구간에서 man-in-the-middle (MITM) 위치에 있으며, 공격자가 통제할 수 없는 특정 조건이 함께 충족될 경우 upstream 프록시 서버로부터 반환되는 응답에 평문 데이터를 주입할 수 있습니다.",
-            "published_date": "2026-02-04",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-1642.md",
+            "detailed_description": "NGINX Open Source의 ngx_http_rewrite_module에서 발생하는 취약점입니다.이 취약점은 rewrite 지시어 뒤에 또 다른 rewrite, if 또는 set 지시어가 이어지고, 이름이 지정되지 않은 Perl 호환 정규식(PCRE) 캡처(예: $1, $2)와 물음표(?)가 포함된 치환 문자열을 함께 사용하는 경우 발생할 수 있습니다.이러한 구성에서 인증되지 않은 공격자가 조작된 HTTP 요청을 전송하고, 공격자가 제어할 수 없는 특정 조건이 함께 충족되면 취약점을 악용할 수 있습니다.그 결과 NGINX worker 프로세스에서 힙 기반 버퍼 오버플로우가 발생하여 프로세스가 재시작될 수 있습니다.또한 주소 공간 배치 난수화(Address Space Layout Randomization, ASLR)가 비활성화된 시스템이나 공격자가 ASLR을 우회할 수 있는 환경에서는 임의 코드 실행으로 이어질 수 있습니다.참고: 기술 지원이 종료된(End of Technical Support, EoTS) 소프트웨어 버전은 평가 대상에 포함되지 않습니다.",
+            "published_date": "2026-05-13",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-42945.md",
             "instance_type": "NGINX"
         }
     ]
