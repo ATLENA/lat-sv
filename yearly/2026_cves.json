@@ -1,761 +1,26 @@
 {
     "CVE-LIST": [
         {
-            "CVE-ID": "CVE-2026-9256",
+            "CVE-ID": "CVE-2026-55956",
             "affected_versions": [
-                "1.31.0",
-                "1.30.0 to 1.30.1"
-            ],
-            "severity": [
-                {
-                    "Metrics": "CVSS Version 4.0",
-                    "Source": "CNA: F5 Networks",
-                    "Score": "CVSS-B: 9.2 CRITICAL",
-                    "Vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
-                },
-                {
-                    "Metrics": "CVSS Version 3.0",
-                    "Source": "CNA: F5 Networks",
-                    "Score": "Base Score: 8.1 HIGH",
-                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
-                },
-                {
-                    "Metrics": "CVSS Version 3.0",
-                    "Source": "ADP: redhat-SADP",
-                    "Score": "Base Score: 8.1 HIGH",
-                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
-                }
-            ],
-            "identification_information": [
-                {
-                    "CWE-ID": "CWE-122",
-                    "CWE Name": "Heap-based Buffer Overflow",
-                    "Source": "F5 Networks"
-                }
-            ],
-            "mitigation_methods": [
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "1.31.1"
-                    ]
-                },
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "1.30.2"
-                    ]
-                }
-            ],
-            "summary": "NGINX ngx_http_rewrite_module에서 발생하는 힙 기반 버퍼 오버플로우 취약점",
-            "discoverer_information": "N/A",
-            "detailed_description": "NGINX Open Source의 ngx_http_rewrite_module에서 발생하는 취약점입니다.이 취약점은 rewrite 지시어에서 서로 겹치는 이름 없는 Perl 호환 정규식(PCRE) 캡처(예: ^/((.*))$)를 사용하고, 리디렉션 또는 쿼리 문자열(arguments) 처리 시 이러한 캡처를 여러 개 참조하는 치환 문자열(예: $1$2)을 사용하는 경우 발생할 수 있습니다.이러한 구성에서 인증되지 않은 공격자가 조작된 HTTP 요청을 전송하고, 공격자가 제어할 수 없는 특정 조건이 함께 충족되면 취약점을 악용할 수 있습니다.그 결과 NGINX worker 프로세스에서 힙 기반 버퍼 오버플로우가 발생하여 프로세스가 재시작될 수 있습니다.또한 주소 공간 배치 난수화(Address Space Layout Randomization, ASLR)가 비활성화된 시스템이나 공격자가 ASLR을 우회할 수 있는 환경에서는 임의 코드 실행으로 이어질 수 있습니다.참고: 기술 지원이 종료된(End of Technical Support, EoTS) 소프트웨어 버전은 평가 대상에 포함되지 않습니다.",
-            "published_date": "2026-05-22",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-9256.md",
-            "instance_type": "NGINX"
-        },
-        {
-            "CVE-ID": "CVE-2026-32647",
-            "affected_versions": [
-                "1.29.0 to 1.29.6",
-                "1.1.19 to 1.28.2"
-            ],
-            "severity": [
-                {
-                    "Metrics": "CVSS Version 4.0",
-                    "Source": "CNA: F5 Networks",
-                    "Score": "CVSS-B: 8.5 HIGH",
-                    "Vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
-                },
-                {
-                    "Metrics": "CVSS Version 3.x",
-                    "Source": "CNA: F5 Networks",
-                    "Score": "Base Score: 7.8 HIGH",
-                    "Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
-                }
-            ],
-            "identification_information": [
-                {
-                    "CWE-ID": "CWE-125",
-                    "CWE Name": "Out-of-bounds Read",
-                    "Source": "F5 Networks"
-                }
-            ],
-            "mitigation_methods": [
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "1.29.7"
-                    ]
-                },
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "1.28.3"
-                    ]
-                }
-            ],
-            "summary": "NGINX ngx_http_mp4_module 모듈의 취약점",
-            "discoverer_information": "N/A",
-            "detailed_description": "NGINX Open Source의 ngx_http_mp4_module 모듈에는, 특수하게 조작된 MP4 파일을 통해 공격자가 NGINX 워커 메모리에 대해 버퍼 과다 읽기(buffer over-read) 또는 과다 쓰기(over-write)를 유발하여 워커 프로세스를 종료시키거나, 경우에 따라 코드 실행까지 가능하게 할 수 있는 취약점이 존재합니다. 이 문제는 ngx_http_mp4_module 모듈이 포함되어 빌드되고, 설정 파일에서 mp4 지시어가 사용되는 경우 NGINX Open Source에 영향을 미칩니다. 또한, 이 공격은 공격자가 ngx_http_mp4_module 모듈을 통해 특수하게 조작된 MP4 파일의 처리를 유도할 수 있는 경우에만 가능합니다.",
-            "published_date": "2026-03-24",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-32647.md",
-            "instance_type": "NGINX"
-        },
-        {
-            "CVE-ID": "CVE-2026-27654",
-            "affected_versions": [
-                "1.29.0 to 1.29.6",
-                "0.5.13 to 1.28.2"
-            ],
-            "severity": [
-                {
-                    "Metrics": "CVSS Version 4.0",
-                    "Source": "CNA: F5 Networks",
-                    "Score": "CVSS-B: 8.8 HIGH",
-                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N"
-                },
-                {
-                    "Metrics": "CVSS Version 3.x",
-                    "Source": "CNA: F5 Networks",
-                    "Score": "Base Score: 8.2 HIGH",
-                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H"
-                }
-            ],
-            "identification_information": [
-                {
-                    "CWE-ID": "CWE-122",
-                    "CWE Name": "Heap-based Buffer Overflow",
-                    "Source": "F5 Networks"
-                }
-            ],
-            "mitigation_methods": [
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "1.29.7"
-                    ]
-                },
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "1.28.3"
-                    ]
-                }
-            ],
-            "summary": "NGINX ngx_http_dav_module 모듈의 취약점",
-            "discoverer_information": "N/A",
-            "detailed_description": "NGINX Open Source의 ngx_http_dav_module 모듈에는 공격자가 NGINX 워커 프로세스에서 버퍼 오버플로우를 유발할 수 있는 취약점이 존재합니다. 이 취약점으로 인해 NGINX 워커 프로세스가 종료되거나, 문서 루트(document root) 외부의 소스 또는 대상 파일 이름이 변경될 수 있습니다. 이 문제는 설정 파일에서 DAV 모듈의 MOVE 또는 COPY 메서드를 사용하고, prefix location(정규식이 아닌 location 설정)과 alias 지시어를 사용하는 경우 영향을 미칩니다. NGINX 워커 프로세스는 낮은 권한으로 실행되며 시스템 전체에 대한 접근 권한이 없기 때문에 무결성 영향은 제한적입니다.",
-            "published_date": "2026-03-24",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-27654.md",
-            "instance_type": "NGINX"
-        },
-        {
-            "CVE-ID": "CVE-2026-40460",
-            "affected_versions": [
-                "1.26.0 to 1.30.1"
-            ],
-            "severity": [
-                {
-                    "Metrics": "CVSS Version 3.0",
-                    "Source": "CNA: F5 Networks",
-                    "Score": "Base Score: 6.9 MEDIUM",
-                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L"
-                }
-            ],
-            "identification_information": [
-                {
-                    "CWE-ID": "CWE-290",
-                    "CWE Name": "Authentication Bypass by Spoofing",
-                    "Source": "F5 Networks"
-                }
-            ],
-            "mitigation_methods": [
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "1.31.0"
-                    ]
-                }
-            ],
-            "summary": "NGINX ngx_quic_module에서 발생하는 IP 주소 스푸핑 취약점",
-            "discoverer_information": "N/A",
-            "detailed_description": "NGINX Open Source에서 HTTP/3 QUIC 모듈을 사용하도록 구성한 경우, 공격자가 자신의 출발지 IP 주소를 위조할 수 있는 취약점입니다.공격자는 위조한 IP 주소를 이용하여 인가 절차를 우회하거나 요청 속도 제한을 우회할 수 있습니다.참고: 기술 지원이 종료된(End of Technical Support, EoTS) 소프트웨어 버전은 평가 대상에 포함되지 않습니다.",
-            "published_date": "2026-05-13",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-40460.md",
-            "instance_type": "NGINX"
-        },
-        {
-            "CVE-ID": "CVE-2026-42934",
-            "affected_versions": [
-                "0.3.50 to 1.30.0"
-            ],
-            "severity": [
-                {
-                    "Metrics": "CVSS Version 4.0",
-                    "Source": "CNA: F5 Networks",
-                    "Score": "CVSS-B: 6.3 MEDIUM",
-                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N"
-                },
-                {
-                    "Metrics": "CVSS Version 3.0",
-                    "Source": "CNA: F5 Networks",
-                    "Score": "Base Score: 4.8 MEDIUM",
-                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:L"
-                }
-            ],
-            "identification_information": [
-                {
-                    "CWE-ID": "CWE-125",
-                    "CWE Name": "Out-of-bounds Read",
-                    "Source": "F5 Networks"
-                }
-            ],
-            "mitigation_methods": [
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "1.30.1"
-                    ]
-                },
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "1.31.0"
-                    ]
-                }
-            ],
-            "summary": "NGINX ngx_http_charset_module에서 발생하는 범위를 벗어난 메모리 읽기 취약점",
-            "discoverer_information": "N/A",
-            "detailed_description": "NGINX Open Source의 ngx_http_charset_module에서 발생하는 취약점입니다.charset, source_charset, charset_map 지시어가 설정되어 있고, proxy_pass와 함께 버퍼링이 비활성화된(\"off\") 구성을 사용하는 경우 영향을 받을 수 있습니다.이러한 구성에서 인증되지 않은 공격자가 요청을 전송하고, 공격자가 제어할 수 없는 특정 조건이 함께 충족되면 NGINX worker 프로세스에서 힙 버퍼의 범위를 벗어난 읽기(Heap Buffer Over-read)가 발생할 수 있습니다.이로 인해 메모리의 일부 정보가 노출되거나 NGINX worker 프로세스가 재시작될 수 있습니다.참고: 기술 지원이 종료된(End of Technical Support, EoTS) 소프트웨어 버전은 평가 대상에 포함되지 않습니다.",
-            "published_date": "2026-05-13",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-42934.md",
-            "instance_type": "NGINX"
-        },
-        {
-            "CVE-ID": "CVE-2026-1642",
-            "affected_versions": [
-                "1.3.0 to 1.29.4"
-            ],
-            "severity": [
-                {
-                    "Metrics": "CVSS Version 4.0",
-                    "Source": "CNA: F5 Networks",
-                    "Score": "CVSS-B: 8.2 HIGH",
-                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N"
-                },
-                {
-                    "Metrics": "CVSS Version 3.x",
-                    "Source": "CNA: F5 Networks",
-                    "Score": "Base Score: 5.9 MEDIUM",
-                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N"
-                }
-            ],
-            "identification_information": [
-                {
-                    "CWE-ID": "CWE-345",
-                    "CWE Name": "Insufficient Verification of Data Authenticity",
-                    "Source": "NIST"
-                },
-                {
-                    "CWE-ID": "CWE-349",
-                    "CWE Name": "Acceptance of Extraneous Untrusted Data With Trusted Data",
-                    "Source": "F5 Networks"
-                }
-            ],
-            "mitigation_methods": [
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "1.28.2"
-                    ]
-                }
-            ],
-            "summary": "NGINX가 upstream TLS 서버로 프록시하도록 구성된 경우, 특정 man-in-the-middle(MITM) 조건에서 응답에 평문 데이터를 주입할 수 있는 취약점이 존재합니다.",
-            "discoverer_information": "N/A",
-            "detailed_description": "NGINX OSS 및 NGINX Plus가 upstream Transport Layer Security(TLS) 서버로 프록시하도록 구성된 경우 취약점이 존재합니다.\n공격자가 upstream 서버 연결 구간에서 man-in-the-middle (MITM) 위치에 있으며, 공격자가 통제할 수 없는 특정 조건이 함께 충족될 경우 upstream 프록시 서버로부터 반환되는 응답에 평문 데이터를 주입할 수 있습니다.",
-            "published_date": "2026-02-04",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-1642.md",
-            "instance_type": "NGINX"
-        },
-        {
-            "CVE-ID": "CVE-2026-27651",
-            "affected_versions": [
-                "1.29.0 to 1.29.6",
-                "0.5.15 to 1.28.2"
-            ],
-            "severity": [
-                {
-                    "Metrics": "CVSS Version 4.0",
-                    "Source": "CNA: F5 Networks",
-                    "Score": "CVSS-B: 8.7 HIGH",
-                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
-                },
-                {
-                    "Metrics": "CVSS Version 3.x",
-                    "Source": "CNA: F5 Networks",
-                    "Score": "Base Score: 7.5 HIGH",
-                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
-                }
-            ],
-            "identification_information": [
-                {
-                    "CWE-ID": "CWE-476",
-                    "CWE Name": "NULL Pointer Dereference",
-                    "Source": "F5 Networks"
-                }
-            ],
-            "mitigation_methods": [
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "1.29.7"
-                    ]
-                },
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "1.28.3"
-                    ]
-                }
-            ],
-            "summary": "NGINX ngx_mail_auth_http_module 모듈의 취약점",
-            "discoverer_information": "N/A",
-            "detailed_description": "NGINX Open Source에서 ngx_mail_auth_http_module 모듈이 활성화된 경우, 공개되지 않은 요청으로 인해 워커 프로세스가 종료될 수 있습니다. 이 문제는 CRAM-MD5 또는 APOP 인증이 활성화되어 있고, 인증 서버가 Auth-Wait 응답 헤더를 반환하여 재시도를 허용하는 경우 발생할 수 있습니다.",
-            "published_date": "2026-03-24",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-27651.md",
-            "instance_type": "NGINX"
-        },
-        {
-            "CVE-ID": "CVE-2026-40701",
-            "affected_versions": [
-                "1.19.0 to 1.30.0"
-            ],
-            "severity": [
-                {
-                    "Metrics": "CVSS Version 4.0",
-                    "Source": "CNA: F5 Networks",
-                    "Score": "CVSS-B: 6.3 MEDIUM",
-                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:L/SC:N/SI:N/SA:N"
-                },
-                {
-                    "Metrics": "CVSS Version 3.0",
-                    "Source": "CNA: F5 Networks",
-                    "Score": "Base Score: 4.8 MEDIUM",
-                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:L"
-                }
-            ],
-            "identification_information": [
-                {
-                    "CWE-ID": "CWE-416",
-                    "CWE Name": "Use After Free",
-                    "Source": "F5 Networks"
-                }
-            ],
-            "mitigation_methods": [
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "1.30.1"
-                    ]
-                },
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "1.31.0"
-                    ]
-                }
-            ],
-            "summary": "NGINX ngx_http_ssl_module에서 발생하는 Use-After-Free 취약점",
-            "discoverer_information": "N/A",
-            "detailed_description": "NGINX Open Source의 ngx_http_ssl_module에서 발생하는 Use-After-Free 취약점입니다. 이 취약점은 ssl_verify_client 지시어가 \"on\" 또는 \"optional\"로 설정되어 있고, ssl_ocsp 지시어가 \"on\"으로 설정되어 있거나 leaf 매개변수에 resolver가 구성된 경우 영향을 받을 수 있습니다.이러한 구성에서 인증되지 않은 공격자가 요청을 전송하고, 공격자가 제어할 수 없는 특정 조건이 함께 충족되면 NGINX worker 프로세스에서 힙 메모리의 Use-After-Free 오류가 발생할 수 있습니다.이로 인해 일부 데이터가 변조되거나 NGINX worker 프로세스가 재시작될 수 있습니다.참고: 기술 지원이 종료된(End of Technical Support, EoTS) 소프트웨어 버전은 평가 대상에 포함되지 않습니다.",
-            "published_date": "2026-05-13",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-40701.md",
-            "instance_type": "NGINX"
-        },
-        {
-            "CVE-ID": "CVE-2026-48142",
-            "affected_versions": [
-                "1.13.10 to 1.31.1",
-                "1.30.0 to 1.30.2"
-            ],
-            "severity": [
-                {
-                    "Metrics": "CVSS Version 4.0",
-                    "Source": "CNA: F5 Networks",
-                    "Score": "CVSS-B: 6.3 MEDIUM",
-                    "Vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:L/SC:N/SI:N/SA:N"
-                },
-                {
-                    "Metrics": "CVSS Version 3.0",
-                    "Source": "CNA: F5 Networks",
-                    "Score": "Base Score: 4.8 MEIDUM",
-                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:L"
-                }
-            ],
-            "identification_information": [
-                {
-                    "CWE-ID": "CWE-125",
-                    "CWE Name": "Out-of-bounds Read",
-                    "Source": "F5 Networks"
-                }
-            ],
-            "mitigation_methods": [
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "1.31.2"
-                    ]
-                },
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "1.30.3"
-                    ]
-                }
-            ],
-            "summary": "NGINX ngx_http_charset_module에서 발생하는 범위를 벗어난 메모리 읽기 취약점",
-            "discoverer_information": "N/A",
-            "detailed_description": "NGINX Plus 및 NGINX Open Source의 ngx_http_charset_module에서 발생하는 취약점입니다.콘텐츠를 제공하거나 프록시하는 location 블록에 source_charset utf-8;과 문자셋을 지정하는 지시어(예: charset koi8-r;)가 함께 설정된 경우 영향을 받을 수 있습니다.이러한 구성에서 원격의 인증되지 않은 공격자가 요청을 전송하고, 공격자가 제어할 수 없는 특정 조건이 함께 충족되면 NGINX worker 프로세스에서 힙 버퍼의 범위를 벗어난 읽기(Heap Buffer Over-read)가 발생할 수 있습니다.이로 인해 메모리의 일부 정보가 노출되거나 NGINX worker 프로세스가 재시작될 수 있습니다.참고: 기술 지원이 종료된(End of Technical Support, EoTS) 소프트웨어 버전은 평가 대상에 포함되지 않습니다.",
-            "published_date": "2026-06-17",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-48142.md",
-            "instance_type": "NGINX"
-        },
-        {
-            "CVE-ID": "CVE-2026-42926",
-            "affected_versions": [
-                "1.29.4 to 1.30.0"
-            ],
-            "severity": [
-                {
-                    "Metrics": "CVSS Version 4.0",
-                    "Source": "CNA: F5 Networks",
-                    "Score": "CVSS-B: 6.3 MEDIUM",
-                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N"
-                },
-                {
-                    "Metrics": "CVSS Version 3.0",
-                    "Source": "CNA: F5 Networks",
-                    "Score": "Base Score: 5.8 MEDIUM",
-                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:L/A:N"
-                }
-            ],
-            "identification_information": [
-                {
-                    "CWE-ID": "CWE-172",
-                    "CWE Name": "Encoding Error",
-                    "Source": "F5 Networks"
-                }
-            ],
-            "mitigation_methods": [
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "1.30.1"
-                    ]
-                },
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "1.31.0"
-                    ]
-                }
-            ],
-            "summary": "NGINX ngx_http_proxy_v2_module에서 HTTP/2 프록시 요청 조작이 가능한 취약점",
-            "discoverer_information": "N/A",
-            "detailed_description": "NGINX Open Source에서 proxy_http_version을 2로 설정하여 HTTP/2 요청을 업스트림 서버로 전달하도록 구성하고, 동시에 proxy_set_body를 사용하는 경우 발생하는 취약점입니다.이러한 구성에서 공격자는 업스트림 서버로 전달되는 HTTP/2 프레임 헤더와 페이로드에 임의의 데이터를 주입할 수 있습니다. 이로 인해 업스트림 서버가 의도하지 않은 요청을 처리하거나 데이터 무결성이 훼손될 수 있습니다.참고: 기술 지원이 종료된(End of Technical Support, EoTS) 소프트웨어 버전은 평가 대상에 포함되지 않습니다.",
-            "published_date": "2026-05-13",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-42926.md",
-            "instance_type": "NGINX"
-        },
-        {
-            "CVE-ID": "CVE-2026-42055",
-            "affected_versions": [
-                "1.13.10 to 1.31.1",
-                "1.30.2"
-            ],
-            "severity": [
-                {
-                    "Metrics": "CVSS Version 4.0",
-                    "Source": "CNA: F5 Networks",
-                    "Score": "CVSS-B: 9.2 CRITICAL",
-                    "Vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
-                },
-                {
-                    "Metrics": "CVSS Version 3.0",
-                    "Source": "CNA: F5 Networks",
-                    "Score": "Base Score: 8.1 HIGH",
-                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
-                },
-                {
-                    "Metrics": "CVSS Version 3.0",
-                    "Source": "ADP: redhat-SADP",
-                    "Score": "Base Score: 8.1 HIGH",
-                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
-                }
-            ],
-            "identification_information": [
-                {
-                    "CWE-ID": "CWE-787",
-                    "CWE Name": "Out-of-bounds Write",
-                    "Source": "NIST"
-                },
-                {
-                    "CWE-ID": "CWE-122",
-                    "CWE Name": "Heap-based Buffer Overflow",
-                    "Source": "F5 Networks"
-                },
-                {
-                    "CWE-ID": "CWE-131",
-                    "CWE Name": "Incorrect Calculation of Buffer Size",
-                    "Source": "redhat-SADP"
-                }
-            ],
-            "mitigation_methods": [
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "1.31.2"
-                    ]
-                },
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "1.30.3"
-                    ]
-                }
-            ],
-            "summary": "NGINX ngx_http_proxy_v2_module 및 ngx_http_grpc_module에서 발생하는 힙 기반 버퍼 오버플로우 취약점",
-            "discoverer_information": "N/A",
-            "detailed_description": "NGINX Open Source의 ngx_http_proxy_v2_module 및 ngx_http_grpc_module에서 발생하는 취약점입니다.이 취약점은 proxy_http_version을 2로 설정하거나 grpc_pass 지시어를 사용하여 HTTP/2 요청을 업스트림 서버로 전달하는 환경에서 발생할 수 있습니다. 또한 ignore_invalid_headers 지시어가 off로 설정되어 있고, large_client_header_buffers 지시어의 버퍼 크기가 2MB보다 크게 설정된 경우 영향을 받을 수 있습니다.이러한 구성에서 원격의 인증되지 않은 공격자가 업스트림 요청이 생성되는 과정에서 큰 크기의 헤더를 전송하고, 공격자가 제어할 수 없는 특정 조건이 함께 충족되면 취약점을 악용할 수 있습니다.그 결과 NGINX worker 프로세스에서 힙 기반 버퍼 오버플로우가 발생하여 프로세스가 재시작될 수 있습니다.또한 주소 공간 배치 난수화(Address Space Layout Randomization, ASLR)가 비활성화된 시스템이나 공격자가 ASLR을 우회할 수 있는 환경에서는 임의 코드 실행으로 이어질 수 있습니다.참고: 기술 지원이 종료된(End of Technical Support, EoTS) 소프트웨어 버전은 평가 대상에 포함되지 않습니다.",
-            "published_date": "2026-06-17",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-42055.md",
-            "instance_type": "NGINX"
-        },
-        {
-            "CVE-ID": "CVE-2026-42530",
-            "affected_versions": [
-                "1.31.0 to 1.31.1"
-            ],
-            "severity": [
-                {
-                    "Metrics": "CVSS Version 4.0",
-                    "Source": "CNA: F5 Networks",
-                    "Score": "CVSS-B: 9.2 CRITICAL",
-                    "Vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
-                },
-                {
-                    "Metrics": "CVSS Version 3.0",
-                    "Source": "CNA: F5 Networks",
-                    "Score": "Base Score: 8.1 HIGH",
-                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
-                },
-                {
-                    "Metrics": "CVSS Version 3.0",
-                    "Source": "ADP: redhat-SADP",
-                    "Score": "Base Score: 8.1 HIGH",
-                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
-                }
-            ],
-            "identification_information": [
-                {
-                    "CWE-ID": "CWE-416",
-                    "CWE Name": "Use After Free",
-                    "Source": "F5 Networks redhat-SADP"
-                }
-            ],
-            "mitigation_methods": [
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "1.31.2"
-                    ]
-                }
-            ],
-            "summary": "NGINX Open Source의 ngx_http_v3_module에서 발생하는 Use-After-Free 취약점",
-            "discoverer_information": "N/A",
-            "detailed_description": "NGINX Open Source의 ngx_http_v3_module에서 발생하는 취약점입니다.NGINX Open Source에서 HTTP/3 QUIC 모듈을 사용하도록 구성한 경우 영향을 받을 수 있습니다. 이러한 환경에서 원격의 인증되지 않은 공격자가 특수하게 조작된 HTTP/3 세션을 전송하고, 공격자가 제어할 수 없는 특정 조건이 함께 충족되면 QPACK encoder stream을 다시 열 수 있습니다.이로 인해 NGINX worker 프로세스에서 Use-After-Free 오류가 발생하여 프로세스가 재시작될 수 있습니다.또한 주소 공간 배치 난수화(Address Space Layout Randomization, ASLR)가 비활성화된 시스템이나 공격자가 ASLR을 우회할 수 있는 환경에서는 임의 코드 실행으로 이어질 수 있습니다.참고: 기술 지원이 종료된(End of Technical Support, EoTS) 소프트웨어 버전은 평가 대상에 포함되지 않습니다.",
-            "published_date": "2026-06-17",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-42530.md",
-            "instance_type": "NGINX"
-        },
-        {
-            "CVE-ID": "CVE-2026-27784",
-            "affected_versions": [
-                "1.29.0 to 1.29.6",
-                "1.1.19 to 1.28.2"
-            ],
-            "severity": [
-                {
-                    "Metrics": "CVSS Version 4.0",
-                    "Source": "CNA: F5 Networks",
-                    "Score": "CVSS-B: 8.5 HIGH",
-                    "Vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
-                },
-                {
-                    "Metrics": "CVSS Version 3.x",
-                    "Source": "NIST: NVD",
-                    "Score": "Base Score: 5.5 MEDIUM",
-                    "Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
-                },
-                {
-                    "Metrics": "CVSS Version 3.x",
-                    "Source": "CNA: F5 Networks",
-                    "Score": "Base Score: 8.2 HIGH",
-                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H"
-                }
-            ],
-            "identification_information": [
-                {
-                    "CWE-ID": "CWE-190",
-                    "CWE Name": "Integer Overflow or Wraparound",
-                    "Source": "F5 Networks"
-                }
-            ],
-            "mitigation_methods": [
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "1.29.7"
-                    ]
-                },
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "1.28.3"
-                    ]
-                }
-            ],
-            "summary": "NGINX ngx_http_mp4_module 모듈의 취약점",
-            "discoverer_information": "N/A",
-            "detailed_description": "32비트 NGINX Open Source의 ngx_http_mp4_module 모듈에는, 특수하게 조작된 MP4 파일을 통해 공격자가 NGINX 워커 메모리를 과도하게 읽거나(over-read) 쓰도록(over-write) 유도하여 워커 프로세스를 종료시킬 수 있는 취약점이 존재합니다. 이 문제는 ngx_http_mp4_module 모듈이 포함되어 빌드되고, 설정 파일에서 mp4 지시어가 사용되는 경우에만 32비트 NGINX Open Source에 영향을 미칩니다. 또한, 이 공격은 공격자가 ngx_http_mp4_module 모듈을 통해 특수하게 조작된 MP4 파일의 처리를 유도할 수 있는 경우에만 가능합니다.",
-            "published_date": "2026-03-24",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-27784.md",
-            "instance_type": "NGINX"
-        },
-        {
-            "CVE-ID": "CVE-2026-28755",
-            "affected_versions": [
-                "1.29.0 to 1.29.6",
-                "1.27.2 to 1.28.2"
-            ],
-            "severity": [
-                {
-                    "Metrics": "CVSS Version 4.0",
-                    "Source": "CNA: F5 Networks",
-                    "Score": "CVSS-B: 5.3 MEDIUM",
-                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N"
-                },
-                {
-                    "Metrics": "CVSS Version 3.x",
-                    "Source": "CNA: F5 Networks",
-                    "Score": "Base Score: 5.4 MEDIUM",
-                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
-                }
-            ],
-            "identification_information": [
-                {
-                    "CWE-ID": "CWE-963",
-                    "CWE Name": "Incorrect Authorization",
-                    "Source": "F5 Networks"
-                }
-            ],
-            "mitigation_methods": [
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "1.29.7"
-                    ]
-                },
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "1.28.3"
-                    ]
-                }
-            ],
-            "summary": "NGINX ngx_stream_ssl_module 모듈의 취약점",
-            "discoverer_information": "N/A",
-            "detailed_description": "NGINX Open Source의 ngx_stream_ssl_module 모듈에는 ssl_verify_client on 및 ssl_ocsp on 지시어가 설정된 경우, 폐기된 인증서를 부적절하게 처리하는 취약점이 존재하며, 이로 인해 OCSP 검사에서 인증서가 폐기된 것으로 확인되더라도 TLS 핸드셰이크가 성공할 수 있습니다.",
-            "published_date": "2026-03-24",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-28755.md",
-            "instance_type": "NGINX"
-        },
-        {
-            "CVE-ID": "CVE-2026-42945",
-            "affected_versions": [
-                "0.6.27 to 1.30.0"
-            ],
-            "severity": [
-                {
-                    "Metrics": "CVSS Version 4.0",
-                    "Source": "CNA: F5 Networks",
-                    "Score": "CVSS-B: 9.2 CRITICAL",
-                    "Vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
-                },
-                {
-                    "Metrics": "CVSS Version 3.0",
-                    "Source": "CNA: F5 Networks",
-                    "Score": "Base Score: 8.1 HIGH",
-                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
-                },
-                {
-                    "Metrics": "CVSS Version 3.0",
-                    "Source": "ADP: redhat-SADP",
-                    "Score": "Base Score: 8.1 HIGH",
-                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
-                }
-            ],
-            "identification_information": [
-                {
-                    "CWE-ID": "CWE-122",
-                    "CWE Name": "Heap-based Buffer Overflow",
-                    "Source": "F5 Networks"
-                },
-                {
-                    "CWE-ID": "CWE-131",
-                    "CWE Name": "Incorrect Calculation of Buffer Size",
-                    "Source": "redhat-SADP"
-                }
-            ],
-            "mitigation_methods": [
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "1.30.1"
-                    ]
-                },
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "1.31.0"
-                    ]
-                }
-            ],
-            "summary": "NGINX ngx_http_rewrite_module에서 발생하는 힙 기반 버퍼 오버플로우 취약점",
-            "discoverer_information": "N/A",
-            "detailed_description": "NGINX Open Source의 ngx_http_rewrite_module에서 발생하는 취약점입니다.이 취약점은 rewrite 지시어 뒤에 또 다른 rewrite, if 또는 set 지시어가 이어지고, 이름이 지정되지 않은 Perl 호환 정규식(PCRE) 캡처(예: $1, $2)와 물음표(?)가 포함된 치환 문자열을 함께 사용하는 경우 발생할 수 있습니다.이러한 구성에서 인증되지 않은 공격자가 조작된 HTTP 요청을 전송하고, 공격자가 제어할 수 없는 특정 조건이 함께 충족되면 취약점을 악용할 수 있습니다.그 결과 NGINX worker 프로세스에서 힙 기반 버퍼 오버플로우가 발생하여 프로세스가 재시작될 수 있습니다.또한 주소 공간 배치 난수화(Address Space Layout Randomization, ASLR)가 비활성화된 시스템이나 공격자가 ASLR을 우회할 수 있는 환경에서는 임의 코드 실행으로 이어질 수 있습니다.참고: 기술 지원이 종료된(End of Technical Support, EoTS) 소프트웨어 버전은 평가 대상에 포함되지 않습니다.",
-            "published_date": "2026-05-13",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-42945.md",
-            "instance_type": "NGINX"
-        },
-        {
-            "CVE-ID": "CVE-2026-24072",
-            "affected_versions": [
-                "0.0.0 to 2.4.66"
+                "11.0.0-M1 to 11.0.22",
+                "10.1.0-M1 to 10.1.55",
+                "9.0.0-M1 to 9.0.118",
+                "8.5.0 to 8.5.100",
+                "7.0.0 to 7.0.109"
             ],
             "severity": [
                 {
                     "Metrics": "CVSS Version 3.x",
-                    "Source": "ADP: CISA-ADP",
-                    "Score": "Base Score: 8.8 HIGH",
-                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 6.5 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
                 }
             ],
             "identification_information": [
                 {
-                    "CWE-ID": "CWE-269",
-                    "CWE Name": "Improper Privilege Management",
+                    "CWE-ID": "CWE-285",
+                    "CWE Name": "Improper Authorization",
                     "Source": "Apache Software Foundation"
                 }
             ],
@@ -763,80 +28,42 @@
                 {
                     "Method": "upgrade engine",
                     "Detail": [
-                        "2.4.67"
+                        "11.0.23",
+                        "10.1.56",
+                        "9.0.119",
+                        "8.5.101",
+                        "7.0.110"
                     ]
                 }
             ],
-            "summary": "Apache HTTP Server: mod_rewrite의 ap_expr을 통해 권한 상승이 가능한 취약점",
+            "summary": "Apache Tomcat: 기본 서블릿에 설정된 보안 제약 조건에서 HTTP 메서드 설정이 무시되는 취약점",
             "discoverer_information": "N/A",
-            "detailed_description": "Apache HTTP Server 2.4.66 이하의 여러 모듈에서 발생하는 권한 상승 취약점입니다. 이 취약점으로 인해 로컬의 .htaccess 작성 권한을 가진 사용자가 httpd 프로세스의 권한으로 파일을 읽을 수 있습니다.",
-            "published_date": "2026-05-04",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2026/CVE-2026-24072.md",
-            "instance_type": "APACHE"
+            "detailed_description": "Apache Tomcat에서 기본 서블릿에 적용된 보안 제약 조건이 HTTP 메서드 설정을 올바르게 처리하지 않아 발생하는 권한 검증 미흡 취약점입니다. 보안 제약 조건에 특정 HTTP 메서드 또는 제외할 HTTP 메서드가 설정되어 있어도 해당 설정이 무시될 수 있습니다. 이로 인해 접근이 제한되어야 하는 요청이 허용될 수 있습니다. 기술 지원이 종료된 다른 버전의 Apache Tomcat도 이 취약점의 영향을 받을 수 있습니다.",
+            "published_date": "2026-06-29",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-55956.md",
+            "instance_type": "TOMCAT"
         },
         {
-            "CVE-ID": "CVE-2026-28780",
+            "CVE-ID": "CVE-2026-50229",
             "affected_versions": [
-                "0.0.0 to 2.4.66"
+                "11.0.0-M1 to 11.0.22",
+                "10.1.0-M1 to 10.1.55",
+                "9.0.0-M1 to 9.0.118",
+                "8.5.0 to 8.5.100",
+                "7.0.0 to 7.0.109"
             ],
             "severity": [
                 {
                     "Metrics": "CVSS Version 3.x",
-                    "Source": "ADP: CISA-ADP",
-                    "Score": "Base Score: 9.8 CRITICAL",
-                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
-                },
-                {
-                    "Metrics": "CVSS Version 3.x",
-                    "Source": "ADP: redhat-SADP",
-                    "Score": "Base Score: 8.1 HIGH",
-                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
-                }
-            ],
-            "identification_information": [
-                {
-                    "CWE-ID": "CWE-122",
-                    "CWE Name": "Heap-based Buffer Overflow",
-                    "Source": "Apache Software Foundation"
-                },
-                {
-                    "CWE-ID": "CWE-787",
-                    "CWE Name": "Out-of-bounds Write",
-                    "Source": "redhat-SADP"
-                }
-            ],
-            "mitigation_methods": [
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "2.4.67"
-                    ]
-                }
-            ],
-            "summary": "Apache HTTP Server: ajp_msg_check_header()를 통한 mod_proxy_ajp의 버퍼 오버플로우 취약점",
-            "discoverer_information": "N/A",
-            "detailed_description": "Apache HTTP Server의 mod_proxy_ajp 모듈에서 발생하는 힙 기반 버퍼 오버플로우(Heap-based Buffer Overflow) 취약점입니다. mod_proxy_ajp가 악의적인 AJP 서버에 연결될 경우, 해당 서버는 조작된 AJP 메시지를 mod_proxy_ajp로 전송할 수 있습니다. 공격자는 조작된 AJP 메시지를 통해 버퍼 범위를 벗어난 메모리 영역에 자신이 지정한 4바이트 데이터를 기록할 수 있습니다. 이로 인해 힙 기반 버퍼 오버플로우가 발생할 수 있습니다.",
-            "published_date": "2026-05-05",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2026/CVE-2026-28780.md",
-            "instance_type": "APACHE"
-        },
-        {
-            "CVE-ID": "CVE-2026-29170",
-            "affected_versions": [
-                "0.0.0 to 2.4.67"
-            ],
-            "severity": [
-                {
-                    "Metrics": "CVSS Version 3.x",
-                    "Source": "ADP: CISA-ADP",
+                    "Source": "CISA-ADP",
                     "Score": "Base Score: 6.1 MEDIUM",
                     "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
                 }
             ],
             "identification_information": [
                 {
-                    "CWE-ID": "CWE-79",
-                    "CWE Name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
+                    "CWE-ID": "CWE-80",
+                    "CWE Name": "Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS)",
                     "Source": "Apache Software Foundation"
                 }
             ],
@@ -844,258 +71,19 @@
                 {
                     "Method": "upgrade engine",
                     "Detail": [
-                        "2.4.68"
+                        "11.0.23",
+                        "10.1.56",
+                        "9.0.119",
+                        "8.5.101",
+                        "7.0.110"
                     ]
                 }
             ],
-            "summary": "Apache HTTP Server: mod_proxy_ftp의 크로스 사이트 스크립팅(XSS) 취약점",
+            "summary": "Apache Tomcat: 숫자 맞히기 예제에서 발생하는 크로스 사이트 스크립팅(XSS) 취약점",
             "discoverer_information": "N/A",
-            "detailed_description": "Apache HTTP Server 2.4.67 이하 버전의 mod_proxy_ftp 모듈에서 FTP 디렉터리 목록을 HTML로 생성하는 과정 중 발생하는 크로스 사이트 스크립팅(Cross-site Scripting, XSS) 취약점입니다.이 취약점은 정방향 프록시 또는 역방향 프록시 구성으로 FTP 디렉터리의 내용을 조회할 때 발생할 수 있습니다.",
-            "published_date": "2026-06-08",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2026/CVE-2026-29170.md",
-            "instance_type": "APACHE"
-        },
-        {
-            "CVE-ID": "CVE-2026-29167",
-            "affected_versions": [
-                "2.4.0 to 2.4.67"
-            ],
-            "severity": [
-                {
-                    "Metrics": "CVSS Version 3.x",
-                    "Source": "ADP: CISA-ADP",
-                    "Score": "Base Score: 9.8 CRITICAL",
-                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
-                }
-            ],
-            "identification_information": [
-                {
-                    "CWE-ID": "CWE-416",
-                    "CWE Name": "Use After Free",
-                    "Source": "Apache Software Foundation"
-                }
-            ],
-            "mitigation_methods": [
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "2.4.68"
-                    ]
-                }
-            ],
-            "summary": "Apache HTTP Server: 디렉터리별(per-directory) 설정에서 mod_ldap의 Use-After-Free 취약점",
-            "discoverer_information": "N/A",
-            "detailed_description": "Apache HTTP Server에서 mod_ldap 모듈을 디렉터리별(per-directory) 설정으로 사용할 경우 발생하는 Use-After-Free 취약점입니다.이 취약점으로 인해 이미 해제된 메모리에 접근하는 문제가 발생할 수 있으며, 메모리 손상이나 Apache HTTP Server의 비정상 종료, 또는 원격 코드 실행(Remote Code Execution, RCE)으로 이어질 가능성이 있습니다.",
-            "published_date": "2026-06-08",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2026/CVE-2026-29167.md",
-            "instance_type": "APACHE"
-        },
-        {
-            "CVE-ID": "CVE-2026-23918",
-            "affected_versions": [
-                "2.4.66"
-            ],
-            "severity": [
-                {
-                    "Metrics": "CVSS Version 3.x",
-                    "Source": "ADP: CISA-ADP",
-                    "Score": "Base Score: 8.8 HIGH",
-                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
-                },
-                {
-                    "Metrics": "CVSS Version 3.x",
-                    "Source": "ADP: redhat-SADP",
-                    "Score": "Base Score: 8.8 HIGH",
-                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
-                }
-            ],
-            "identification_information": [
-                {
-                    "CWE-ID": "CWE-415",
-                    "CWE Name": "Double Free",
-                    "Source": "Apache Software Foundation"
-                },
-                {
-                    "CWE-ID": "CWE-1341",
-                    "CWE Name": "Multiple Releases of Same Resource or Handle",
-                    "Source": "redhat-SADP"
-                }
-            ],
-            "mitigation_methods": [
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "2.4.67"
-                    ]
-                }
-            ],
-            "summary": "Apache HTTP Server: HTTP/2 프로토콜에서 조기 연결 종료(Early Reset) 시 이중 해제(Double Free)로 인해 원격 코드 실행(RCE)이 발생할 수 있는 취약점",
-            "discoverer_information": "N/A",
-            "detailed_description": "Apache HTTP Server의 HTTP/2 프로토콜에서 조기 연결 종료(Early Reset) 처리 과정 중 이중 해제(Double Free)가 발생할 수 있는 취약점입니다.이 취약점으로 인해 원격 코드 실행(Remote Code Execution, RCE)이 발생할 가능성이 있습니다.",
-            "published_date": "2026-05-04",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2026/CVE-2026-23918.md",
-            "instance_type": "APACHE"
-        },
-        {
-            "CVE-ID": "CVE-2026-29145",
-            "affected_versions": [
-                "11.0.0-M1 to 11.0.18",
-                "10.1.0-M7 to 10.1.52",
-                "9.0.83 to 9.0.115"
-            ],
-            "severity": [
-                {
-                    "Metrics": "CVSS Version 3.x",
-                    "Source": "CISA-ADP",
-                    "Score": "Base Score: 9.1 CRITICAL",
-                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
-                }
-            ],
-            "identification_information": [
-                {
-                    "CWE-ID": "CWE-287",
-                    "CWE Name": "Improper Authentication",
-                    "Source": "CISA-ADP"
-                }
-            ],
-            "mitigation_methods": [
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "11.0.20",
-                        "10.1.53",
-                        "9.0.116"
-                    ]
-                }
-            ],
-            "summary": "Apache Tomcat, Apache Tomcat Native: soft-fail(검증 실패 허용 모드)이 비활성화되어 있음에도, OCSP 검사가 실패로 처리되지 않고 통과되는 취약점",
-            "discoverer_information": "N/A",
-            "detailed_description": "Apache Tomcat 및 Apache Tomcat Native에서 soft-fail이 비활성화된 환경에서도, 특정 상황에서 CLIENT_CERT 인증이 예상대로 실패하지 않는 취약점입니다.\n이로 인해 인증이 거부되어야 하는 경우에도 정상적으로 통과될 수 있습니다.",
-            "published_date": "2026-04-09",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-29145.md",
-            "instance_type": "TOMCAT"
-        },
-        {
-            "CVE-ID": "CVE-2026-29129",
-            "affected_versions": [
-                "11.0.0-M1 to 11.0.18",
-                "10.1.51 to 10.1.52",
-                "9.0.114 to 9.0.115"
-            ],
-            "severity": [
-                {
-                    "Metrics": "CVSS Version 3.x",
-                    "Source": "CISA-ADP",
-                    "Score": "Base Score: 7.5 HIGH",
-                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
-                }
-            ],
-            "identification_information": [
-                {
-                    "CWE-ID": "CWE-20",
-                    "CWE Name": "Improper Input Validation",
-                    "Source": "Apache Software Foundation"
-                }
-            ],
-            "mitigation_methods": [
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "11.0.20",
-                        "10.1.53",
-                        "9.0.116"
-                    ]
-                }
-            ],
-            "summary": "Apache Tomcat: TLS 암호화 스위트(cipher) 우선순서가 유지되지 않는 취약점",
-            "discoverer_information": "N/A",
-            "detailed_description": "Apache Tomcat에서 설정된 TLS 암호화 스위트의 우선순서가 제대로 유지되지 않는 취약점입니다.\n이로 인해 서버가 의도한 보안 수준보다 낮은 암호화 알고리즘을 선택할 수 있습니다.",
-            "published_date": "2026-04-09",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-29129.md",
-            "instance_type": "TOMCAT"
-        },
-        {
-            "CVE-ID": "CVE-2026-34486",
-            "affected_versions": [
-                "11.0.20",
-                "10.1.53",
-                "9.0.116"
-            ],
-            "severity": [
-                {
-                    "Metrics": "CVSS Version 3.x",
-                    "Source": "CISA-ADP",
-                    "Score": "Base Score: 7.5 HIGH",
-                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
-                }
-            ],
-            "identification_information": [
-                {
-                    "CWE-ID": "CWE-311",
-                    "CWE Name": "Missing Encryption of Sensitive Data",
-                    "Source": "Apache Software Foundation"
-                }
-            ],
-            "mitigation_methods": [
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "11.0.21",
-                        "10.1.54",
-                        "9.0.117"
-                    ]
-                }
-            ],
-            "summary": "Apache Tomcat: CVE-2026-29146 취약점 패치로 인해 EncryptInterceptor 우회가 가능해진 취약점",
-            "discoverer_information": "N/A",
-            "detailed_description": "Apache Tomcat에서 CVE-2026-29146 취약점 패치 과정에서 EncryptInterceptor를 우회할 수 있는 문제가 발생하여, 민감한 데이터가 암호화되지 않고 처리될 수 있는 취약점입니다.",
-            "published_date": "2026-04-09",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-34486.md",
-            "instance_type": "TOMCAT"
-        },
-        {
-            "CVE-ID": "CVE-2026-24734",
-            "affected_versions": [
-                "11.0.0-M1 to 11.0.17",
-                "10.1.0-M1 to 10.1.51",
-                "9.0.0-M1 to 9.0.114"
-            ],
-            "severity": [
-                {
-                    "Metrics": "CVSS Version 4.0",
-                    "Source": "NVD",
-                    "Score": "Base Score N/A",
-                    "Vector": "NVD assessment not yet provided."
-                },
-                {
-                    "Metrics": "CVSS Version 3.x",
-                    "Source": "NVD",
-                    "Score": "Base Score N/A",
-                    "Vector": "NVD assessment not yet provided."
-                }
-            ],
-            "identification_information": [
-                {
-                    "CWE-ID": "CWE-20",
-                    "CWE Name": "Improper Input Validation",
-                    "Source": "Apache Software Foundation"
-                }
-            ],
-            "mitigation_methods": [
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "11.0.18",
-                        "10.1.52",
-                        "9.0.115"
-                    ]
-                }
-            ],
-            "summary": "OCSP 응답 검증 과정의 문제로 인해 인증서 폐기(revocation) 검증이 우회될 수 있는 Apache Tomcat 취약점이 존재합니다.",
-            "discoverer_information": "N/A",
-            "detailed_description": "OCSP 응답자를 사용하는 경우, Tomcat Native(및 Tomcat Native 코드를 기반으로 한 Tomcat의 FFM 포트 구현) 에서 OCSP 응답에 대한 검증 및 최신성(freshness) 검사를 완전히 수행하지 않았습니다.이로 인해 인증서가 폐기되었음에도 불구하고 해당 인증서가 유효한 것으로 처리되어 인증서 폐기 검증이 우회될 수 있습니다.",
-            "published_date": "2026-02-17",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-24734.md",
+            "detailed_description": "Apache Tomcat의 숫자 맞히기(number guess) 예제에서 발생하는 기본형 크로스 사이트 스크립팅(Basic XSS) 취약점입니다. 웹 페이지에 포함되는 스크립트 관련 HTML 태그가 적절하게 무력화되지 않아, 공격자가 악성 스크립트를 실행할 수 있습니다. 기술 지원이 종료된 다른 버전의 Apache Tomcat도 이 취약점의 영향을 받을 수 있습니다.",
+            "published_date": "2026-06-29",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-50229.md",
             "instance_type": "TOMCAT"
         },
         {
@@ -1182,6 +170,173 @@
             "instance_type": "TOMCAT"
         },
         {
+            "CVE-ID": "CVE-2026-34483",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.20",
+                "10.1.0-M1 to 10.1.53",
+                "9.0.40 to 9.0.116"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-116",
+                    "CWE Name": "Improper Encoding or Escaping of Output",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.21",
+                        "10.1.54",
+                        "9.0.117"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: JSON 접근 로그에서 이스케이프 처리가 불완전한 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat의 JsonAccessLogValve 컴포넌트에서 출력값에 대한 인코딩 또는 이스케이프 처리가 적절히 수행되지 않는 취약점입니다.\n이로 인해 JSON 접근 로그에 포함되는 데이터가 올바르게 처리되지 않아, 로그 변조나 추가적인 보안 문제를 유발할 수 있습니다.",
+            "published_date": "2026-04-09",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-34483.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-24734",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.17",
+                "10.1.0-M1 to 10.1.51",
+                "9.0.0-M1 to 9.0.114"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "NVD",
+                    "Score": "Base Score N/A",
+                    "Vector": "NVD assessment not yet provided."
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "NVD",
+                    "Score": "Base Score N/A",
+                    "Vector": "NVD assessment not yet provided."
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-20",
+                    "CWE Name": "Improper Input Validation",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.18",
+                        "10.1.52",
+                        "9.0.115"
+                    ]
+                }
+            ],
+            "summary": "OCSP 응답 검증 과정의 문제로 인해 인증서 폐기(revocation) 검증이 우회될 수 있는 Apache Tomcat 취약점이 존재합니다.",
+            "discoverer_information": "N/A",
+            "detailed_description": "OCSP 응답자를 사용하는 경우, Tomcat Native(및 Tomcat Native 코드를 기반으로 한 Tomcat의 FFM 포트 구현) 에서 OCSP 응답에 대한 검증 및 최신성(freshness) 검사를 완전히 수행하지 않았습니다.이로 인해 인증서가 폐기되었음에도 불구하고 해당 인증서가 유효한 것으로 처리되어 인증서 폐기 검증이 우회될 수 있습니다.",
+            "published_date": "2026-02-17",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-24734.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-43512",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.21",
+                "10.1.0-M1 to 10.1.54",
+                "9.0.0-M1 to 9.0.117",
+                "8.5.0 to 8.5.100"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 9.8 CRITICAL",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-592",
+                    "CWE Name": "DEPRECATED: Authentication Bypass Issues",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.22",
+                        "10.1.55",
+                        "9.0.118",
+                        "8.5.100"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: Digest 인증에서 존재하지 않는 사용자도 인증될 수 있는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat의 Digest 인증(Digest Authentication)에서 발생하는 인증 우회(Authentication Bypass) 취약점입니다.이 취약점으로 인해 등록되지 않았거나 존재하지 않는 사용자도 인증에 성공할 수 있습니다.기술 지원이 종료된 이전 버전의 Apache Tomcat도 이 취약점의 영향을 받을 수 있습니다.",
+            "published_date": "2026-05-12",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-43512.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-43515",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.21",
+                "10.1.0-M1 to 10.1.54",
+                "9.0.0-M1 to 9.0.117",
+                "8.5.0 to 8.5.100"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 9.1 CRITICAL",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-285",
+                    "CWE Name": "Improper Authorization",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.22",
+                        "10.1.55",
+                        "9.0.118",
+                        "8.5.101",
+                        "7.0.110"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: 보안 제약 조건이 올바르게 적용되지 않는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat에서 동일한 확장자에 대해 여러 개의 메서드 제약 조건이 같은 HTTP 메서드를 정의하는 경우 발생하는 권한 검증 미흡 취약점입니다. 이로 인해 설정된 보안 제약 조건이 의도한 대로 적용되지 않아, 접근이 제한되어야 하는 요청이 허용될 수 있습니다.",
+            "published_date": "2026-05-12",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-43515.md",
+            "instance_type": "TOMCAT"
+        },
+        {
             "CVE-ID": "CVE-2026-24733",
             "affected_versions": [
                 "11.0.0-M1 to 11.0.14",
@@ -1227,18 +382,96 @@
             "instance_type": "TOMCAT"
         },
         {
-            "CVE-ID": "CVE-2026-32990",
+            "CVE-ID": "CVE-2026-29145",
             "affected_versions": [
-                "11.0.15 to 11.0.19",
-                "10.1.50 to 10.1.52",
-                "9.0.113 to 9.0.115"
+                "11.0.0-M1 to 11.0.18",
+                "10.1.0-M7 to 10.1.52",
+                "9.0.83 to 9.0.115"
             ],
             "severity": [
                 {
                     "Metrics": "CVSS Version 3.x",
                     "Source": "CISA-ADP",
-                    "Score": "Base Score: 5.3 MEDIUM",
-                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+                    "Score": "Base Score: 9.1 CRITICAL",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-287",
+                    "CWE Name": "Improper Authentication",
+                    "Source": "CISA-ADP"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.20",
+                        "10.1.53",
+                        "9.0.116"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat, Apache Tomcat Native: soft-fail(검증 실패 허용 모드)이 비활성화되어 있음에도, OCSP 검사가 실패로 처리되지 않고 통과되는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat 및 Apache Tomcat Native에서 soft-fail이 비활성화된 환경에서도, 특정 상황에서 CLIENT_CERT 인증이 예상대로 실패하지 않는 취약점입니다.\n이로 인해 인증이 거부되어야 하는 경우에도 정상적으로 통과될 수 있습니다.",
+            "published_date": "2026-04-09",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-29145.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-34486",
+            "affected_versions": [
+                "11.0.20",
+                "10.1.53",
+                "9.0.116"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-311",
+                    "CWE Name": "Missing Encryption of Sensitive Data",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.21",
+                        "10.1.54",
+                        "9.0.117"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: CVE-2026-29146 취약점 패치로 인해 EncryptInterceptor 우회가 가능해진 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat에서 CVE-2026-29146 취약점 패치 과정에서 EncryptInterceptor를 우회할 수 있는 문제가 발생하여, 민감한 데이터가 암호화되지 않고 처리될 수 있는 취약점입니다.",
+            "published_date": "2026-04-09",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-34486.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-29129",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.18",
+                "10.1.51 to 10.1.52",
+                "9.0.114 to 9.0.115"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
                 }
             ],
             "identification_information": [
@@ -1258,11 +491,11 @@
                     ]
                 }
             ],
-            "summary": "Apache Tomcat: 기존 취약점(CVE-2025-66614)에 대한 패치가 완전하지 않아 여전히 영향을 받는 취약점",
+            "summary": "Apache Tomcat: TLS 암호화 스위트(cipher) 우선순서가 유지되지 않는 취약점",
             "discoverer_information": "N/A",
-            "detailed_description": "Apache Tomcat에서 CVE-2025-66614 취약점에 대한 패치가 완전하지 않아, 입력값 검증 문제가 일부 남아있는 취약점입니다.",
+            "detailed_description": "Apache Tomcat에서 설정된 TLS 암호화 스위트의 우선순서가 제대로 유지되지 않는 취약점입니다.\n이로 인해 서버가 의도한 보안 수준보다 낮은 암호화 알고리즘을 선택할 수 있습니다.",
             "published_date": "2026-04-09",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-32990.md",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-29129.md",
             "instance_type": "TOMCAT"
         },
         {
@@ -1344,6 +577,295 @@
             "instance_type": "TOMCAT"
         },
         {
+            "CVE-ID": "CVE-2026-41284",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.21",
+                "10.1.0-M1 to 10.1.54",
+                "9.0.0-M1 to 9.0.117",
+                "10.0.0-M1 to 10.0.27"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-770",
+                    "CWE Name": "Allocation of Resources Without Limits or Throttling",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.22",
+                        "10.1.56",
+                        "9.0.118",
+                        "10.0.28"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: WebDAV의 LOCK 및 PROPFIND 처리 과정에서 제한 없는 읽기(Unbounded Read)가 발생하는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat에서 발생하는 자원 할당 제한 미흡(Allocation of Resources Without Limits or Throttling) 취약점입니다.WebDAV의 LOCK 및 PROPFIND 요청을 처리하는 과정에서 입력 데이터에 대한 읽기 작업이 제한 없이 수행될 수 있습니다. 이로 인해 과도한 자원 사용이 발생하여 서비스 거부(DoS)로 이어질 수 있습니다.기술 지원이 종료된 이전 버전의 Apache Tomcat도 이 취약점의 영향을 받을 수 있습니다.",
+            "published_date": "2026-05-12",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-41284.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-41293",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.21",
+                "10.1.0-M1 to 10.1.54",
+                "9.0.0-M1 to 9.0.117",
+                "10.0.0-M1 to 10.0.27",
+                "8.5.0 to 8.5.100"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 9.8 CRITICAL",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-20",
+                    "CWE Name": "Improper Input Validation",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.22",
+                        "10.1.55",
+                        "9.0.118",
+                        "10.0.28",
+                        "8.5.100"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: HTTP/2 요청 헤더가 적절하게 검증되지 않는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat에서 HTTP/2 요청 헤더에 대한 입력값 검증이 적절하게 수행되지 않는 취약점입니다. 이로 인해 잘못되거나 조작된 HTTP/2 요청 헤더가 처리될 수 있습니다. 기술 지원이 종료된 이전 버전의 Apache Tomcat도 이 취약점의 영향을 받을 수 있습니다.",
+            "published_date": "2026-05-12",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-41293.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-43514",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.21",
+                "10.1.0-M1 to 10.1.54",
+                "9.0.0-M1 to 9.0.117",
+                "8.5.0 to 8.5.100",
+                "7.0.0 to 7.0.109"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 3.7 LOW",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-208",
+                    "CWE Name": "Observable Timing Discrepancy",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.22",
+                        "10.1.55",
+                        "9.0.118",
+                        "8.5.101",
+                        "7.0.110"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: AJP secret 비교 과정에서 처리 시간 차이가 발생하는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat에서 AJP secret을 비교하는 과정에서 처리 시간의 차이가 발생하는 취약점입니다. 공격자는 이 시간 차이를 분석하여 AJP secret에 대한 일부 정보를 추측할 수 있습니다. 기술 지원이 종료된 이전 버전의 Apache Tomcat도 이 취약점의 영향을 받을 수 있습니다.",
+            "published_date": "2026-05-12",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-43514.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-32990",
+            "affected_versions": [
+                "11.0.15 to 11.0.19",
+                "10.1.50 to 10.1.52",
+                "9.0.113 to 9.0.115"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 5.3 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-20",
+                    "CWE Name": "Improper Input Validation",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.20",
+                        "10.1.53",
+                        "9.0.116"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: 기존 취약점(CVE-2025-66614)에 대한 패치가 완전하지 않아 여전히 영향을 받는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat에서 CVE-2025-66614 취약점에 대한 패치가 완전하지 않아, 입력값 검증 문제가 일부 남아있는 취약점입니다.",
+            "published_date": "2026-04-09",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-32990.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-43513",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.21",
+                "10.1.0-M1 to 10.1.54",
+                "9.0.0-M1 to 9.0.117",
+                "8.5.0 to 8.5.100",
+                "7.0.0 to 7.0.109"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-178",
+                    "CWE Name": "Improper Handling of Case Sensitivity",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.22",
+                        "10.1.55",
+                        "9.0.118",
+                        "8.5.101",
+                        "7.0.110"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: LockOutRealm이 사용자 이름의 대소문자를 구분하여 처리하는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat의 LockOutRealm에서 사용자 이름의 대소문자를 부적절하게 구분하여 처리하는 취약점입니다. 이로 인해 동일한 사용자 이름이라도 대소문자를 다르게 입력하면 별도의 사용자로 인식될 수 있으며, 계정 잠금 기능이 의도한 대로 동작하지 않을 수 있습니다. 기술 지원이 종료된 이전 버전의 Apache Tomcat도 이 취약점의 영향을 받을 수 있습니다.",
+            "published_date": "2026-05-12",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-43513.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-55276",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.22",
+                "10.1.0-M1 to 10.1.55",
+                "9.0.0-M1 to 9.0.118",
+                "8.5.0 to 8.5.100"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 9.1 CRITICAL",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-670",
+                    "CWE Name": "Always-Incorrect Control Flow Implementation",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.23",
+                        "10.1.56",
+                        "9.0.119",
+                        "8.5.101"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: 로그에 기록되는 유효 web.xml 정보가 불완전한 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat의 제어 흐름이 잘못 구현되어, 유효한 web.xml 설정을 로그에 기록할 때 특수 역할(special roles)과 비어 있는 권한 부여 제약 조건이 포함되지 않는 취약점입니다. 이로 인해 로그에 기록된 web.xml 정보가 실제 적용된 보안 설정을 완전하게 반영하지 못할 수 있습니다. 기술 지원이 종료된 다른 버전의 Apache Tomcat도 이 취약점의 영향을 받을 수 있습니다.",
+            "published_date": "2026-06-29",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-55276.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-53434",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.22",
+                "10.1.0-M7 to 10.1.55",
+                "9.0.83 to 9.0.118"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 9.1 CRITICAL",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-390",
+                    "CWE Name": "Detection of Error Condition Without Action",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.23",
+                        "10.1.56",
+                        "9.0.119"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: FFM Connector에서 잘못된 CRL 설정이 감지되어도 연결이 실패하지 않는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat에서 FFM 기반 Connector에 CRL을 설정할 때, 잘못된 설정이 감지되어도 적절한 조치가 수행되지 않는 취약점입니다. 이로 인해 CRL 구성이 유효하지 않은 경우에도 Connector가 실패하지 않고 계속 동작할 수 있으며, 인증서 폐기 여부가 의도한 대로 검증되지 않을 수 있습니다.",
+            "published_date": "2026-06-29",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-53434.md",
+            "instance_type": "TOMCAT"
+        },
+        {
             "CVE-ID": "CVE-2025-66614",
             "affected_versions": [
                 "11.0.0-M1 to 11.0.14",
@@ -1389,24 +911,26 @@
             "instance_type": "TOMCAT"
         },
         {
-            "CVE-ID": "CVE-2026-34483",
+            "CVE-ID": "CVE-2026-55955",
             "affected_versions": [
-                "11.0.0-M1 to 11.0.20",
-                "10.1.0-M1 to 10.1.53",
-                "9.0.40 to 9.0.116"
+                "11.0.0-M1 to 11.0.22",
+                "10.1.0-M1 to 10.1.55",
+                "9.0.0-M1 to 9.0.118",
+                "8.5.38 to 8.5.100",
+                "7.0.100 to 7.0.109"
             ],
             "severity": [
                 {
                     "Metrics": "CVSS Version 3.x",
                     "Source": "CISA-ADP",
-                    "Score": "Base Score: 7.5 HIGH",
-                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+                    "Score": "Base Score: 6.5 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
                 }
             ],
             "identification_information": [
                 {
-                    "CWE-ID": "CWE-116",
-                    "CWE Name": "Improper Encoding or Escaping of Output",
+                    "CWE-ID": "CWE-287",
+                    "CWE Name": "Improper Authentication",
                     "Source": "Apache Software Foundation"
                 }
             ],
@@ -1414,17 +938,103 @@
                 {
                     "Method": "upgrade engine",
                     "Detail": [
-                        "11.0.21",
-                        "10.1.54",
-                        "9.0.117"
+                        "11.0.22",
+                        "10.1.55",
+                        "9.0.118",
+                        "8.5.101",
+                        "7.0.110"
                     ]
                 }
             ],
-            "summary": "Apache Tomcat: JSON 접근 로그에서 이스케이프 처리가 불완전한 취약점",
+            "summary": "Apache Tomcat: EncryptInterceptor가 재전송 공격(Replay Attack)으로부터 보호되지 않는 취약점",
             "discoverer_information": "N/A",
-            "detailed_description": "Apache Tomcat의 JsonAccessLogValve 컴포넌트에서 출력값에 대한 인코딩 또는 이스케이프 처리가 적절히 수행되지 않는 취약점입니다.\n이로 인해 JSON 접근 로그에 포함되는 데이터가 올바르게 처리되지 않아, 로그 변조나 추가적인 보안 문제를 유발할 수 있습니다.",
-            "published_date": "2026-04-09",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-34483.md",
+            "detailed_description": "Apache Tomcat 클러스터 컴포넌트의 EncryptInterceptor에서 발생하는 인증 처리 미흡 취약점입니다. 공격자는 이전에 전송된 유효한 암호화 메시지를 가로챈 뒤 다시 전송하여 재전송 공격(Replay Attack)을 수행할 수 있습니다. 이로 인해 이미 처리된 요청이나 메시지가 다시 유효한 것으로 받아들여질 수 있습니다.",
+            "published_date": "2026-06-29",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-55955.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-55957",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.4",
+                "10.1.0-M1 to 10.1.36",
+                "9.0.0-M1 to 9.0.100",
+                "8.5.0 to 8.5.100",
+                "7.0.0 to 7.0.109"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 7.3 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-304",
+                    "CWE Name": "Missing Critical Step in Authentication",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.5",
+                        "10.1.37",
+                        "9.0.101",
+                        "8.5.101",
+                        "7.0.110"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: JNDIRealm에서 GSSAPI 인증 바인드를 사용할 때 인증을 우회할 수 있는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat의 JNDIRealm에서 GSSAPI를 사용하여 바인드 인증을 수행하도록 구성한 경우, 인증 과정에서 필수 검증 단계가 누락되어 발생하는 취약점입니다. 이로 인해 공격자가 올바른 비밀번호를 제공하지 않아도 인증에 성공할 수 있습니다.",
+            "published_date": "2026-06-29",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-55957.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-42498",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.21",
+                "10.1.0-M1 to 10.1.54",
+                "9.0.2 to 9.0.117",
+                "8.5.24 to 8.5.100"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 7.3 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-200",
+                    "CWE Name": "Exposure of Sensitive Information to an Unauthorized Actor",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.22",
+                        "10.1.55",
+                        "9.0.118",
+                        "8.5.100"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: WebSocket 인증 과정에서 HTTP 인증 헤더가 노출될 수 있는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat의 WebSocket 인증 과정에서 HTTP 인증 헤더가 의도하지 않은 호스트로 전송될 수 있는 취약점입니다.이로 인해 인증 정보가 예상하지 못한 외부 호스트에 노출될 수 있습니다.",
+            "published_date": "2026-05-12",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-42498.md",
             "instance_type": "TOMCAT"
         },
         {
@@ -1465,6 +1075,983 @@
             "published_date": "2026-04-09",
             "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-34500.md",
             "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-53404",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.22",
+                "10.1.0-M1 to 10.1.55",
+                "9.0.0-M1 to 9.0.118",
+                "8.5.0 to 8.5.100"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 7.3 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-670",
+                    "CWE Name": "Always-Incorrect Control Flow Implementation",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.23",
+                        "10.1.56",
+                        "9.0.119",
+                        "8.5.101"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: RewriteValve에서 ornext 조건이 잘못 처리되는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat의 RewriteValve에서 제어 흐름이 잘못 처리되는 취약점입니다. OR 조건으로 연결된 조건식에서 첫 번째 조건이 일치하면, 그 뒤에 이어지는 OR 조건이 아닌 조건들이 건너뛰어질 수 있습니다. 이로 인해 RewriteValve 규칙이 의도한 순서와 다르게 평가될 수 있습니다. 기술 지원이 종료된 다른 버전의 Apache Tomcat도 이 취약점의 영향을 받을 수 있습니다.",
+            "published_date": "2026-06-29",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-53404.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-29170",
+            "affected_versions": [
+                "0.0.0 to 2.4.67"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: CISA-ADP",
+                    "Score": "Base Score: 6.1 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-79",
+                    "CWE Name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "2.4.68"
+                    ]
+                }
+            ],
+            "summary": "Apache HTTP Server: mod_proxy_ftp의 크로스 사이트 스크립팅(XSS) 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache HTTP Server 2.4.67 이하 버전의 mod_proxy_ftp 모듈에서 FTP 디렉터리 목록을 HTML로 생성하는 과정 중 발생하는 크로스 사이트 스크립팅(Cross-site Scripting, XSS) 취약점입니다.이 취약점은 정방향 프록시 또는 역방향 프록시 구성으로 FTP 디렉터리의 내용을 조회할 때 발생할 수 있습니다.",
+            "published_date": "2026-06-08",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2026/CVE-2026-29170.md",
+            "instance_type": "APACHE"
+        },
+        {
+            "CVE-ID": "CVE-2026-28780",
+            "affected_versions": [
+                "0.0.0 to 2.4.66"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: CISA-ADP",
+                    "Score": "Base Score: 9.8 CRITICAL",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: redhat-SADP",
+                    "Score": "Base Score: 8.1 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-122",
+                    "CWE Name": "Heap-based Buffer Overflow",
+                    "Source": "Apache Software Foundation"
+                },
+                {
+                    "CWE-ID": "CWE-787",
+                    "CWE Name": "Out-of-bounds Write",
+                    "Source": "redhat-SADP"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "2.4.67"
+                    ]
+                }
+            ],
+            "summary": "Apache HTTP Server: ajp_msg_check_header()를 통한 mod_proxy_ajp의 버퍼 오버플로우 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache HTTP Server의 mod_proxy_ajp 모듈에서 발생하는 힙 기반 버퍼 오버플로우(Heap-based Buffer Overflow) 취약점입니다. mod_proxy_ajp가 악의적인 AJP 서버에 연결될 경우, 해당 서버는 조작된 AJP 메시지를 mod_proxy_ajp로 전송할 수 있습니다. 공격자는 조작된 AJP 메시지를 통해 버퍼 범위를 벗어난 메모리 영역에 자신이 지정한 4바이트 데이터를 기록할 수 있습니다. 이로 인해 힙 기반 버퍼 오버플로우가 발생할 수 있습니다.",
+            "published_date": "2026-05-05",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2026/CVE-2026-28780.md",
+            "instance_type": "APACHE"
+        },
+        {
+            "CVE-ID": "CVE-2026-29167",
+            "affected_versions": [
+                "2.4.0 to 2.4.67"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: CISA-ADP",
+                    "Score": "Base Score: 9.8 CRITICAL",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-416",
+                    "CWE Name": "Use After Free",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "2.4.68"
+                    ]
+                }
+            ],
+            "summary": "Apache HTTP Server: 디렉터리별(per-directory) 설정에서 mod_ldap의 Use-After-Free 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache HTTP Server에서 mod_ldap 모듈을 디렉터리별(per-directory) 설정으로 사용할 경우 발생하는 Use-After-Free 취약점입니다.이 취약점으로 인해 이미 해제된 메모리에 접근하는 문제가 발생할 수 있으며, 메모리 손상이나 Apache HTTP Server의 비정상 종료, 또는 원격 코드 실행(Remote Code Execution, RCE)으로 이어질 가능성이 있습니다.",
+            "published_date": "2026-06-08",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2026/CVE-2026-29167.md",
+            "instance_type": "APACHE"
+        },
+        {
+            "CVE-ID": "CVE-2026-23918",
+            "affected_versions": [
+                "2.4.66"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: CISA-ADP",
+                    "Score": "Base Score: 8.8 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: redhat-SADP",
+                    "Score": "Base Score: 8.8 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-415",
+                    "CWE Name": "Double Free",
+                    "Source": "Apache Software Foundation"
+                },
+                {
+                    "CWE-ID": "CWE-1341",
+                    "CWE Name": "Multiple Releases of Same Resource or Handle",
+                    "Source": "redhat-SADP"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "2.4.67"
+                    ]
+                }
+            ],
+            "summary": "Apache HTTP Server: HTTP/2 프로토콜에서 조기 연결 종료(Early Reset) 시 이중 해제(Double Free)로 인해 원격 코드 실행(RCE)이 발생할 수 있는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache HTTP Server의 HTTP/2 프로토콜에서 조기 연결 종료(Early Reset) 처리 과정 중 이중 해제(Double Free)가 발생할 수 있는 취약점입니다.이 취약점으로 인해 원격 코드 실행(Remote Code Execution, RCE)이 발생할 가능성이 있습니다.",
+            "published_date": "2026-05-04",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2026/CVE-2026-23918.md",
+            "instance_type": "APACHE"
+        },
+        {
+            "CVE-ID": "CVE-2026-24072",
+            "affected_versions": [
+                "0.0.0 to 2.4.66"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "ADP: CISA-ADP",
+                    "Score": "Base Score: 8.8 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-269",
+                    "CWE Name": "Improper Privilege Management",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "2.4.67"
+                    ]
+                }
+            ],
+            "summary": "Apache HTTP Server: mod_rewrite의 ap_expr을 통해 권한 상승이 가능한 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache HTTP Server 2.4.66 이하의 여러 모듈에서 발생하는 권한 상승 취약점입니다. 이 취약점으로 인해 로컬의 .htaccess 작성 권한을 가진 사용자가 httpd 프로세스의 권한으로 파일을 읽을 수 있습니다.",
+            "published_date": "2026-05-04",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/apache/2026/CVE-2026-24072.md",
+            "instance_type": "APACHE"
+        },
+        {
+            "CVE-ID": "CVE-2026-27784",
+            "affected_versions": [
+                "1.29.0 to 1.29.6",
+                "1.1.19 to 1.28.2"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 8.5 HIGH",
+                    "Vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "NIST: NVD",
+                    "Score": "Base Score: 5.5 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 8.2 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-190",
+                    "CWE Name": "Integer Overflow or Wraparound",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.29.7"
+                    ]
+                },
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.28.3"
+                    ]
+                }
+            ],
+            "summary": "NGINX ngx_http_mp4_module 모듈의 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "32비트 NGINX Open Source의 ngx_http_mp4_module 모듈에는, 특수하게 조작된 MP4 파일을 통해 공격자가 NGINX 워커 메모리를 과도하게 읽거나(over-read) 쓰도록(over-write) 유도하여 워커 프로세스를 종료시킬 수 있는 취약점이 존재합니다. 이 문제는 ngx_http_mp4_module 모듈이 포함되어 빌드되고, 설정 파일에서 mp4 지시어가 사용되는 경우에만 32비트 NGINX Open Source에 영향을 미칩니다. 또한, 이 공격은 공격자가 ngx_http_mp4_module 모듈을 통해 특수하게 조작된 MP4 파일의 처리를 유도할 수 있는 경우에만 가능합니다.",
+            "published_date": "2026-03-24",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-27784.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2026-42945",
+            "affected_versions": [
+                "0.6.27 to 1.30.0"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 9.2 CRITICAL",
+                    "Vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 8.1 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                },
+                {
+                    "Metrics": "CVSS Version 3.0",
+                    "Source": "ADP: redhat-SADP",
+                    "Score": "Base Score: 8.1 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-122",
+                    "CWE Name": "Heap-based Buffer Overflow",
+                    "Source": "F5 Networks"
+                },
+                {
+                    "CWE-ID": "CWE-131",
+                    "CWE Name": "Incorrect Calculation of Buffer Size",
+                    "Source": "redhat-SADP"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.30.1"
+                    ]
+                },
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.31.0"
+                    ]
+                }
+            ],
+            "summary": "NGINX ngx_http_rewrite_module에서 발생하는 힙 기반 버퍼 오버플로우 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX Open Source의 ngx_http_rewrite_module에서 발생하는 취약점입니다.이 취약점은 rewrite 지시어 뒤에 또 다른 rewrite, if 또는 set 지시어가 이어지고, 이름이 지정되지 않은 Perl 호환 정규식(PCRE) 캡처(예: $1, $2)와 물음표(?)가 포함된 치환 문자열을 함께 사용하는 경우 발생할 수 있습니다.이러한 구성에서 인증되지 않은 공격자가 조작된 HTTP 요청을 전송하고, 공격자가 제어할 수 없는 특정 조건이 함께 충족되면 취약점을 악용할 수 있습니다.그 결과 NGINX worker 프로세스에서 힙 기반 버퍼 오버플로우가 발생하여 프로세스가 재시작될 수 있습니다.또한 주소 공간 배치 난수화(Address Space Layout Randomization, ASLR)가 비활성화된 시스템이나 공격자가 ASLR을 우회할 수 있는 환경에서는 임의 코드 실행으로 이어질 수 있습니다.참고: 기술 지원이 종료된(End of Technical Support, EoTS) 소프트웨어 버전은 평가 대상에 포함되지 않습니다.",
+            "published_date": "2026-05-13",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-42945.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2026-27654",
+            "affected_versions": [
+                "1.29.0 to 1.29.6",
+                "0.5.13 to 1.28.2"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 8.8 HIGH",
+                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 8.2 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-122",
+                    "CWE Name": "Heap-based Buffer Overflow",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.29.7"
+                    ]
+                },
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.28.3"
+                    ]
+                }
+            ],
+            "summary": "NGINX ngx_http_dav_module 모듈의 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX Open Source의 ngx_http_dav_module 모듈에는 공격자가 NGINX 워커 프로세스에서 버퍼 오버플로우를 유발할 수 있는 취약점이 존재합니다. 이 취약점으로 인해 NGINX 워커 프로세스가 종료되거나, 문서 루트(document root) 외부의 소스 또는 대상 파일 이름이 변경될 수 있습니다. 이 문제는 설정 파일에서 DAV 모듈의 MOVE 또는 COPY 메서드를 사용하고, prefix location(정규식이 아닌 location 설정)과 alias 지시어를 사용하는 경우 영향을 미칩니다. NGINX 워커 프로세스는 낮은 권한으로 실행되며 시스템 전체에 대한 접근 권한이 없기 때문에 무결성 영향은 제한적입니다.",
+            "published_date": "2026-03-24",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-27654.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2026-42926",
+            "affected_versions": [
+                "1.29.4 to 1.30.0"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 6.3 MEDIUM",
+                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 5.8 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:L/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-172",
+                    "CWE Name": "Encoding Error",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.30.1"
+                    ]
+                },
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.31.0"
+                    ]
+                }
+            ],
+            "summary": "NGINX ngx_http_proxy_v2_module에서 HTTP/2 프록시 요청 조작이 가능한 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX Open Source에서 proxy_http_version을 2로 설정하여 HTTP/2 요청을 업스트림 서버로 전달하도록 구성하고, 동시에 proxy_set_body를 사용하는 경우 발생하는 취약점입니다.이러한 구성에서 공격자는 업스트림 서버로 전달되는 HTTP/2 프레임 헤더와 페이로드에 임의의 데이터를 주입할 수 있습니다. 이로 인해 업스트림 서버가 의도하지 않은 요청을 처리하거나 데이터 무결성이 훼손될 수 있습니다.참고: 기술 지원이 종료된(End of Technical Support, EoTS) 소프트웨어 버전은 평가 대상에 포함되지 않습니다.",
+            "published_date": "2026-05-13",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-42926.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2026-42530",
+            "affected_versions": [
+                "1.31.0 to 1.31.1"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 9.2 CRITICAL",
+                    "Vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 8.1 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                },
+                {
+                    "Metrics": "CVSS Version 3.0",
+                    "Source": "ADP: redhat-SADP",
+                    "Score": "Base Score: 8.1 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-416",
+                    "CWE Name": "Use After Free",
+                    "Source": "F5 Networks redhat-SADP"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.31.2"
+                    ]
+                }
+            ],
+            "summary": "NGINX Open Source의 ngx_http_v3_module에서 발생하는 Use-After-Free 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX Open Source의 ngx_http_v3_module에서 발생하는 취약점입니다.NGINX Open Source에서 HTTP/3 QUIC 모듈을 사용하도록 구성한 경우 영향을 받을 수 있습니다. 이러한 환경에서 원격의 인증되지 않은 공격자가 특수하게 조작된 HTTP/3 세션을 전송하고, 공격자가 제어할 수 없는 특정 조건이 함께 충족되면 QPACK encoder stream을 다시 열 수 있습니다.이로 인해 NGINX worker 프로세스에서 Use-After-Free 오류가 발생하여 프로세스가 재시작될 수 있습니다.또한 주소 공간 배치 난수화(Address Space Layout Randomization, ASLR)가 비활성화된 시스템이나 공격자가 ASLR을 우회할 수 있는 환경에서는 임의 코드 실행으로 이어질 수 있습니다.참고: 기술 지원이 종료된(End of Technical Support, EoTS) 소프트웨어 버전은 평가 대상에 포함되지 않습니다.",
+            "published_date": "2026-06-17",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-42530.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2026-48142",
+            "affected_versions": [
+                "1.13.10 to 1.31.1",
+                "1.30.0 to 1.30.2"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 6.3 MEDIUM",
+                    "Vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:L/SC:N/SI:N/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 4.8 MEIDUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:L"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-125",
+                    "CWE Name": "Out-of-bounds Read",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.31.2"
+                    ]
+                },
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.30.3"
+                    ]
+                }
+            ],
+            "summary": "NGINX ngx_http_charset_module에서 발생하는 범위를 벗어난 메모리 읽기 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX Plus 및 NGINX Open Source의 ngx_http_charset_module에서 발생하는 취약점입니다.콘텐츠를 제공하거나 프록시하는 location 블록에 source_charset utf-8;과 문자셋을 지정하는 지시어(예: charset koi8-r;)가 함께 설정된 경우 영향을 받을 수 있습니다.이러한 구성에서 원격의 인증되지 않은 공격자가 요청을 전송하고, 공격자가 제어할 수 없는 특정 조건이 함께 충족되면 NGINX worker 프로세스에서 힙 버퍼의 범위를 벗어난 읽기(Heap Buffer Over-read)가 발생할 수 있습니다.이로 인해 메모리의 일부 정보가 노출되거나 NGINX worker 프로세스가 재시작될 수 있습니다.참고: 기술 지원이 종료된(End of Technical Support, EoTS) 소프트웨어 버전은 평가 대상에 포함되지 않습니다.",
+            "published_date": "2026-06-17",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-48142.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2026-28755",
+            "affected_versions": [
+                "1.29.0 to 1.29.6",
+                "1.27.2 to 1.28.2"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 5.3 MEDIUM",
+                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 5.4 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-963",
+                    "CWE Name": "Incorrect Authorization",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.29.7"
+                    ]
+                },
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.28.3"
+                    ]
+                }
+            ],
+            "summary": "NGINX ngx_stream_ssl_module 모듈의 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX Open Source의 ngx_stream_ssl_module 모듈에는 ssl_verify_client on 및 ssl_ocsp on 지시어가 설정된 경우, 폐기된 인증서를 부적절하게 처리하는 취약점이 존재하며, 이로 인해 OCSP 검사에서 인증서가 폐기된 것으로 확인되더라도 TLS 핸드셰이크가 성공할 수 있습니다.",
+            "published_date": "2026-03-24",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-28755.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2026-40701",
+            "affected_versions": [
+                "1.19.0 to 1.30.0"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 6.3 MEDIUM",
+                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:L/SC:N/SI:N/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 4.8 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:L"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-416",
+                    "CWE Name": "Use After Free",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.30.1"
+                    ]
+                },
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.31.0"
+                    ]
+                }
+            ],
+            "summary": "NGINX ngx_http_ssl_module에서 발생하는 Use-After-Free 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX Open Source의 ngx_http_ssl_module에서 발생하는 Use-After-Free 취약점입니다. 이 취약점은 ssl_verify_client 지시어가 \"on\" 또는 \"optional\"로 설정되어 있고, ssl_ocsp 지시어가 \"on\"으로 설정되어 있거나 leaf 매개변수에 resolver가 구성된 경우 영향을 받을 수 있습니다.이러한 구성에서 인증되지 않은 공격자가 요청을 전송하고, 공격자가 제어할 수 없는 특정 조건이 함께 충족되면 NGINX worker 프로세스에서 힙 메모리의 Use-After-Free 오류가 발생할 수 있습니다.이로 인해 일부 데이터가 변조되거나 NGINX worker 프로세스가 재시작될 수 있습니다.참고: 기술 지원이 종료된(End of Technical Support, EoTS) 소프트웨어 버전은 평가 대상에 포함되지 않습니다.",
+            "published_date": "2026-05-13",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-40701.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2026-32647",
+            "affected_versions": [
+                "1.29.0 to 1.29.6",
+                "1.1.19 to 1.28.2"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 8.5 HIGH",
+                    "Vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 7.8 HIGH",
+                    "Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-125",
+                    "CWE Name": "Out-of-bounds Read",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.29.7"
+                    ]
+                },
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.28.3"
+                    ]
+                }
+            ],
+            "summary": "NGINX ngx_http_mp4_module 모듈의 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX Open Source의 ngx_http_mp4_module 모듈에는, 특수하게 조작된 MP4 파일을 통해 공격자가 NGINX 워커 메모리에 대해 버퍼 과다 읽기(buffer over-read) 또는 과다 쓰기(over-write)를 유발하여 워커 프로세스를 종료시키거나, 경우에 따라 코드 실행까지 가능하게 할 수 있는 취약점이 존재합니다. 이 문제는 ngx_http_mp4_module 모듈이 포함되어 빌드되고, 설정 파일에서 mp4 지시어가 사용되는 경우 NGINX Open Source에 영향을 미칩니다. 또한, 이 공격은 공격자가 ngx_http_mp4_module 모듈을 통해 특수하게 조작된 MP4 파일의 처리를 유도할 수 있는 경우에만 가능합니다.",
+            "published_date": "2026-03-24",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-32647.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2026-27651",
+            "affected_versions": [
+                "1.29.0 to 1.29.6",
+                "0.5.15 to 1.28.2"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 8.7 HIGH",
+                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-476",
+                    "CWE Name": "NULL Pointer Dereference",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.29.7"
+                    ]
+                },
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.28.3"
+                    ]
+                }
+            ],
+            "summary": "NGINX ngx_mail_auth_http_module 모듈의 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX Open Source에서 ngx_mail_auth_http_module 모듈이 활성화된 경우, 공개되지 않은 요청으로 인해 워커 프로세스가 종료될 수 있습니다. 이 문제는 CRAM-MD5 또는 APOP 인증이 활성화되어 있고, 인증 서버가 Auth-Wait 응답 헤더를 반환하여 재시도를 허용하는 경우 발생할 수 있습니다.",
+            "published_date": "2026-03-24",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-27651.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2026-1642",
+            "affected_versions": [
+                "1.3.0 to 1.29.4"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 8.2 HIGH",
+                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 5.9 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-345",
+                    "CWE Name": "Insufficient Verification of Data Authenticity",
+                    "Source": "NIST"
+                },
+                {
+                    "CWE-ID": "CWE-349",
+                    "CWE Name": "Acceptance of Extraneous Untrusted Data With Trusted Data",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.28.2"
+                    ]
+                }
+            ],
+            "summary": "NGINX가 upstream TLS 서버로 프록시하도록 구성된 경우, 특정 man-in-the-middle(MITM) 조건에서 응답에 평문 데이터를 주입할 수 있는 취약점이 존재합니다.",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX OSS 및 NGINX Plus가 upstream Transport Layer Security(TLS) 서버로 프록시하도록 구성된 경우 취약점이 존재합니다.\n공격자가 upstream 서버 연결 구간에서 man-in-the-middle (MITM) 위치에 있으며, 공격자가 통제할 수 없는 특정 조건이 함께 충족될 경우 upstream 프록시 서버로부터 반환되는 응답에 평문 데이터를 주입할 수 있습니다.",
+            "published_date": "2026-02-04",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-1642.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2026-40460",
+            "affected_versions": [
+                "1.26.0 to 1.30.1"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 6.9 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-290",
+                    "CWE Name": "Authentication Bypass by Spoofing",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.31.0"
+                    ]
+                }
+            ],
+            "summary": "NGINX ngx_quic_module에서 발생하는 IP 주소 스푸핑 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX Open Source에서 HTTP/3 QUIC 모듈을 사용하도록 구성한 경우, 공격자가 자신의 출발지 IP 주소를 위조할 수 있는 취약점입니다.공격자는 위조한 IP 주소를 이용하여 인가 절차를 우회하거나 요청 속도 제한을 우회할 수 있습니다.참고: 기술 지원이 종료된(End of Technical Support, EoTS) 소프트웨어 버전은 평가 대상에 포함되지 않습니다.",
+            "published_date": "2026-05-13",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-40460.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2026-42934",
+            "affected_versions": [
+                "0.3.50 to 1.30.0"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 6.3 MEDIUM",
+                    "Vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 4.8 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:L"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-125",
+                    "CWE Name": "Out-of-bounds Read",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.30.1"
+                    ]
+                },
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.31.0"
+                    ]
+                }
+            ],
+            "summary": "NGINX ngx_http_charset_module에서 발생하는 범위를 벗어난 메모리 읽기 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX Open Source의 ngx_http_charset_module에서 발생하는 취약점입니다.charset, source_charset, charset_map 지시어가 설정되어 있고, proxy_pass와 함께 버퍼링이 비활성화된(\"off\") 구성을 사용하는 경우 영향을 받을 수 있습니다.이러한 구성에서 인증되지 않은 공격자가 요청을 전송하고, 공격자가 제어할 수 없는 특정 조건이 함께 충족되면 NGINX worker 프로세스에서 힙 버퍼의 범위를 벗어난 읽기(Heap Buffer Over-read)가 발생할 수 있습니다.이로 인해 메모리의 일부 정보가 노출되거나 NGINX worker 프로세스가 재시작될 수 있습니다.참고: 기술 지원이 종료된(End of Technical Support, EoTS) 소프트웨어 버전은 평가 대상에 포함되지 않습니다.",
+            "published_date": "2026-05-13",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-42934.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2026-42055",
+            "affected_versions": [
+                "1.13.10 to 1.31.1",
+                "1.30.2"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 9.2 CRITICAL",
+                    "Vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 8.1 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                },
+                {
+                    "Metrics": "CVSS Version 3.0",
+                    "Source": "ADP: redhat-SADP",
+                    "Score": "Base Score: 8.1 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-787",
+                    "CWE Name": "Out-of-bounds Write",
+                    "Source": "NIST"
+                },
+                {
+                    "CWE-ID": "CWE-122",
+                    "CWE Name": "Heap-based Buffer Overflow",
+                    "Source": "F5 Networks"
+                },
+                {
+                    "CWE-ID": "CWE-131",
+                    "CWE Name": "Incorrect Calculation of Buffer Size",
+                    "Source": "redhat-SADP"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.31.2"
+                    ]
+                },
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.30.3"
+                    ]
+                }
+            ],
+            "summary": "NGINX ngx_http_proxy_v2_module 및 ngx_http_grpc_module에서 발생하는 힙 기반 버퍼 오버플로우 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX Open Source의 ngx_http_proxy_v2_module 및 ngx_http_grpc_module에서 발생하는 취약점입니다.이 취약점은 proxy_http_version을 2로 설정하거나 grpc_pass 지시어를 사용하여 HTTP/2 요청을 업스트림 서버로 전달하는 환경에서 발생할 수 있습니다. 또한 ignore_invalid_headers 지시어가 off로 설정되어 있고, large_client_header_buffers 지시어의 버퍼 크기가 2MB보다 크게 설정된 경우 영향을 받을 수 있습니다.이러한 구성에서 원격의 인증되지 않은 공격자가 업스트림 요청이 생성되는 과정에서 큰 크기의 헤더를 전송하고, 공격자가 제어할 수 없는 특정 조건이 함께 충족되면 취약점을 악용할 수 있습니다.그 결과 NGINX worker 프로세스에서 힙 기반 버퍼 오버플로우가 발생하여 프로세스가 재시작될 수 있습니다.또한 주소 공간 배치 난수화(Address Space Layout Randomization, ASLR)가 비활성화된 시스템이나 공격자가 ASLR을 우회할 수 있는 환경에서는 임의 코드 실행으로 이어질 수 있습니다.참고: 기술 지원이 종료된(End of Technical Support, EoTS) 소프트웨어 버전은 평가 대상에 포함되지 않습니다.",
+            "published_date": "2026-06-17",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-42055.md",
+            "instance_type": "NGINX"
+        },
+        {
+            "CVE-ID": "CVE-2026-9256",
+            "affected_versions": [
+                "1.31.0",
+                "1.30.0 to 1.30.1"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "CVSS-B: 9.2 CRITICAL",
+                    "Vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+                },
+                {
+                    "Metrics": "CVSS Version 3.0",
+                    "Source": "CNA: F5 Networks",
+                    "Score": "Base Score: 8.1 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                },
+                {
+                    "Metrics": "CVSS Version 3.0",
+                    "Source": "ADP: redhat-SADP",
+                    "Score": "Base Score: 8.1 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-122",
+                    "CWE Name": "Heap-based Buffer Overflow",
+                    "Source": "F5 Networks"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.31.1"
+                    ]
+                },
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "1.30.2"
+                    ]
+                }
+            ],
+            "summary": "NGINX ngx_http_rewrite_module에서 발생하는 힙 기반 버퍼 오버플로우 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "NGINX Open Source의 ngx_http_rewrite_module에서 발생하는 취약점입니다.이 취약점은 rewrite 지시어에서 서로 겹치는 이름 없는 Perl 호환 정규식(PCRE) 캡처(예: ^/((.*))$)를 사용하고, 리디렉션 또는 쿼리 문자열(arguments) 처리 시 이러한 캡처를 여러 개 참조하는 치환 문자열(예: $1$2)을 사용하는 경우 발생할 수 있습니다.이러한 구성에서 인증되지 않은 공격자가 조작된 HTTP 요청을 전송하고, 공격자가 제어할 수 없는 특정 조건이 함께 충족되면 취약점을 악용할 수 있습니다.그 결과 NGINX worker 프로세스에서 힙 기반 버퍼 오버플로우가 발생하여 프로세스가 재시작될 수 있습니다.또한 주소 공간 배치 난수화(Address Space Layout Randomization, ASLR)가 비활성화된 시스템이나 공격자가 ASLR을 우회할 수 있는 환경에서는 임의 코드 실행으로 이어질 수 있습니다.참고: 기술 지원이 종료된(End of Technical Support, EoTS) 소프트웨어 버전은 평가 대상에 포함되지 않습니다.",
+            "published_date": "2026-05-22",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/nginx/2026/CVE-2026-9256.md",
+            "instance_type": "NGINX"
         }
     ]
 }

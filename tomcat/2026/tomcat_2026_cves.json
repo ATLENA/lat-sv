@@ -1,11 +1,136 @@
 {
     "CVE-LIST": [
         {
-            "CVE-ID": "CVE-2026-29129",
+            "CVE-ID": "CVE-2026-55956",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.22",
+                "10.1.0-M1 to 10.1.55",
+                "9.0.0-M1 to 9.0.118",
+                "8.5.0 to 8.5.100",
+                "7.0.0 to 7.0.109"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 6.5 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-285",
+                    "CWE Name": "Improper Authorization",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.23",
+                        "10.1.56",
+                        "9.0.119",
+                        "8.5.101",
+                        "7.0.110"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: 기본 서블릿에 설정된 보안 제약 조건에서 HTTP 메서드 설정이 무시되는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat에서 기본 서블릿에 적용된 보안 제약 조건이 HTTP 메서드 설정을 올바르게 처리하지 않아 발생하는 권한 검증 미흡 취약점입니다. 보안 제약 조건에 특정 HTTP 메서드 또는 제외할 HTTP 메서드가 설정되어 있어도 해당 설정이 무시될 수 있습니다. 이로 인해 접근이 제한되어야 하는 요청이 허용될 수 있습니다. 기술 지원이 종료된 다른 버전의 Apache Tomcat도 이 취약점의 영향을 받을 수 있습니다.",
+            "published_date": "2026-06-29",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-55956.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-50229",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.22",
+                "10.1.0-M1 to 10.1.55",
+                "9.0.0-M1 to 9.0.118",
+                "8.5.0 to 8.5.100",
+                "7.0.0 to 7.0.109"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 6.1 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-80",
+                    "CWE Name": "Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS)",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.23",
+                        "10.1.56",
+                        "9.0.119",
+                        "8.5.101",
+                        "7.0.110"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: 숫자 맞히기 예제에서 발생하는 크로스 사이트 스크립팅(XSS) 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat의 숫자 맞히기(number guess) 예제에서 발생하는 기본형 크로스 사이트 스크립팅(Basic XSS) 취약점입니다. 웹 페이지에 포함되는 스크립트 관련 HTML 태그가 적절하게 무력화되지 않아, 공격자가 악성 스크립트를 실행할 수 있습니다. 기술 지원이 종료된 다른 버전의 Apache Tomcat도 이 취약점의 영향을 받을 수 있습니다.",
+            "published_date": "2026-06-29",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-50229.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-24880",
             "affected_versions": [
                 "11.0.0-M1 to 11.0.18",
-                "10.1.51 to 10.1.52",
-                "9.0.114 to 9.0.115"
+                "10.1.0-M1 to 10.1.52",
+                "9.0.0-M1 to 9.0.115"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-444",
+                    "CWE Name": "Inconsistent Interpretation of HTTP Requests ('HTTP Request/Response Smuggling')",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.20",
+                        "10.1.52",
+                        "9.0.116"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: 잘못된 chunk extension 처리로 인한 요청 스머글링 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat에서 잘못된 chunk extension이 포함된 HTTP 요청을 처리할 때, HTTP 요청 해석 방식이 일관되지 않아 발생할 수 있는 HTTP Request/Response Smuggling 취약점입니다.",
+            "published_date": "2026-04-09",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-24880.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-29146",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.18",
+                "10.0.0-M7 to 10.1.52",
+                "9.0.13 to 9.0.115"
             ],
             "severity": [
                 {
@@ -17,8 +142,52 @@
             ],
             "identification_information": [
                 {
-                    "CWE-ID": "CWE-20",
-                    "CWE Name": "Improper Input Validation",
+                    "CWE-ID": "CWE-209",
+                    "CWE Name": "Generation of Error Message Containing Sensitive Information",
+                    "Source": "CISA-ADP"
+                },
+                {
+                    "CWE-ID": "CWE-642",
+                    "CWE Name": "External Control of Critical State Data",
+                    "Source": "CISA-ADP"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.19",
+                        "10.1.53",
+                        "9.0.116"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: 기본 설정에서 EncryptInterceptor가 패딩 오라클 공격에 취약한 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat의 EncryptInterceptor가 기본 설정 상태에서 패딩 오라클(Padding Oracle) 공격에 취약한 취약점입니다.\n이로 인해 공격자가 암호화된 데이터를 분석하여 일부 평문 정보를 유추하거나 복호화할 수 있습니다.",
+            "published_date": "2026-04-09",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-29146.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-34483",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.20",
+                "10.1.0-M1 to 10.1.53",
+                "9.0.40 to 9.0.116"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-116",
+                    "CWE Name": "Improper Encoding or Escaping of Output",
                     "Source": "Apache Software Foundation"
                 }
             ],
@@ -26,17 +195,17 @@
                 {
                     "Method": "upgrade engine",
                     "Detail": [
-                        "11.0.20",
-                        "10.1.53",
-                        "9.0.116"
+                        "11.0.21",
+                        "10.1.54",
+                        "9.0.117"
                     ]
                 }
             ],
-            "summary": "Apache Tomcat: TLS 암호화 스위트(cipher) 우선순서가 유지되지 않는 취약점",
+            "summary": "Apache Tomcat: JSON 접근 로그에서 이스케이프 처리가 불완전한 취약점",
             "discoverer_information": "N/A",
-            "detailed_description": "Apache Tomcat에서 설정된 TLS 암호화 스위트의 우선순서가 제대로 유지되지 않는 취약점입니다.\n이로 인해 서버가 의도한 보안 수준보다 낮은 암호화 알고리즘을 선택할 수 있습니다.",
+            "detailed_description": "Apache Tomcat의 JsonAccessLogValve 컴포넌트에서 출력값에 대한 인코딩 또는 이스케이프 처리가 적절히 수행되지 않는 취약점입니다.\n이로 인해 JSON 접근 로그에 포함되는 데이터가 올바르게 처리되지 않아, 로그 변조나 추가적인 보안 문제를 유발할 수 있습니다.",
             "published_date": "2026-04-09",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-29129.md",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-34483.md",
             "instance_type": "TOMCAT"
         },
         {
@@ -85,69 +254,25 @@
             "instance_type": "TOMCAT"
         },
         {
-            "CVE-ID": "CVE-2025-66614",
+            "CVE-ID": "CVE-2026-43512",
             "affected_versions": [
-                "11.0.0-M1 to 11.0.14",
-                "10.1.0-M1 to 10.1.49",
-                "9.0.0-M1 to 9.0.112"
-            ],
-            "severity": [
-                {
-                    "Metrics": "CVSS Version 4.0",
-                    "Source": "NVD",
-                    "Score": "Base Score N/A",
-                    "Vector": "NVD assessment not yet provided."
-                },
-                {
-                    "Metrics": "CVSS Version 3.x",
-                    "Source": "NVD",
-                    "Score": "Base Score N/A",
-                    "Vector": "NVD assessment not yet provided."
-                }
-            ],
-            "identification_information": [
-                {
-                    "CWE-ID": "CWE-20",
-                    "CWE Name": "Improper Input Validation",
-                    "Source": "Apache Software Foundation"
-                }
-            ],
-            "mitigation_methods": [
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "11.0.15",
-                        "10.1.50",
-                        "9.0.113"
-                    ]
-                }
-            ],
-            "summary": "여러 개의 가상 호스트가 서로 다른 TLS 클라이언트 인증 설정을 사용하는 환경에서, Apache Tomcat의 클라이언트 인증을 우회할 수 있는 취약점이 존재합니다.",
-            "discoverer_information": "N/A",
-            "detailed_description": "Tomcat은 SNI(Server Name Indication) 확장에서 제공된 호스트 이름과 HTTP Host 헤더 필드에서 제공된 호스트 이름이 동일한지 검증하지 않았습니다.Tomcat이 두 개 이상의 가상 호스트로 구성되어 있고, 그중 하나의 TLS 설정에서는 클라이언트 인증을 요구하지 않지만 다른 가상 호스트에서는 클라이언트 인증을 요구하는 경우, 클라이언트는 SNI 확장과 HTTP Host 헤더에 서로 다른 호스트 이름을 전송함으로써 클라이언트 인증을 우회할 수 있습니다.이 취약점은 클라이언트 인증이 Connector 수준에서만 적용된 경우에 해당합니다.클라이언트 인증이 웹 애플리케이션 수준에서 적용되는 경우에는 해당 취약점의 영향을 받지 않습니다.",
-            "published_date": "2026-02-17",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2025-66614.md",
-            "instance_type": "TOMCAT"
-        },
-        {
-            "CVE-ID": "CVE-2026-34483",
-            "affected_versions": [
-                "11.0.0-M1 to 11.0.20",
-                "10.1.0-M1 to 10.1.53",
-                "9.0.40 to 9.0.116"
+                "11.0.0-M1 to 11.0.21",
+                "10.1.0-M1 to 10.1.54",
+                "9.0.0-M1 to 9.0.117",
+                "8.5.0 to 8.5.100"
             ],
             "severity": [
                 {
                     "Metrics": "CVSS Version 3.x",
                     "Source": "CISA-ADP",
-                    "Score": "Base Score: 7.5 HIGH",
-                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+                    "Score": "Base Score: 9.8 CRITICAL",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
                 }
             ],
             "identification_information": [
                 {
-                    "CWE-ID": "CWE-116",
-                    "CWE Name": "Improper Encoding or Escaping of Output",
+                    "CWE-ID": "CWE-592",
+                    "CWE Name": "DEPRECATED: Authentication Bypass Issues",
                     "Source": "Apache Software Foundation"
                 }
             ],
@@ -155,17 +280,60 @@
                 {
                     "Method": "upgrade engine",
                     "Detail": [
-                        "11.0.21",
-                        "10.1.54",
-                        "9.0.117"
+                        "11.0.22",
+                        "10.1.55",
+                        "9.0.118",
+                        "8.5.100"
                     ]
                 }
             ],
-            "summary": "Apache Tomcat: JSON 접근 로그에서 이스케이프 처리가 불완전한 취약점",
+            "summary": "Apache Tomcat: Digest 인증에서 존재하지 않는 사용자도 인증될 수 있는 취약점",
             "discoverer_information": "N/A",
-            "detailed_description": "Apache Tomcat의 JsonAccessLogValve 컴포넌트에서 출력값에 대한 인코딩 또는 이스케이프 처리가 적절히 수행되지 않는 취약점입니다.\n이로 인해 JSON 접근 로그에 포함되는 데이터가 올바르게 처리되지 않아, 로그 변조나 추가적인 보안 문제를 유발할 수 있습니다.",
-            "published_date": "2026-04-09",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-34483.md",
+            "detailed_description": "Apache Tomcat의 Digest 인증(Digest Authentication)에서 발생하는 인증 우회(Authentication Bypass) 취약점입니다.이 취약점으로 인해 등록되지 않았거나 존재하지 않는 사용자도 인증에 성공할 수 있습니다.기술 지원이 종료된 이전 버전의 Apache Tomcat도 이 취약점의 영향을 받을 수 있습니다.",
+            "published_date": "2026-05-12",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-43512.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-43515",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.21",
+                "10.1.0-M1 to 10.1.54",
+                "9.0.0-M1 to 9.0.117",
+                "8.5.0 to 8.5.100"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 9.1 CRITICAL",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-285",
+                    "CWE Name": "Improper Authorization",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.22",
+                        "10.1.55",
+                        "9.0.118",
+                        "8.5.101",
+                        "7.0.110"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: 보안 제약 조건이 올바르게 적용되지 않는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat에서 동일한 확장자에 대해 여러 개의 메서드 제약 조건이 같은 HTTP 메서드를 정의하는 경우 발생하는 권한 검증 미흡 취약점입니다. 이로 인해 설정된 보안 제약 조건이 의도한 대로 적용되지 않아, 접근이 제한되어야 하는 요청이 허용될 수 있습니다.",
+            "published_date": "2026-05-12",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-43515.md",
             "instance_type": "TOMCAT"
         },
         {
@@ -214,218 +382,18 @@
             "instance_type": "TOMCAT"
         },
         {
-            "CVE-ID": "CVE-2026-32990",
-            "affected_versions": [
-                "11.0.15 to 11.0.19",
-                "10.1.50 to 10.1.52",
-                "9.0.113 to 9.0.115"
-            ],
-            "severity": [
-                {
-                    "Metrics": "CVSS Version 3.x",
-                    "Source": "CISA-ADP",
-                    "Score": "Base Score: 5.3 MEDIUM",
-                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
-                }
-            ],
-            "identification_information": [
-                {
-                    "CWE-ID": "CWE-20",
-                    "CWE Name": "Improper Input Validation",
-                    "Source": "Apache Software Foundation"
-                }
-            ],
-            "mitigation_methods": [
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "11.0.20",
-                        "10.1.53",
-                        "9.0.116"
-                    ]
-                }
-            ],
-            "summary": "Apache Tomcat: 기존 취약점(CVE-2025-66614)에 대한 패치가 완전하지 않아 여전히 영향을 받는 취약점",
-            "discoverer_information": "N/A",
-            "detailed_description": "Apache Tomcat에서 CVE-2025-66614 취약점에 대한 패치가 완전하지 않아, 입력값 검증 문제가 일부 남아있는 취약점입니다.",
-            "published_date": "2026-04-09",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-32990.md",
-            "instance_type": "TOMCAT"
-        },
-        {
-            "CVE-ID": "CVE-2026-25854",
+            "CVE-ID": "CVE-2026-29145",
             "affected_versions": [
                 "11.0.0-M1 to 11.0.18",
-                "10.1.0-M1 to 10.1.52",
-                "9.0.0-M23 to 9.0.115"
+                "10.1.0-M7 to 10.1.52",
+                "9.0.83 to 9.0.115"
             ],
             "severity": [
                 {
                     "Metrics": "CVSS Version 3.x",
                     "Source": "CISA-ADP",
-                    "Score": "Base Score: 6.1 MEDIUM",
-                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
-                }
-            ],
-            "identification_information": [
-                {
-                    "CWE-ID": "CWE-601",
-                    "CWE Name": "URL Redirection to Untrusted Site ('Open Redirect')",
-                    "Source": "Apache Software Foundation"
-                }
-            ],
-            "mitigation_methods": [
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "11.0.15",
-                        "10.1.50",
-                        "9.0.113"
-                    ]
-                }
-            ],
-            "summary": "Apache Tomcat: 간헐적으로 발생하는 Open Redirect 취약점",
-            "discoverer_information": "N/A",
-            "detailed_description": "Apache Tomcat의 LoadBalancerDrainingValve 구성 요소에서, 간헐적으로 사용자가 의도하지 않은 외부(신뢰할 수 없는) 사이트로 리디렉션될 수 있는 Open Redirect 취약점이 존재합니다.\n이 취약점은 특정 조건에서 URL 리디렉션 검증이 충분히 이루어지지 않아 발생합니다.",
-            "published_date": "2026-04-09",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-25854.md",
-            "instance_type": "TOMCAT"
-        },
-        {
-            "CVE-ID": "CVE-2026-29146",
-            "affected_versions": [
-                "11.0.0-M1 to 11.0.18",
-                "10.0.0-M7 to 10.1.52",
-                "9.0.13 to 9.0.115"
-            ],
-            "severity": [
-                {
-                    "Metrics": "CVSS Version 3.x",
-                    "Source": "CISA-ADP",
-                    "Score": "Base Score: 7.5 HIGH",
-                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
-                }
-            ],
-            "identification_information": [
-                {
-                    "CWE-ID": "CWE-209",
-                    "CWE Name": "Generation of Error Message Containing Sensitive Information",
-                    "Source": "CISA-ADP"
-                },
-                {
-                    "CWE-ID": "CWE-642",
-                    "CWE Name": "External Control of Critical State Data",
-                    "Source": "CISA-ADP"
-                }
-            ],
-            "mitigation_methods": [
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "11.0.19",
-                        "10.1.53",
-                        "9.0.116"
-                    ]
-                }
-            ],
-            "summary": "Apache Tomcat: 기본 설정에서 EncryptInterceptor가 패딩 오라클 공격에 취약한 취약점",
-            "discoverer_information": "N/A",
-            "detailed_description": "Apache Tomcat의 EncryptInterceptor가 기본 설정 상태에서 패딩 오라클(Padding Oracle) 공격에 취약한 취약점입니다.\n이로 인해 공격자가 암호화된 데이터를 분석하여 일부 평문 정보를 유추하거나 복호화할 수 있습니다.",
-            "published_date": "2026-04-09",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-29146.md",
-            "instance_type": "TOMCAT"
-        },
-        {
-            "CVE-ID": "CVE-2026-24880",
-            "affected_versions": [
-                "11.0.0-M1 to 11.0.18",
-                "10.1.0-M1 to 10.1.52",
-                "9.0.0-M1 to 9.0.115"
-            ],
-            "severity": [
-                {
-                    "Metrics": "CVSS Version 3.x",
-                    "Source": "CISA-ADP",
-                    "Score": "Base Score: 7.5 HIGH",
-                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
-                }
-            ],
-            "identification_information": [
-                {
-                    "CWE-ID": "CWE-444",
-                    "CWE Name": "Inconsistent Interpretation of HTTP Requests ('HTTP Request/Response Smuggling')",
-                    "Source": "Apache Software Foundation"
-                }
-            ],
-            "mitigation_methods": [
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "11.0.20",
-                        "10.1.52",
-                        "9.0.116"
-                    ]
-                }
-            ],
-            "summary": "Apache Tomcat: 잘못된 chunk extension 처리로 인한 요청 스머글링 취약점",
-            "discoverer_information": "N/A",
-            "detailed_description": "Apache Tomcat에서 잘못된 chunk extension이 포함된 HTTP 요청을 처리할 때, HTTP 요청 해석 방식이 일관되지 않아 발생할 수 있는 HTTP Request/Response Smuggling 취약점입니다.",
-            "published_date": "2026-04-09",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-24880.md",
-            "instance_type": "TOMCAT"
-        },
-        {
-            "CVE-ID": "CVE-2026-34487",
-            "affected_versions": [
-                "11.0.0-M1 to 11.0.20",
-                "10.1.0-M1 to 10.1.53",
-                "9.0.13 to 9.0.116"
-            ],
-            "severity": [
-                {
-                    "Metrics": "CVSS Version 3.x",
-                    "Source": "CISA-ADP",
-                    "Score": "Base Score: 7.5 HIGH",
-                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
-                }
-            ],
-            "identification_information": [
-                {
-                    "CWE-ID": "CWE-532",
-                    "CWE Name": "Insertion of Sensitive Information into Log File",
-                    "Source": "Apache Software Foundation"
-                }
-            ],
-            "mitigation_methods": [
-                {
-                    "Method": "upgrade engine",
-                    "Detail": [
-                        "11.0.21",
-                        "10.1.54",
-                        "9.0.117"
-                    ]
-                }
-            ],
-            "summary": "Apache Tomcat: 클러스터링 컴포넌트의 클라우드 멤버십 기능에서 Kubernetes bearer 토큰이 노출되는 취약점",
-            "discoverer_information": "N/A",
-            "detailed_description": "Apache Tomcat의 클러스터링 컴포넌트 중 클라우드 멤버십 기능에서 민감한 정보가 로그 파일에 기록되는 문제로 인해 Kubernetes bearer 토큰이 노출될 수 있는 취약점입니다.",
-            "published_date": "2026-04-09",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-34487.md",
-            "instance_type": "TOMCAT"
-        },
-        {
-            "CVE-ID": "CVE-2026-34500",
-            "affected_versions": [
-                "11.0.0-M14 to 11.0.20",
-                "10.1.22 to 10.1.53",
-                "9.0.92 to 9.0.116"
-            ],
-            "severity": [
-                {
-                    "Metrics": "CVSS Version 3.x",
-                    "Source": "CISA-ADP",
-                    "Score": "Base Score: 6.5 MEDIUM",
-                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:N"
+                    "Score": "Base Score: 9.1 CRITICAL",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
                 }
             ],
             "identification_information": [
@@ -439,17 +407,17 @@
                 {
                     "Method": "upgrade engine",
                     "Detail": [
-                        "11.0.21",
-                        "10.1.54",
-                        "9.0.117"
+                        "11.0.20",
+                        "10.1.53",
+                        "9.0.116"
                     ]
                 }
             ],
-            "summary": "Apache Tomcat: soft-fail이 비활성화된 경우에도 FFM 사용 시 OCSP 검증 실패가 무시되는 취약점",
+            "summary": "Apache Tomcat, Apache Tomcat Native: soft-fail(검증 실패 허용 모드)이 비활성화되어 있음에도, OCSP 검사가 실패로 처리되지 않고 통과되는 취약점",
             "discoverer_information": "N/A",
-            "detailed_description": "Apache Tomcat에서 soft-fail(검증 실패 허용 모드)이 비활성화되어 있음에도, FFM 사용 환경에서 일부 상황에서 CLIENT_CERT 인증이 예상대로 실패하지 않는 취약점입니다.\n이로 인해 인증이 거부되어야 하는 경우에도 검증 실패가 무시되고 인증이 통과될 수 있습니다.",
+            "detailed_description": "Apache Tomcat 및 Apache Tomcat Native에서 soft-fail이 비활성화된 환경에서도, 특정 상황에서 CLIENT_CERT 인증이 예상대로 실패하지 않는 취약점입니다.\n이로 인해 인증이 거부되어야 하는 경우에도 정상적으로 통과될 수 있습니다.",
             "published_date": "2026-04-09",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-34500.md",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-29145.md",
             "instance_type": "TOMCAT"
         },
         {
@@ -492,11 +460,338 @@
             "instance_type": "TOMCAT"
         },
         {
-            "CVE-ID": "CVE-2026-29145",
+            "CVE-ID": "CVE-2026-29129",
             "affected_versions": [
                 "11.0.0-M1 to 11.0.18",
-                "10.1.0-M7 to 10.1.52",
-                "9.0.83 to 9.0.115"
+                "10.1.51 to 10.1.52",
+                "9.0.114 to 9.0.115"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-20",
+                    "CWE Name": "Improper Input Validation",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.20",
+                        "10.1.53",
+                        "9.0.116"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: TLS 암호화 스위트(cipher) 우선순서가 유지되지 않는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat에서 설정된 TLS 암호화 스위트의 우선순서가 제대로 유지되지 않는 취약점입니다.\n이로 인해 서버가 의도한 보안 수준보다 낮은 암호화 알고리즘을 선택할 수 있습니다.",
+            "published_date": "2026-04-09",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-29129.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-25854",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.18",
+                "10.1.0-M1 to 10.1.52",
+                "9.0.0-M23 to 9.0.115"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 6.1 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-601",
+                    "CWE Name": "URL Redirection to Untrusted Site ('Open Redirect')",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.15",
+                        "10.1.50",
+                        "9.0.113"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: 간헐적으로 발생하는 Open Redirect 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat의 LoadBalancerDrainingValve 구성 요소에서, 간헐적으로 사용자가 의도하지 않은 외부(신뢰할 수 없는) 사이트로 리디렉션될 수 있는 Open Redirect 취약점이 존재합니다.\n이 취약점은 특정 조건에서 URL 리디렉션 검증이 충분히 이루어지지 않아 발생합니다.",
+            "published_date": "2026-04-09",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-25854.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-34487",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.20",
+                "10.1.0-M1 to 10.1.53",
+                "9.0.13 to 9.0.116"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-532",
+                    "CWE Name": "Insertion of Sensitive Information into Log File",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.21",
+                        "10.1.54",
+                        "9.0.117"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: 클러스터링 컴포넌트의 클라우드 멤버십 기능에서 Kubernetes bearer 토큰이 노출되는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat의 클러스터링 컴포넌트 중 클라우드 멤버십 기능에서 민감한 정보가 로그 파일에 기록되는 문제로 인해 Kubernetes bearer 토큰이 노출될 수 있는 취약점입니다.",
+            "published_date": "2026-04-09",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-34487.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-41284",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.21",
+                "10.1.0-M1 to 10.1.54",
+                "9.0.0-M1 to 9.0.117",
+                "10.0.0-M1 to 10.0.27"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-770",
+                    "CWE Name": "Allocation of Resources Without Limits or Throttling",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.22",
+                        "10.1.56",
+                        "9.0.118",
+                        "10.0.28"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: WebDAV의 LOCK 및 PROPFIND 처리 과정에서 제한 없는 읽기(Unbounded Read)가 발생하는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat에서 발생하는 자원 할당 제한 미흡(Allocation of Resources Without Limits or Throttling) 취약점입니다.WebDAV의 LOCK 및 PROPFIND 요청을 처리하는 과정에서 입력 데이터에 대한 읽기 작업이 제한 없이 수행될 수 있습니다. 이로 인해 과도한 자원 사용이 발생하여 서비스 거부(DoS)로 이어질 수 있습니다.기술 지원이 종료된 이전 버전의 Apache Tomcat도 이 취약점의 영향을 받을 수 있습니다.",
+            "published_date": "2026-05-12",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-41284.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-41293",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.21",
+                "10.1.0-M1 to 10.1.54",
+                "9.0.0-M1 to 9.0.117",
+                "10.0.0-M1 to 10.0.27",
+                "8.5.0 to 8.5.100"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 9.8 CRITICAL",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-20",
+                    "CWE Name": "Improper Input Validation",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.22",
+                        "10.1.55",
+                        "9.0.118",
+                        "10.0.28",
+                        "8.5.100"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: HTTP/2 요청 헤더가 적절하게 검증되지 않는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat에서 HTTP/2 요청 헤더에 대한 입력값 검증이 적절하게 수행되지 않는 취약점입니다. 이로 인해 잘못되거나 조작된 HTTP/2 요청 헤더가 처리될 수 있습니다. 기술 지원이 종료된 이전 버전의 Apache Tomcat도 이 취약점의 영향을 받을 수 있습니다.",
+            "published_date": "2026-05-12",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-41293.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-43514",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.21",
+                "10.1.0-M1 to 10.1.54",
+                "9.0.0-M1 to 9.0.117",
+                "8.5.0 to 8.5.100",
+                "7.0.0 to 7.0.109"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 3.7 LOW",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-208",
+                    "CWE Name": "Observable Timing Discrepancy",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.22",
+                        "10.1.55",
+                        "9.0.118",
+                        "8.5.101",
+                        "7.0.110"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: AJP secret 비교 과정에서 처리 시간 차이가 발생하는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat에서 AJP secret을 비교하는 과정에서 처리 시간의 차이가 발생하는 취약점입니다. 공격자는 이 시간 차이를 분석하여 AJP secret에 대한 일부 정보를 추측할 수 있습니다. 기술 지원이 종료된 이전 버전의 Apache Tomcat도 이 취약점의 영향을 받을 수 있습니다.",
+            "published_date": "2026-05-12",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-43514.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-32990",
+            "affected_versions": [
+                "11.0.15 to 11.0.19",
+                "10.1.50 to 10.1.52",
+                "9.0.113 to 9.0.115"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 5.3 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-20",
+                    "CWE Name": "Improper Input Validation",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.20",
+                        "10.1.53",
+                        "9.0.116"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: 기존 취약점(CVE-2025-66614)에 대한 패치가 완전하지 않아 여전히 영향을 받는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat에서 CVE-2025-66614 취약점에 대한 패치가 완전하지 않아, 입력값 검증 문제가 일부 남아있는 취약점입니다.",
+            "published_date": "2026-04-09",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-32990.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-43513",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.21",
+                "10.1.0-M1 to 10.1.54",
+                "9.0.0-M1 to 9.0.117",
+                "8.5.0 to 8.5.100",
+                "7.0.0 to 7.0.109"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 7.5 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-178",
+                    "CWE Name": "Improper Handling of Case Sensitivity",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.22",
+                        "10.1.55",
+                        "9.0.118",
+                        "8.5.101",
+                        "7.0.110"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: LockOutRealm이 사용자 이름의 대소문자를 구분하여 처리하는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat의 LockOutRealm에서 사용자 이름의 대소문자를 부적절하게 구분하여 처리하는 취약점입니다. 이로 인해 동일한 사용자 이름이라도 대소문자를 다르게 입력하면 별도의 사용자로 인식될 수 있으며, 계정 잠금 기능이 의도한 대로 동작하지 않을 수 있습니다. 기술 지원이 종료된 이전 버전의 Apache Tomcat도 이 취약점의 영향을 받을 수 있습니다.",
+            "published_date": "2026-05-12",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-43513.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-55276",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.22",
+                "10.1.0-M1 to 10.1.55",
+                "9.0.0-M1 to 9.0.118",
+                "8.5.0 to 8.5.100"
             ],
             "severity": [
                 {
@@ -504,6 +799,257 @@
                     "Source": "CISA-ADP",
                     "Score": "Base Score: 9.1 CRITICAL",
                     "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-670",
+                    "CWE Name": "Always-Incorrect Control Flow Implementation",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.23",
+                        "10.1.56",
+                        "9.0.119",
+                        "8.5.101"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: 로그에 기록되는 유효 web.xml 정보가 불완전한 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat의 제어 흐름이 잘못 구현되어, 유효한 web.xml 설정을 로그에 기록할 때 특수 역할(special roles)과 비어 있는 권한 부여 제약 조건이 포함되지 않는 취약점입니다. 이로 인해 로그에 기록된 web.xml 정보가 실제 적용된 보안 설정을 완전하게 반영하지 못할 수 있습니다. 기술 지원이 종료된 다른 버전의 Apache Tomcat도 이 취약점의 영향을 받을 수 있습니다.",
+            "published_date": "2026-06-29",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-55276.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-53434",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.22",
+                "10.1.0-M7 to 10.1.55",
+                "9.0.83 to 9.0.118"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 9.1 CRITICAL",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-390",
+                    "CWE Name": "Detection of Error Condition Without Action",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.23",
+                        "10.1.56",
+                        "9.0.119"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: FFM Connector에서 잘못된 CRL 설정이 감지되어도 연결이 실패하지 않는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat에서 FFM 기반 Connector에 CRL을 설정할 때, 잘못된 설정이 감지되어도 적절한 조치가 수행되지 않는 취약점입니다. 이로 인해 CRL 구성이 유효하지 않은 경우에도 Connector가 실패하지 않고 계속 동작할 수 있으며, 인증서 폐기 여부가 의도한 대로 검증되지 않을 수 있습니다.",
+            "published_date": "2026-06-29",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-53434.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2025-66614",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.14",
+                "10.1.0-M1 to 10.1.49",
+                "9.0.0-M1 to 9.0.112"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 4.0",
+                    "Source": "NVD",
+                    "Score": "Base Score N/A",
+                    "Vector": "NVD assessment not yet provided."
+                },
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "NVD",
+                    "Score": "Base Score N/A",
+                    "Vector": "NVD assessment not yet provided."
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-20",
+                    "CWE Name": "Improper Input Validation",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.15",
+                        "10.1.50",
+                        "9.0.113"
+                    ]
+                }
+            ],
+            "summary": "여러 개의 가상 호스트가 서로 다른 TLS 클라이언트 인증 설정을 사용하는 환경에서, Apache Tomcat의 클라이언트 인증을 우회할 수 있는 취약점이 존재합니다.",
+            "discoverer_information": "N/A",
+            "detailed_description": "Tomcat은 SNI(Server Name Indication) 확장에서 제공된 호스트 이름과 HTTP Host 헤더 필드에서 제공된 호스트 이름이 동일한지 검증하지 않았습니다.Tomcat이 두 개 이상의 가상 호스트로 구성되어 있고, 그중 하나의 TLS 설정에서는 클라이언트 인증을 요구하지 않지만 다른 가상 호스트에서는 클라이언트 인증을 요구하는 경우, 클라이언트는 SNI 확장과 HTTP Host 헤더에 서로 다른 호스트 이름을 전송함으로써 클라이언트 인증을 우회할 수 있습니다.이 취약점은 클라이언트 인증이 Connector 수준에서만 적용된 경우에 해당합니다.클라이언트 인증이 웹 애플리케이션 수준에서 적용되는 경우에는 해당 취약점의 영향을 받지 않습니다.",
+            "published_date": "2026-02-17",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2025-66614.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-55955",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.22",
+                "10.1.0-M1 to 10.1.55",
+                "9.0.0-M1 to 9.0.118",
+                "8.5.38 to 8.5.100",
+                "7.0.100 to 7.0.109"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 6.5 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-287",
+                    "CWE Name": "Improper Authentication",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.22",
+                        "10.1.55",
+                        "9.0.118",
+                        "8.5.101",
+                        "7.0.110"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: EncryptInterceptor가 재전송 공격(Replay Attack)으로부터 보호되지 않는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat 클러스터 컴포넌트의 EncryptInterceptor에서 발생하는 인증 처리 미흡 취약점입니다. 공격자는 이전에 전송된 유효한 암호화 메시지를 가로챈 뒤 다시 전송하여 재전송 공격(Replay Attack)을 수행할 수 있습니다. 이로 인해 이미 처리된 요청이나 메시지가 다시 유효한 것으로 받아들여질 수 있습니다.",
+            "published_date": "2026-06-29",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-55955.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-55957",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.4",
+                "10.1.0-M1 to 10.1.36",
+                "9.0.0-M1 to 9.0.100",
+                "8.5.0 to 8.5.100",
+                "7.0.0 to 7.0.109"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 7.3 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-304",
+                    "CWE Name": "Missing Critical Step in Authentication",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.5",
+                        "10.1.37",
+                        "9.0.101",
+                        "8.5.101",
+                        "7.0.110"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: JNDIRealm에서 GSSAPI 인증 바인드를 사용할 때 인증을 우회할 수 있는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat의 JNDIRealm에서 GSSAPI를 사용하여 바인드 인증을 수행하도록 구성한 경우, 인증 과정에서 필수 검증 단계가 누락되어 발생하는 취약점입니다. 이로 인해 공격자가 올바른 비밀번호를 제공하지 않아도 인증에 성공할 수 있습니다.",
+            "published_date": "2026-06-29",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-55957.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-42498",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.21",
+                "10.1.0-M1 to 10.1.54",
+                "9.0.2 to 9.0.117",
+                "8.5.24 to 8.5.100"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 7.3 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-200",
+                    "CWE Name": "Exposure of Sensitive Information to an Unauthorized Actor",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.22",
+                        "10.1.55",
+                        "9.0.118",
+                        "8.5.100"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: WebSocket 인증 과정에서 HTTP 인증 헤더가 노출될 수 있는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat의 WebSocket 인증 과정에서 HTTP 인증 헤더가 의도하지 않은 호스트로 전송될 수 있는 취약점입니다.이로 인해 인증 정보가 예상하지 못한 외부 호스트에 노출될 수 있습니다.",
+            "published_date": "2026-05-12",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-42498.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-34500",
+            "affected_versions": [
+                "11.0.0-M14 to 11.0.20",
+                "10.1.22 to 10.1.53",
+                "9.0.92 to 9.0.116"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 6.5 MEDIUM",
+                    "Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:N"
                 }
             ],
             "identification_information": [
@@ -517,17 +1063,58 @@
                 {
                     "Method": "upgrade engine",
                     "Detail": [
-                        "11.0.20",
-                        "10.1.53",
-                        "9.0.116"
+                        "11.0.21",
+                        "10.1.54",
+                        "9.0.117"
                     ]
                 }
             ],
-            "summary": "Apache Tomcat, Apache Tomcat Native: soft-fail(검증 실패 허용 모드)이 비활성화되어 있음에도, OCSP 검사가 실패로 처리되지 않고 통과되는 취약점",
+            "summary": "Apache Tomcat: soft-fail이 비활성화된 경우에도 FFM 사용 시 OCSP 검증 실패가 무시되는 취약점",
             "discoverer_information": "N/A",
-            "detailed_description": "Apache Tomcat 및 Apache Tomcat Native에서 soft-fail이 비활성화된 환경에서도, 특정 상황에서 CLIENT_CERT 인증이 예상대로 실패하지 않는 취약점입니다.\n이로 인해 인증이 거부되어야 하는 경우에도 정상적으로 통과될 수 있습니다.",
+            "detailed_description": "Apache Tomcat에서 soft-fail(검증 실패 허용 모드)이 비활성화되어 있음에도, FFM 사용 환경에서 일부 상황에서 CLIENT_CERT 인증이 예상대로 실패하지 않는 취약점입니다.\n이로 인해 인증이 거부되어야 하는 경우에도 검증 실패가 무시되고 인증이 통과될 수 있습니다.",
             "published_date": "2026-04-09",
-            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-29145.md",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-34500.md",
+            "instance_type": "TOMCAT"
+        },
+        {
+            "CVE-ID": "CVE-2026-53404",
+            "affected_versions": [
+                "11.0.0-M1 to 11.0.22",
+                "10.1.0-M1 to 10.1.55",
+                "9.0.0-M1 to 9.0.118",
+                "8.5.0 to 8.5.100"
+            ],
+            "severity": [
+                {
+                    "Metrics": "CVSS Version 3.x",
+                    "Source": "CISA-ADP",
+                    "Score": "Base Score: 7.3 HIGH",
+                    "Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+                }
+            ],
+            "identification_information": [
+                {
+                    "CWE-ID": "CWE-670",
+                    "CWE Name": "Always-Incorrect Control Flow Implementation",
+                    "Source": "Apache Software Foundation"
+                }
+            ],
+            "mitigation_methods": [
+                {
+                    "Method": "upgrade engine",
+                    "Detail": [
+                        "11.0.23",
+                        "10.1.56",
+                        "9.0.119",
+                        "8.5.101"
+                    ]
+                }
+            ],
+            "summary": "Apache Tomcat: RewriteValve에서 ornext 조건이 잘못 처리되는 취약점",
+            "discoverer_information": "N/A",
+            "detailed_description": "Apache Tomcat의 RewriteValve에서 제어 흐름이 잘못 처리되는 취약점입니다. OR 조건으로 연결된 조건식에서 첫 번째 조건이 일치하면, 그 뒤에 이어지는 OR 조건이 아닌 조건들이 건너뛰어질 수 있습니다. 이로 인해 RewriteValve 규칙이 의도한 순서와 다르게 평가될 수 있습니다. 기술 지원이 종료된 다른 버전의 Apache Tomcat도 이 취약점의 영향을 받을 수 있습니다.",
+            "published_date": "2026-06-29",
+            "vulnerability_detailed_description": "https://atlena.github.io/lat-security-vulnerability/tomcat/2026/CVE-2026-53404.md",
             "instance_type": "TOMCAT"
         }
     ]
